@@ -3,14 +3,16 @@
   "baseline": "Digest_v1.tex",
   "baseline_sha256": "c1a8425ea0ddb86ac2ff3887ca67d09d6e1b108e4350cf516c7d0b5d1de64ffa",
   "new_source": "main.tex",
-  "new_sha256": "204b3fdd6a24a5208bfbe671edcea33d6adc7cd0b2f70c4b72f5d78b56d1e06d",
+  "new_sha256": "faf630722c560b9e04c3a8dafc080219dc0df4f99cbccec932c76975eda6a969",
   "baseline_modified": false,
   "clean_source_modified": false,
   "input_tables_expanded": true,
   "bibliography_not_flattened": true,
-  "changed_tables_marked_as_whole_blocks": true,
+  "schema_table_word_level": true,
+  "replacement_and_new_tables_marked_as_whole_blocks": true,
+  "equivalent_dash_spellings_normalized_for_comparison": true,
   "review_graphics_size_bounded": true,
   "legacy_architecture_label_retained_in_review": true,
   "review_layout": "IEEEtran conference onecolumn; main.tex stays twocolumn",
-  "generator_stderr": "Can't exec \"kpsewhich\": No such file or directory at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nUse of uninitialized value in string ne at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nWARNING: listings package not detected. Disabling mark-up in verbatim environments \nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\nWide character in print at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 469.\n"
+  "generator_stderr": "Can't exec \"kpsewhich\": No such file or directory at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nUse of uninitialized value in string ne at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nWARNING: listings package not detected. Disabling mark-up in verbatim environments \n"
 }

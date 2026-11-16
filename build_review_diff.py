@@ -41,6 +41,10 @@ def main():
         count = 0
         def atomic(match):
             nonlocal count
+            # The original schema retains its rows and columns. Let latexdiff
+            # mark only its corrected values, rather than replacing the table.
+            if r'\label{tab:dataset_schema}' in match.group(0):
+                return match.group(0)
             command = 'APECReview' + side + 'Table' + chr(65+count)
             count += 1
             table = match.group(0)
@@ -57,8 +61,11 @@ def main():
     with tempfile.TemporaryDirectory(prefix='apec-diff-') as directory:
         old = Path(directory)/'old.tex'
         new = Path(directory)/'new.tex'
-        old.write_text(atomic_tables(expand_inputs(args.baseline),'Old'))
-        new.write_text(atomic_tables(expand_inputs(args.new),'New'))
+        # Equivalent Unicode/TeX dash spellings are formatting, not prose edits.
+        def normalize_dashes(text):
+            return text.replace('—','---').replace('–','--')
+        old.write_text(atomic_tables(normalize_dashes(expand_inputs(args.baseline)),'Old'))
+        new.write_text(atomic_tables(normalize_dashes(expand_inputs(args.new)),'New'))
         command = [args.latexdiff, '--type=CFONT', '--subtype=SAFE', '--floattype=FLOATSAFE',
             '--graphics-markup=none', '--math-markup=0',
             '--append-safecmd='+','.join(table_commands), str(old), str(new)]
@@ -68,6 +75,7 @@ def main():
     assert content.count(clean_class) == 1
     content = content.replace(clean_class, r'\documentclass[conference,onecolumn,letterpaper]{IEEEtran}', 1)
     compatibility = (r'\usepackage{float}'+'\n'+r'\providecommand{\bstctlcite}[1]{}'+'\n'
+        +r'\emergencystretch=3em'+'\n'
         +r'\renewcommand{\DIFadd}[1]{{\protect\color{blue}#1}}'+'\n'
         +r'\renewcommand{\DIFdel}[1]{{\protect\color{red}#1}}'+'\n'
         +''.join(table_definitions))
@@ -83,7 +91,8 @@ def main():
     comment = ('% Marked comparison: unchanged Digest_v1.tex -> main.tex.\n'
         '% One-column REVIEW layout accommodates original wide digest tables.\n'
         '% Compile main.tex for the clean six-page conference manuscript.\n'
-        '% Additions are blue; deletions red. Changed tables are marked as whole blocks.\n'
+        '% Additions are blue; deletions red. The schema has word-level changes.\n'
+        '% Replaced comparison/new analysis tables are marked as whole blocks.\n'
         '% Review graphics are bounded in size; the clean main.tex is unchanged.\n')
     args.output.write_text(comment+content)
     assert hashlib.sha256(args.baseline.read_bytes()).hexdigest() == baseline_hash
@@ -95,7 +104,9 @@ def main():
         new_sha256=hashlib.sha256(args.new.read_bytes()).hexdigest(),
         baseline_modified=False, clean_source_modified=False,
         input_tables_expanded=True, bibliography_not_flattened=True,
-        changed_tables_marked_as_whole_blocks=True, review_graphics_size_bounded=True,
+        schema_table_word_level=True, replacement_and_new_tables_marked_as_whole_blocks=True,
+        equivalent_dash_spellings_normalized_for_comparison=True,
+        review_graphics_size_bounded=True,
         legacy_architecture_label_retained_in_review=True,
         review_layout='IEEEtran conference onecolumn; main.tex stays twocolumn',
         generator_stderr=result.stderr),indent=2)+'\n')
