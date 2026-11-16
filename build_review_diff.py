@@ -51,18 +51,30 @@ def main():
             if side == 'Old':
                 # Avoid duplicate labels for the old and updated schema tables.
                 table = re.sub(r'\\label\{([^}]+)\}', r'\\label{\1_digest}', table)
-                # Strike each cell separately: ulem cannot wrap a whole float.
-                rows = []
-                for line in table.splitlines():
-                    stripped = line.strip()
-                    if '&' in stripped and stripped.endswith(r'\\'):
-                        cells = stripped[:-2].split('&')
-                        line = ' & '.join(r'\DIFdel{'+cell.strip()+'}' for cell in cells) + r' \\'
-                    rows.append(line)
-                table = '\n'.join(rows)
-                table = re.sub(r'\\caption\{([^{}]+)\}',
-                    lambda m:r'\caption{\DIFdel{'+m.group(1)+'}}',table)
-                table = table.replace(r'\centering',r'\centering\color{red}',1)
+            # Mark cells separately: ulem cannot wrap a whole table float.
+            marker = r'\DIFdel' if side == 'Old' else r'\DIFadd'
+            def mark_cell(cell):
+                cell = cell.strip()
+                stack = re.fullmatch(r'\\shortstack\{(.*)\}',cell,re.S)
+                if stack:
+                    return r'\shortstack{' + r'\\'.join(
+                        marker+'{'+line+'}' for line in stack.group(1).split(r'\\')) + '}'
+                span = re.fullmatch(r'(\\multicolumn\{[^}]+\}\{[^}]+\})\{(.*)\}',cell,re.S)
+                if span:
+                    return span.group(1)+'{'+marker+'{'+span.group(2)+'}}'
+                return marker+'{'+cell+'}'
+            rows = []
+            for line in table.splitlines():
+                stripped = line.strip()
+                if stripped.endswith(r'\\'):
+                    cells = stripped[:-2].split('&')
+                    line = ' & '.join(mark_cell(cell) for cell in cells) + r' \\'
+                rows.append(line)
+            table = '\n'.join(rows)
+            table = re.sub(r'\\caption\{([^{}]+)\}',
+                lambda m:r'\caption{'+marker+'{'+m.group(1)+'}}',table)
+            color = 'red' if side == 'Old' else 'blue'
+            table = table.replace(r'\centering',r'\centering\color{'+color+'}',1)
             table_definitions.append('\\newcommand{\\'+command+'}{%\n'+table+'\n}\n')
             table_commands.append(command)
             return '\\'+command+'{}\n'
@@ -86,19 +98,19 @@ def main():
     compatibility = (r'\usepackage{float}'+'\n'+r'\providecommand{\bstctlcite}[1]{}'+'\n'
         +r'\usepackage[normalem]{ulem}'+'\n'
         +r'\emergencystretch=3em'+'\n'
-        +r'\renewcommand{\DIFadd}[1]{{\protect\color{blue}#1}}'+'\n'
+        +r'\renewcommand{\DIFadd}[1]{{\protect\color{blue}\protect\uline{#1}}}'+'\n'
         +r'\renewcommand{\DIFdel}[1]{{\protect\color{red}\protect\sout{#1}}}'+'\n'
         +''.join(table_definitions))
     content = content.replace(r'\begin{document}', compatibility+r'\begin{document}', 1)
-    # Old table content already has cell-level strikes; avoid wrapping its float.
-    content = re.sub(r'\\DIFdel\{\s*(\\APECReviewOldTable[A-Z]\{\})\s*\}',
+    # Table content already has cell-level marks; avoid wrapping its float.
+    content = re.sub(r'\\DIF(?:add|del)\{\s*(\\APECReview(?:Old|New)Table[A-Z]\{\})\s*\}',
         lambda m:m.group(1),content)
-    # Keep citations and references together inside a strikethrough argument.
+    # Keep citations/references together inside underline/strikethrough arguments.
     content = re.sub(r'\\(?:cite|ref|eqref)\{[^}]+\}',
         lambda m:r'\mbox{'+m.group(0)+'}',content)
     content = content.replace(r'\maketitle',r'''\maketitle
 \pagestyle{plain}\thispagestyle{plain}
-\begin{center}\footnotesize Review copy: \textcolor{blue}{added text}; \textcolor{red}{\sout{removed text}}.\end{center}''',1)
+\begin{center}\footnotesize Review copy: \textcolor{blue}{\uline{added text}}; \textcolor{red}{\sout{removed text}}.\end{center}''',1)
     # The digest's removed pipeline figure used this legacy label. Keep the
     # deleted prose's reference resolvable at the updated architecture figure.
     content = content.replace(r'\label{fig:model_structure}',
@@ -110,8 +122,8 @@ def main():
     comment = ('% Marked comparison: unchanged Digest_v1.tex -> main.tex.\n'
         '% One-column REVIEW layout accommodates original wide digest tables.\n'
         '% Compile main.tex for the clean six-page conference manuscript.\n'
-        '% Additions are blue; deletions have a red strikethrough for printing.\n'
-        '% The schema has word-level changes; deleted table cells are struck individually.\n'
+        '% Additions have a blue underline; deletions have a red strikethrough for printing.\n'
+        '% The schema has word-level changes; changed table cells are marked individually.\n'
         '% Replaced comparison/new analysis tables are marked as whole blocks.\n'
         '% Review graphics are bounded in size; the clean main.tex is unchanged.\n')
     args.output.write_text(comment+content)
@@ -128,6 +140,7 @@ def main():
         equivalent_dash_spellings_normalized_for_comparison=True,
         review_graphics_size_bounded=True,
         deleted_text_style='red strikethrough using ulem; deleted table cells marked individually',
+        added_text_style='blue solid underline using ulem; new table cells marked individually',
         print_legend_and_page_numbers=True,
         legacy_architecture_label_retained_in_review=True,
         review_layout='IEEEtran conference onecolumn; main.tex stays twocolumn',

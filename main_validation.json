@@ -57,5 +57,7 @@
   "review_table_cells_struck_individually": true,
   "review_fonts_embedded": true,
   "review_overfull_boxes": false,
-  "clean_paper_unchanged_during_print_formatting": true
+  "clean_paper_unchanged_during_print_formatting": true,
+  "review_added_text": "blue solid underline",
+  "review_new_table_cells_underlined_individually": true
 }

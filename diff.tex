@@ -1,14 +1,14 @@
 % Marked comparison: unchanged Digest_v1.tex -> main.tex.
 % One-column REVIEW layout accommodates original wide digest tables.
 % Compile main.tex for the clean six-page conference manuscript.
-% Additions are blue; deletions have a red strikethrough for printing.
-% The schema has word-level changes; deleted table cells are struck individually.
+% Additions have a blue underline; deletions have a red strikethrough for printing.
+% The schema has word-level changes; changed table cells are marked individually.
 % Replaced comparison/new analysis tables are marked as whole blocks.
 % Review graphics are bounded in size; the clean main.tex is unchanged.
 %DIF 1-45c1-7
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/apec-diff-os3z44mq/old.tex   Mon Nov 16 13:44:13 2026
-%DIF ADD /tmp/apec-diff-os3z44mq/new.tex   Mon Nov 16 13:44:13 2026
+%DIF DEL /tmp/apec-diff-v9vnny0k/old.tex   Mon Nov 16 17:26:35 2026
+%DIF ADD /tmp/apec-diff-v9vnny0k/new.tex   Mon Nov 16 17:26:35 2026
 %DIF < \documentclass[conference,onecolumn,letterpaper,romanappendices,12pt,english,nofonttune]{IEEEtran}
 %DIF <     \IEEEoverridecommandlockouts
 %DIF < \usepackage[margin=1in]{geometry}
@@ -124,7 +124,7 @@
 \providecommand{\bstctlcite}[1]{}
 \usepackage[normalem]{ulem}
 \emergencystretch=3em
-\renewcommand{\DIFadd}[1]{{\protect\color{blue}#1}}
+\renewcommand{\DIFadd}[1]{{\protect\color{blue}\protect\uline{#1}}}
 \renewcommand{\DIFdel}[1]{{\protect\color{red}\protect\sout{#1}}}
 \newcommand{\APECReviewOldTableA}{%
 \begin{table}[H]
@@ -149,41 +149,41 @@
 }
 \newcommand{\APECReviewNewTableA}{%
 \begin{table}[!t]
-\centering
-\caption{Attack detection on 23,540 validation windows. Rates are percentages; FPR denotes false-positive rate. Panel A uses matched attack-only training; panel B includes multihead pretraining and rebalanced fine-tuning.}
+\centering\color{blue}
+\caption{\DIFadd{Attack detection on 23,540 validation windows. Rates are percentages; FPR denotes false-positive rate. Panel A uses matched attack-only training; panel B includes multihead pretraining and rebalanced fine-tuning.}}
 \label{tab:comparison}
 \setlength{\tabcolsep}{3pt}
 \small
 \begin{tabular}{lrrrr}
 \toprule
-Model & Accuracy & Bal. acc. & Recall & FPR \\
+\DIFadd{Model} & \DIFadd{Accuracy} & \DIFadd{Bal. acc.} & \DIFadd{Recall} & \DIFadd{FPR} \\
 \midrule
-\multicolumn{5}{l}{\textit{A. Matched attack-only baselines}} \\
-Always attack & 80.35 & 50.00 & 100.00 & 100.00 \\
-LSTM & 84.89 & 64.15 & 98.33 & 70.04 \\
-CNN--LSTM & 89.81 & 85.33 & 92.71 & 22.05 \\
-CNN--Bi-GRU & 89.00 & 85.16 & 91.49 & 21.16 \\
+\multicolumn{5}{l}{\DIFadd{\textit{A. Matched attack-only baselines}}} \\
+\DIFadd{Always attack} & \DIFadd{80.35} & \DIFadd{50.00} & \DIFadd{100.00} & \DIFadd{100.00} \\
+\DIFadd{LSTM} & \DIFadd{84.89} & \DIFadd{64.15} & \DIFadd{98.33} & \DIFadd{70.04} \\
+\DIFadd{CNN--LSTM} & \DIFadd{89.81} & \DIFadd{85.33} & \DIFadd{92.71} & \DIFadd{22.05} \\
+\DIFadd{CNN--Bi-GRU} & \DIFadd{89.00} & \DIFadd{85.16} & \DIFadd{91.49} & \DIFadd{21.16} \\
 \midrule
-\multicolumn{5}{l}{\textit{B. Rebalanced multihead model}} \\
-CNN--Bi-GRU (proposed) & 93.46 & 90.59 & 95.32 & 14.14 \\
+\multicolumn{5}{l}{\DIFadd{\textit{B. Rebalanced multihead model}}} \\
+\DIFadd{CNN--Bi-GRU (proposed)} & \DIFadd{93.46} & \DIFadd{90.59} & \DIFadd{95.32} & \DIFadd{14.14} \\
 \bottomrule
 \end{tabular}
 \end{table}
 }
 \newcommand{\APECReviewNewTableB}{%
 \begin{table}[!t]
-\centering
-\caption{Motor identification for 596 configurations represented for both attacked motors. All 8,841 windows are attack-labeled.}
+\centering\color{blue}
+\caption{\DIFadd{Motor identification for 596 configurations represented for both attacked motors. All 8,841 windows are attack-labeled.}}
 \label{tab:matched_motor_settings}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
-\shortstack{Attacked\\motor} & \shortstack{Attack\\windows} & \shortstack{Conditional\\identity (\%)} & \shortstack{Detection +\\identity (\%)} \\
+\shortstack{\DIFadd{Attacked}\\\DIFadd{motor}} & \shortstack{\DIFadd{Attack}\\\DIFadd{windows}} & \shortstack{\DIFadd{Conditional}\\\DIFadd{identity (\%)}} & \shortstack{\DIFadd{Detection +}\\\DIFadd{identity (\%)}} \\
 \midrule
-ACIM & 4,475 & 100.00 & 95.26 \\
-PMSM & 4,366 & 100.00 & 95.30 \\
-Combined & 8,841 & 100.00 & 95.28 \\
+\DIFadd{ACIM} & \DIFadd{4,475} & \DIFadd{100.00} & \DIFadd{95.26} \\
+\DIFadd{PMSM} & \DIFadd{4,366} & \DIFadd{100.00} & \DIFadd{95.30} \\
+\DIFadd{Combined} & \DIFadd{8,841} & \DIFadd{100.00} & \DIFadd{95.28} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -202,7 +202,7 @@ Athens, Georgia, USA\\
 \{Najar, Thomas.Prybylski, HeYang95, Jin.Ye, wsong\}@uga.edu}}
 \DIFaddend \maketitle
 \pagestyle{plain}\thispagestyle{plain}
-\begin{center}\footnotesize Review copy: \textcolor{blue}{added text}; \textcolor{red}{\sout{removed text}}.\end{center}
+\begin{center}\footnotesize Review copy: \textcolor{blue}{\uline{added text}}; \textcolor{red}{\sout{removed text}}.\end{center}
 \DIFaddbegin \raggedbottom
 \DIFaddend 
 
@@ -376,8 +376,7 @@ The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\
 }
 
 
-\DIFadd{\APECReviewNewTableA{}
-}
+\APECReviewNewTableA{}
 
 
 
@@ -439,8 +438,7 @@ The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\
 %DIFDELCMD < \label{fig:placeholder}
 %DIFDELCMD < \end{figure}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \DIFadd{\APECReviewNewTableB{}
-}\DIFaddend 
+\DIFdelend \DIFaddbegin \APECReviewNewTableB{}\DIFaddend 
 
 
 

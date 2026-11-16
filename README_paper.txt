@@ -62,9 +62,10 @@ checks all six outputs against saved predictions, and does not train the model.
 
 MARKED COMPARISON
 Baseline: Digest_v1.tex at dee54c454ed133d6fa18fb9492d361dbbb7ec3ce.
-Blue indicates additions; red strikethrough marks deletions. Unchanged text is black.
-The review includes a print legend and page numbers. Deleted table cells are
-struck individually, so removals remain distinguishable in a monochrome print.
+Blue underlining marks additions; red strikethrough marks deletions. Unchanged text is black.
+The review includes a print legend and page numbers. New table cells are
+underlined individually; deleted table cells are struck individually. Both
+additions and removals remain distinguishable in a monochrome print.
 The original schema has word-level changes; the replacement comparison table
 and new analysis table are shown as whole blocks. Equivalent Unicode/TeX dash
 spellings are normalized only for comparison. Neither input is modified.
