@@ -5,8 +5,8 @@
   "attack_windows": 18914,
   "threshold": 0.5,
   "new_training": false,
-  "new_inference": false,
-  "manuscript_edited": false,
+  "new_inference": true,
+  "manuscript_edited": true,
   "author_confirmation": "Both motors operate; one is attacked. User reply 2026-11-16.",
   "limitations": [
     "Random overlapping-window validation, used for epoch/model selection",
@@ -110,5 +110,7 @@
     "architecture_results/balanced_multitask_20261115/01_balanced_finetune/selected_checkpoint.json": "85e8398ca1f9a6803a2bddbd480d406f4fc13f3816411ff1d5189a562b5fa421",
     "assess_rebalanced_contribution.py": "5c07450c77d4acc20c727c7bae08185c5931de46f895d58716f9954a47c2cbb6"
   },
-  "metadata_sha256": "fcc95720f96071a20c8598cb029ef02400772b3f5f420562c7e1cce7a98b6873"
+  "metadata_sha256": "fcc95720f96071a20c8598cb029ef02400772b3f5f420562c7e1cce7a98b6873",
+  "new_inference_scope": "Batch-1 runtime benchmark on 1,000 recorded validation windows; selected weights and classification metrics unchanged",
+  "runtime_evidence": "results/rebalanced_runtime.json"
 }

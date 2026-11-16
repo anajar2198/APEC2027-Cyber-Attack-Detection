@@ -16,5 +16,7 @@
   "matched_configurations": 596,
   "matched_joint_recall": 0.9528333898880217,
   "source": "Completed epoch-45 rebalanced validation predictions; no new training",
-  "author_confirmed_both_motors_running": true
+  "author_confirmed_both_motors_running": true,
+  "requested_runtime_benchmark": "results/rebalanced_runtime.json",
+  "realtime_title_restored": true
 }

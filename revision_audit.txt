@@ -1,0 +1,96 @@
+AUDIT OF REMOVALS AND CLAIM CHANGES
+Baseline: unchanged GitHub Digest_v1.tex at dee54c454ed1.
+Audited prior revision: 118ed7f, before the new runtime benchmark.
+Full old/new text and reasons: results/focused_revision_edits.json.
+The original digest and all original repository files remain unchanged.
+
+1. REAL-TIME TITLE AND SOME REAL-TIME BODY WORDING -- RESTORED
+I previously removed this wording before benchmarking the selected checkpoint.
+That was premature. The new CPU benchmark measures 1,000 batch-1 validation
+windows after 50 warm-ups, with all six heads synchronized. Mean processing is
+4.50 ms, 95th percentile 5.19 ms, and maximum 9.26 ms, including raw/difference
+preprocessing, standardization and output decoding. At the author's approximately
+7-Hz rate, stride 16 permits 2,285.71 ms between scheduled windows.
+The original title is restored, and a runtime subsection supports computational
+real-time feasibility on the measured CPU. Event-level alarm delay remains a
+separate measurement. A 128-sample nominal duration of 18.29 s is not an observed
+attack-to-alarm delay. Sources: results/rebalanced_runtime.json/.csv and the
+benchmark script. No retraining occurred.
+
+2. RANKING METRICS -- AVAILABLE METRICS NOW REPORTED
+The original generic mention of PR-AUC was replaced by the metrics reported for
+the selected model. The saved predictions already gave average precision
+0.9936595 and ROC-AUC 0.9757865. The revised paper now reports both (0.9937 and
+0.9758). Average precision is named explicitly; it is not relabeled as a
+trapezoidal precision-recall area. These values were not missing calculations.
+Source: results/rebalanced_experiment_metrics.json, metrics.attack.
+
+3. TEST ACCURACY / STRONG GENERALIZATION -- CHANGED, NOT DISPROVED
+The old approximately 92% test result is replaced by 93.46% on the selected
+23,540-window cohort. The partition is called validation because it was used
+for model/epoch selection. The split is random at the overlapping-window level,
+with seed 42, rather than independent recordings. The scope clarification does
+not calculate poorer performance on an unseen recording; that performance has
+not been measured. Actual confusion counts determine the reported accuracy.
+
+4. SCALABLE / HIGH EDGE SCALABILITY -- NARROWED TO THE TESTED SETUP
+The original general scalability claims and the comparison table's High/Low
+scalability labels are limited to the two-motor demonstration. Both motors run
+while one is attacked. A faster inference time does not establish that ten
+motors can be distinguished from aggregate PCC features. No ten-motor result was
+calculated or claimed. This follows the author's earlier accepted limitation.
+
+5. PMU/IED COMPARISON TABLE AND LITERATURE CLAIMS -- CONTEXT RETAINED
+The old table mixed accuracies from different datasets and marked other methods
+as real-time Yes/No and edge scalability High/Low without matched measurements.
+It is replaced by completed same-dataset LSTM, CNN-LSTM and CNN-BiGRU baselines,
+the majority predictor, and the selected full pipeline. The text states that
+the proposed pipeline receives extra multitask training, so architecture-only
+causation is not claimed. Prior papers remain cited as context.
+Unsupported assertions that Guha's method requires balanced conditions or
+struggles with this dataset's imbalance were removed. The cited PMU study was
+also not described as a reproduced CNN-LSTM experiment. These are attribution
+corrections; there was no calculation showing those prior methods perform worse.
+
+6. PMU-EQUIVALENT DATA / HIGH GRANULARITY -- REPLACED BY SPECIFIC FACTS
+Similar electrical features do not establish equivalent synchronization,
+reporting or sensing performance. The paper states the author's approximately
+7-Hz EMU rate instead. The lower-cost claim is retained: author-reported prototype
+hardware around US$100 and a cited US$5,000 xPMU listing. No network-wide cost or
+coverage ratio was calculated. The removal did not indicate that the EMU cost
+advantage disappeared.
+
+7. DYNAMIC WEIGHTS / COSINE SCHEDULE / THRESHOLD TUNING -- ACTUAL RUN USED
+The selected rebalanced run uses fixed outer task weights, training-derived
+class weights and masks, a plateau-based learning-rate reduction, and threshold
+0.5. The old epoch-wise threshold scan and cosine schedule did not describe this
+run, so those statements were replaced. This is checked against saved training
+code and run/checkpoint metadata, rather than inferred from weak results.
+
+8. OLD FIGURES -- MODEL/COHORT CHANGES, ORIGINAL FILES PRESERVED
+The historical training-accuracy curve and binary-only architecture drawings do
+not describe the selected six-head model. The drawings are superseded by its
+actual architecture diagram; the old accuracy curve is omitted. They were not
+removed because a runtime calculation failed. A learning curve for the rebalanced
+training would be a separate figure based on its own history.
+The original illustrative phase/frequency/THD figure is restored. Its caption
+now describes the visible signals without asserting unmarked attack onsets.
+The confusion and stored-severity figures use the selected checkpoint/cohort.
+
+9. PURE WORDING AND FORMAT
+The words 'rigorous benchmark' and the original positive conclusion wording
+were toned down in the prior revision without a numerical calculation. They
+are restored here while retaining the tested-system scope. The digest-only
+editorial TODO, duplicate placeholder label and forced page break remain fixed.
+Formatting uses the six-page IEEE body font/margins, with 12-pt text-to-float
+spacing. Original prose was not cut to make room for the timing subsection;
+only newly added method/result text was shortened where needed.
+
+RUNTIME LIMITS
+The benchmark uses an Intel Core Ultra 9 285K CPU with four intra-operation
+threads and TensorFlow 2.21, without a GPU. It times completed recorded windows,
+not live EMU acquisition or networking. The first graph-tracing call was
+186.32 ms and is recorded separately. Outputs match the saved predictions to
+within 4.33e-6. A full event-level delay measurement needs a verified mapping
+from window timestamps to source samples and every scheduled prediction in
+chronological order. The random validation subset omits intervening windows.

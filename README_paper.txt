@@ -31,10 +31,34 @@ CHANGED EXPERIMENTAL MATERIAL
 CLARIFICATIONS
 Results use epoch 45 of the selected rebalanced run and random overlapping-window
 validation. There is no independent-recording test or new training in this edit.
+A new CPU runtime benchmark measures completed-window processing.
 Class weighting, loss masks, and fixed task coefficients are distinguished.
 Prior PMU/IED results provide context, rather than a direct accuracy benchmark.
 Stored severity labels are distinguished from the physical injection parameter.
 Auxiliary severity/timing limitations and the tested two-motor scope are stated.
+
+RUNTIME EVIDENCE AND REMOVAL AUDIT
+The original Real-Time title is restored. At the author-provided approximately
+7-Hz feature rate, 128 samples imply an 18.29-s nominal data window and stride
+16 implies 2.29 s between updates. On an Intel Core Ultra 9 285K CPU, TensorFlow
+2.21, four intra-operation threads, batch 1, 1,000 recorded validation windows
+after 50 warm-ups take 4.50 ms mean, 5.19 ms 95th percentile and 9.26 ms maximum.
+Timing includes preprocessing, all six heads and output decoding. The runtime
+CSV contains individual measurements, and the JSON records methods and hashes.
+This supports rolling-window computational feasibility on that CPU. It excludes
+sensor acquisition/transport and does not measure event-level attack-to-alarm
+latency or guarantee worst-case timing on another platform.
+Average precision 0.9937 and ROC-AUC 0.9758 are retained from saved predictions.
+revision_audit.txt explains all substantive removals, restorations and limits.
+The original digest, bibliography and original image files remain unchanged.
+
+BENCHMARK REPRODUCTION
+  python tools/benchmark_rebalanced_runtime.py
+Run from the repository root with TensorFlow/NumPy installed and the selected
+checkpoint, original dataset and preprocessing/split artifacts available at the
+paths listed in results/rebalanced_runtime.json. Those large local training
+artifacts are not included in this paper upload. The script uses the CPU only,
+checks all six outputs against saved predictions, and does not train the model.
 
 MARKED COMPARISON
 Baseline: Digest_v1.tex at dee54c454ed133d6fa18fb9492d361dbbb7ec3ce.
