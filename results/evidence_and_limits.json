@@ -1,0 +1,114 @@
+{
+  "model": "Selected fixed-weight rebalanced CNN-BiGRU",
+  "checkpoint_epoch": 45,
+  "validation_windows": 23540,
+  "attack_windows": 18914,
+  "threshold": 0.5,
+  "new_training": false,
+  "new_inference": false,
+  "manuscript_edited": false,
+  "author_confirmation": "Both motors operate; one is attacked. User reply 2026-11-16.",
+  "limitations": [
+    "Random overlapping-window validation, used for epoch/model selection",
+    "No independent recording or unseen-condition test",
+    "Conditional motor identification is separate from successful attack detection",
+    "Common configurations match attacked-motor labels; unreported settings of the other motor are not controlled by this subset",
+    "Per-condition results report recall only, because normal speed/load metadata are zero",
+    "Stored onset labels do not establish attack persistence or event-level detection delay"
+  ],
+  "matched_configuration_columns": [
+    "speed",
+    "load",
+    "A",
+    "B",
+    "C",
+    "severity_A",
+    "severity_B",
+    "severity_C"
+  ],
+  "matched_configurations": 596,
+  "matched_results": [
+    {
+      "attacked_motor": "ACIM",
+      "shared_configurations": 596,
+      "attack_windows": 4475,
+      "detected_attacks": 4263,
+      "missed_attacks": 212,
+      "attack_recall": 0.9526256983240223,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.9526256983240223
+    },
+    {
+      "attacked_motor": "PMSM",
+      "shared_configurations": 596,
+      "attack_windows": 4366,
+      "detected_attacks": 4161,
+      "missed_attacks": 205,
+      "attack_recall": 0.9530462666055887,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.9530462666055887
+    },
+    {
+      "attacked_motor": "Both classes",
+      "shared_configurations": 596,
+      "attack_windows": 8841,
+      "detected_attacks": 8424,
+      "missed_attacks": 417,
+      "attack_recall": 0.9528333898880217,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.9528333898880217
+    }
+  ],
+  "onset_summary": {
+    "first_96_positions": {
+      "attack_windows": 3233,
+      "detected_attacks": 3217,
+      "missed_attacks": 16,
+      "attack_recall": 0.9950510361892979,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.9950510361892979
+    },
+    "last_32_positions": {
+      "attack_windows": 1118,
+      "detected_attacks": 649,
+      "missed_attacks": 469,
+      "attack_recall": 0.5805008944543828,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.5805008944543828
+    },
+    "last_quarter_fraction_of_attack_windows": 0.05910965422438406,
+    "last_quarter_fraction_of_all_missed_attacks": 0.5293453724604966,
+    "no_onset_inside_window": {
+      "attack_windows": 14563,
+      "detected_attacks": 14162,
+      "missed_attacks": 401,
+      "attack_recall": 0.9724644647394081,
+      "conditional_motor_accuracy": 1.0,
+      "joint_detection_motor_recall": 0.9724644647394081
+    },
+    "interpretation": "The binary detector is stratified by ground-truth onset labels; this does not evaluate the onset head or measure event-level detection delay."
+  },
+  "minimum_condition_recall": 0.9408795962509012,
+  "maximum_condition_recall": 0.9616775126536515,
+  "macro_condition_recall": 0.9533679901246077,
+  "related_primary_sources": [
+    {
+      "title": "SensorAI: A Machine Learning Framework for Sensor Data",
+      "year": 2025,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12526965/",
+      "relevant_scope": "Section 3: 1-Hz downsampled PCC current, five-sample windows, normal/FDIA1/FDIA2 classification; cite as close prior art, not a direct accuracy benchmark"
+    },
+    {
+      "title": "Enhanced Cyber-Attack Detection in Intelligent Motor Drives: A Transfer Learning Approach With Convolutional Neural Networks",
+      "year": 2024,
+      "doi": "10.1109/JESTIE.2023.3346802",
+      "relevant_scope": "Motor-current spectra from 25-kHz waveforms; simulation-to-experiment transfer learning; sensing and dataset differ"
+    }
+  ],
+  "sha256": {
+    "architecture_results/balanced_multitask_20261115/01_balanced_finetune/validation_predictions.npz": "78aec64e3b7d06edefb2b8f636624c8cfc6473d077fb48beb97bf3f1ca9f33e0",
+    "architecture_results/balanced_multitask_20261115/01_balanced_finetune/selected_checkpoint.json": "85e8398ca1f9a6803a2bddbd480d406f4fc13f3816411ff1d5189a562b5fa421",
+    "assess_rebalanced_contribution.py": "5c07450c77d4acc20c727c7bae08185c5931de46f895d58716f9954a47c2cbb6"
+  },
+  "metadata_sha256": "fcc95720f96071a20c8598cb029ef02400772b3f5f420562c7e1cce7a98b6873"
+}

@@ -1,0 +1,1438 @@
+{
+  "model": "Rebalanced multihead CNN-BiGRU",
+  "selected_epoch": 45,
+  "interpretation": "Random overlapping-window validation; no independent recording holdout",
+  "validation_windows": 23540,
+  "normal_windows": 4626,
+  "attack_windows": 18914,
+  "metrics": {
+    "attack": {
+      "threshold": 0.5,
+      "samples": 23540,
+      "tn": 3972,
+      "fp": 654,
+      "fn": 886,
+      "tp": 18028,
+      "accuracy": 0.9345794392523364,
+      "balanced_accuracy": 0.9058907771088113,
+      "precision": 0.9649930414302538,
+      "attack_recall": 0.953156392090515,
+      "normal_recall": 0.8586251621271076,
+      "false_positive_rate": 0.14137483787289234,
+      "f1": 0.9590381955527184,
+      "average_precision": 0.9936595065348715,
+      "roc_auc": 0.9757865213382383
+    },
+    "motor": {
+      "conditional_accuracy": 1.0,
+      "conditional_balanced_accuracy": 1.0,
+      "joint_correct_on_attack": 0.953156392090515,
+      "joint_three_class_accuracy": 0.9345794392523364,
+      "joint_three_class_balanced_accuracy": 0.9217469055567972,
+      "joint_confusion_matrix": [
+        [
+          3972,
+          341,
+          313
+        ],
+        [
+          497,
+          9749,
+          0
+        ],
+        [
+          389,
+          0,
+          8279
+        ]
+      ]
+    },
+    "phase_raw_all": {
+      "windows": 23540,
+      "exact_pattern_accuracy": 0.7527187765505523,
+      "macro_f1": 0.8964985630401064,
+      "hamming_accuracy": 0.8618238459359955,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              6232,
+              1001
+            ],
+            [
+              2417,
+              13890
+            ]
+          ],
+          "precision": 0.9327781881673494,
+          "recall": 0.8517814435518489,
+          "specificity": 0.8616065256463431,
+          "f1": 0.8904416949804475,
+          "balanced_accuracy": 0.856693984599096
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              6119,
+              1200
+            ],
+            [
+              2202,
+              14019
+            ]
+          ],
+          "precision": 0.9211511925882121,
+          "recall": 0.8642500462363603,
+          "specificity": 0.8360431752971718,
+          "f1": 0.891793893129771,
+          "balanced_accuracy": 0.850146610766766
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              6231,
+              1055
+            ],
+            [
+              1883,
+              14371
+            ]
+          ],
+          "precision": 0.9316089718656814,
+          "recall": 0.884151593453919,
+          "specificity": 0.8552017567938512,
+          "f1": 0.907260101010101,
+          "balanced_accuracy": 0.8696766751238851
+        }
+      },
+      "mean_balanced_accuracy": 0.858839090163249,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          3983,
+          56,
+          54,
+          18,
+          31,
+          42,
+          13,
+          429
+        ],
+        [
+          437,
+          288,
+          63,
+          10,
+          1,
+          11,
+          12,
+          74
+        ],
+        [
+          433,
+          19,
+          315,
+          11,
+          9,
+          7,
+          12,
+          69
+        ],
+        [
+          176,
+          184,
+          75,
+          110,
+          1,
+          27,
+          20,
+          243
+        ],
+        [
+          342,
+          26,
+          26,
+          0,
+          390,
+          11,
+          10,
+          87
+        ],
+        [
+          153,
+          216,
+          28,
+          32,
+          4,
+          128,
+          14,
+          330
+        ],
+        [
+          288,
+          51,
+          217,
+          19,
+          10,
+          7,
+          98,
+          203
+        ],
+        [
+          737,
+          128,
+          89,
+          65,
+          7,
+          118,
+          66,
+          12407
+        ]
+      ],
+      "normal_windows": 4626,
+      "normal_any_phase_false_positive_rate": 0.13899697362732383,
+      "normal_all_zero_accuracy": 0.8610030263726762
+    },
+    "phase_raw_attack_only": {
+      "windows": 18914,
+      "exact_pattern_accuracy": 0.7262345352648831,
+      "macro_f1": 0.9117147666822506,
+      "hamming_accuracy": 0.8557682140213598,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              2121,
+              486
+            ],
+            [
+              2417,
+              13890
+            ]
+          ],
+          "precision": 0.9661936560934892,
+          "recall": 0.8517814435518489,
+          "specificity": 0.8135788262370541,
+          "f1": 0.9053873480428902,
+          "balanced_accuracy": 0.8326801348944515
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              2007,
+              686
+            ],
+            [
+              2202,
+              14019
+            ]
+          ],
+          "precision": 0.9533492009520571,
+          "recall": 0.8642500462363603,
+          "specificity": 0.7452655031563312,
+          "f1": 0.9066157925370238,
+          "balanced_accuracy": 0.8047577746963457
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              2150,
+              510
+            ],
+            [
+              1883,
+              14371
+            ]
+          ],
+          "precision": 0.9657281096700491,
+          "recall": 0.884151593453919,
+          "specificity": 0.8082706766917294,
+          "f1": 0.923141159466838,
+          "balanced_accuracy": 0.8462111350728242
+        }
+      },
+      "mean_balanced_accuracy": 0.8278830148878739,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          437,
+          288,
+          63,
+          10,
+          1,
+          11,
+          12,
+          74
+        ],
+        [
+          433,
+          19,
+          315,
+          11,
+          9,
+          7,
+          12,
+          69
+        ],
+        [
+          176,
+          184,
+          75,
+          110,
+          1,
+          27,
+          20,
+          243
+        ],
+        [
+          342,
+          26,
+          26,
+          0,
+          390,
+          11,
+          10,
+          87
+        ],
+        [
+          153,
+          216,
+          28,
+          32,
+          4,
+          128,
+          14,
+          330
+        ],
+        [
+          288,
+          51,
+          217,
+          19,
+          10,
+          7,
+          98,
+          203
+        ],
+        [
+          737,
+          128,
+          89,
+          65,
+          7,
+          118,
+          66,
+          12407
+        ]
+      ]
+    },
+    "phase_joint_all": {
+      "windows": 23540,
+      "exact_pattern_accuracy": 0.7550127442650807,
+      "macro_f1": 0.8963622845298586,
+      "hamming_accuracy": 0.8623194562446899,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              6314,
+              919
+            ],
+            [
+              2486,
+              13821
+            ]
+          ],
+          "precision": 0.9376526458616011,
+          "recall": 0.8475501318452199,
+          "specificity": 0.872943453615374,
+          "f1": 0.8903275678809547,
+          "balanced_accuracy": 0.8602467927302969
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              6194,
+              1125
+            ],
+            [
+              2257,
+              13964
+            ]
+          ],
+          "precision": 0.9254423752402412,
+          "recall": 0.8608593798162876,
+          "specificity": 0.8462904768410985,
+          "f1": 0.8919833918875758,
+          "balanced_accuracy": 0.8535749283286931
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              6325,
+              961
+            ],
+            [
+              1975,
+              14279
+            ]
+          ],
+          "precision": 0.9369422572178477,
+          "recall": 0.8784914482588901,
+          "specificity": 0.8681032116387593,
+          "f1": 0.9067758938210453,
+          "balanced_accuracy": 0.8732973299488247
+        }
+      },
+      "mean_balanced_accuracy": 0.8623730170026049,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          4093,
+          40,
+          49,
+          11,
+          20,
+          30,
+          13,
+          370
+        ],
+        [
+          440,
+          286,
+          62,
+          10,
+          1,
+          11,
+          12,
+          74
+        ],
+        [
+          433,
+          19,
+          315,
+          11,
+          9,
+          7,
+          12,
+          69
+        ],
+        [
+          177,
+          184,
+          74,
+          110,
+          1,
+          27,
+          20,
+          243
+        ],
+        [
+          347,
+          26,
+          25,
+          0,
+          386,
+          11,
+          10,
+          87
+        ],
+        [
+          163,
+          212,
+          28,
+          32,
+          3,
+          125,
+          14,
+          328
+        ],
+        [
+          289,
+          51,
+          216,
+          19,
+          10,
+          7,
+          98,
+          203
+        ],
+        [
+          822,
+          108,
+          86,
+          62,
+          6,
+          107,
+          66,
+          12360
+        ]
+      ],
+      "normal_windows": 4626,
+      "normal_any_phase_false_positive_rate": 0.11521833117163856,
+      "normal_all_zero_accuracy": 0.8847816688283614
+    },
+    "phase_joint_attack_only": {
+      "windows": 18914,
+      "exact_pattern_accuracy": 0.7232737654647351,
+      "macro_f1": 0.9092183417387183,
+      "hamming_accuracy": 0.8520320045116492,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              2121,
+              486
+            ],
+            [
+              2486,
+              13821
+            ]
+          ],
+          "precision": 0.9660306143845669,
+          "recall": 0.8475501318452199,
+          "specificity": 0.8135788262370541,
+          "f1": 0.9029202325733324,
+          "balanced_accuracy": 0.8305644790411371
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              2011,
+              682
+            ],
+            [
+              2257,
+              13964
+            ]
+          ],
+          "precision": 0.9534343848149666,
+          "recall": 0.8608593798162876,
+          "specificity": 0.746750835499443,
+          "f1": 0.904785045517867,
+          "balanced_accuracy": 0.8038051076578653
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              2150,
+              510
+            ],
+            [
+              1975,
+              14279
+            ]
+          ],
+          "precision": 0.9655149097302049,
+          "recall": 0.8784914482588901,
+          "specificity": 0.8082706766917294,
+          "f1": 0.9199497471249557,
+          "balanced_accuracy": 0.8433810624753098
+        }
+      },
+      "mean_balanced_accuracy": 0.825916883058104,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          440,
+          286,
+          62,
+          10,
+          1,
+          11,
+          12,
+          74
+        ],
+        [
+          433,
+          19,
+          315,
+          11,
+          9,
+          7,
+          12,
+          69
+        ],
+        [
+          177,
+          184,
+          74,
+          110,
+          1,
+          27,
+          20,
+          243
+        ],
+        [
+          347,
+          26,
+          25,
+          0,
+          386,
+          11,
+          10,
+          87
+        ],
+        [
+          163,
+          212,
+          28,
+          32,
+          3,
+          125,
+          14,
+          328
+        ],
+        [
+          289,
+          51,
+          216,
+          19,
+          10,
+          7,
+          98,
+          203
+        ],
+        [
+          822,
+          108,
+          86,
+          62,
+          6,
+          107,
+          66,
+          12360
+        ]
+      ]
+    },
+    "phase_baseline_always_111_all": {
+      "windows": 23540,
+      "exact_pattern_accuracy": 0.5784621920135938,
+      "macro_f1": 0.8171043042799115,
+      "hamming_accuracy": 0.6907674879637496,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              0,
+              7233
+            ],
+            [
+              0,
+              16307
+            ]
+          ],
+          "precision": 0.6927357689039932,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.8184806886340251,
+          "balanced_accuracy": 0.5
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              0,
+              7319
+            ],
+            [
+              0,
+              16221
+            ]
+          ],
+          "precision": 0.6890824129141886,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.8159251527879078,
+          "balanced_accuracy": 0.5
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              0,
+              7286
+            ],
+            [
+              0,
+              16254
+            ]
+          ],
+          "precision": 0.6904842820730671,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.8169070714178017,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "mean_balanced_accuracy": 0.5,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4626
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          896
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          875
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          836
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          892
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          905
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          893
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13617
+        ]
+      ],
+      "normal_windows": 4626,
+      "normal_any_phase_false_positive_rate": 1.0,
+      "normal_all_zero_accuracy": 0.0
+    },
+    "phase_baseline_always_111_attack_only": {
+      "windows": 18914,
+      "exact_pattern_accuracy": 0.7199428994395686,
+      "macro_f1": 0.9245658327068232,
+      "hamming_accuracy": 0.8597159070882239,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              0,
+              2607
+            ],
+            [
+              0,
+              16307
+            ]
+          ],
+          "precision": 0.8621655916252511,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.9259816586695437,
+          "balanced_accuracy": 0.5
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              0,
+              2693
+            ],
+            [
+              0,
+              16221
+            ]
+          ],
+          "precision": 0.8576186951464524,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.9233527821260851,
+          "balanced_accuracy": 0.5
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              0,
+              2660
+            ],
+            [
+              0,
+              16254
+            ]
+          ],
+          "precision": 0.8593634344929681,
+          "recall": 1.0,
+          "specificity": 0.0,
+          "f1": 0.9243630573248408,
+          "balanced_accuracy": 0.5
+        }
+      },
+      "mean_balanced_accuracy": 0.5,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          896
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          875
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          836
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          892
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          905
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          893
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13617
+        ]
+      ]
+    },
+    "phase_baseline_repeat_attack_decision_all": {
+      "windows": 23540,
+      "exact_pattern_accuracy": 0.7213254035683943,
+      "macro_f1": 0.8878538106504656,
+      "hamming_accuracy": 0.8335315774568111,
+      "phases": {
+        "A": {
+          "confusion_matrix": [
+            [
+              4099,
+              3134
+            ],
+            [
+              759,
+              15548
+            ]
+          ],
+          "precision": 0.832244941655069,
+          "recall": 0.9534555712270804,
+          "specificity": 0.566708143232407,
+          "f1": 0.8887364600302953,
+          "balanced_accuracy": 0.7600818572297436
+        },
+        "B": {
+          "confusion_matrix": [
+            [
+              4124,
+              3195
+            ],
+            [
+              734,
+              15487
+            ]
+          ],
+          "precision": 0.8289797666202762,
+          "recall": 0.9547500154121201,
+          "specificity": 0.5634649542287198,
+          "f1": 0.8874308798670602,
+          "balanced_accuracy": 0.75910748482042
+        },
+        "C": {
+          "confusion_matrix": [
+            [
+              4105,
+              3181
+            ],
+            [
+              753,
+              15501
+            ]
+          ],
+          "precision": 0.829729151054491,
+          "recall": 0.953672942045035,
+          "specificity": 0.5634092780675267,
+          "f1": 0.8873940920540416,
+          "balanced_accuracy": 0.7585411100562809
+        }
+      },
+      "mean_balanced_accuracy": 0.7592434840354816,
+      "pattern_order_ABC": [
+        "000",
+        "001",
+        "010",
+        "011",
+        "100",
+        "101",
+        "110",
+        "111"
+      ],
+      "pattern_confusion_matrix": [
+        [
+          3972,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          654
+        ],
+        [
+          50,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          846
+        ],
+        [
+          38,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          837
+        ],
+        [
+          39,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          797
+        ],
+        [
+          47,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          845
+        ],
+        [
+          55,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          850
+        ],
+        [
+          48,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          845
+        ],
+        [
+          609,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          13008
+        ]
+      ],
+      "normal_windows": 4626,
+      "normal_any_phase_false_positive_rate": 0.14137483787289234,
+      "normal_all_zero_accuracy": 0.8586251621271076
+    },
+    "severity": {
+      "units": "Stored dataset units; physical pu conversion unverified",
+      "active_phase_observations": 48782,
+      "active_mae": 0.12425778806209564,
+      "active_rmse": 0.14825141429901123,
+      "all_window_phase_mae": 0.1173398494720459,
+      "inactive_phase_mae": 0.10188645124435425,
+      "normal_mae": 0.055435243993997574,
+      "joint_all_window_phase_mae": 0.10815044947429997,
+      "active_per_phase_mae": {
+        "A": 0.12394462525844574,
+        "B": 0.12308570742607117,
+        "C": 0.12574167549610138
+      }
+    },
+    "onset": {
+      "windows_with_start": 4351,
+      "presence_confusion_matrix": [
+        [
+          12436,
+          6753
+        ],
+        [
+          1359,
+          2992
+        ]
+      ],
+      "presence_f1": 0.4245175936435868,
+      "presence_balanced_accuracy": 0.6678688193035208,
+      "presence_precision": 0.30702924576706003,
+      "presence_recall": 0.6876580096529533,
+      "conditional_position_mae_steps": 19.230241775512695,
+      "joint_start_recall_within_8_steps": 0.18708342909675937
+    },
+    "threshold": 0.5,
+    "interpretation": "Current random overlapping-window validation; no independent recording holdout",
+    "regression_baselines": {
+      "severity_training_medians": [
+        0.30000001192092896,
+        0.30000001192092896,
+        0.30000001192092896
+      ],
+      "severity_active_mae": 0.12262361496686935,
+      "position_training_median_steps": 64.0,
+      "position_mae_steps": 32.578948974609375
+    },
+    "selection_components": {
+      "attack": 0.9058907771088113,
+      "motor": 1.0,
+      "phases": 0.8433610525255615,
+      "severity": 0.4933366297524836,
+      "onset_presence": 0.4245175936435868,
+      "onset_position": 0.7048670632300029
+    },
+    "equal_task_selection_score": 0.7286621860434077
+  },
+  "checkpoint": {
+    "epoch": 45,
+    "selection_score": 0.7286621860434077,
+    "task_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "complete_epoch": true
+  },
+  "training_statistics": {
+    "attack_weights": [
+      2.5445087017619716,
+      0.6222787654484172
+    ],
+    "onset_weights": [
+      0.6164366521761903,
+      2.647090244588136
+    ],
+    "phase_weights": [
+      [
+        1.2722543508809858,
+        2.2005468823034495,
+        0.7247529172696203
+      ],
+      [
+        1.2722543508809858,
+        2.2297290897035142,
+        0.7231942609603982
+      ],
+      [
+        1.2722543508809858,
+        2.222990839550477,
+        0.7235499339132573
+      ]
+    ],
+    "motor_weights": [
+      0.917408386486552,
+      1.098933821393295
+    ],
+    "phase_weight_interpretation": "Per phase: half loss mass affected; one quarter normal zero; one quarter unaffected during attack",
+    "severity_objective": "0.5 active-phase MAE + 0.5 active-phase MSE in normalized units; plus 0.05 inactive-phase MAE",
+    "position_objective": "Temporal head: known-start sparse categorical cross-entropy / log(128); original head: known-start MAE"
+  },
+  "binary_confusion": [
+    [
+      3972,
+      654
+    ],
+    [
+      886,
+      18028
+    ]
+  ],
+  "conditional_motor_confusion": [
+    [
+      10246,
+      0
+    ],
+    [
+      0,
+      8668
+    ]
+  ],
+  "joint_motor_confusion": [
+    [
+      3972,
+      341,
+      313
+    ],
+    [
+      497,
+      9749,
+      0
+    ],
+    [
+      389,
+      0,
+      8279
+    ]
+  ],
+  "severity_group_detection": [
+    {
+      "group": "(0.0,0.1]",
+      "samples": 1611,
+      "tp": 1539,
+      "fn": 72,
+      "recall": 0.9553072625698324,
+      "false_negative_rate": 0.0446927374301676
+    },
+    {
+      "group": "(0.1,0.2]",
+      "samples": 2688,
+      "tp": 2565,
+      "fn": 123,
+      "recall": 0.9542410714285714,
+      "false_negative_rate": 0.04575892857142857
+    },
+    {
+      "group": "(0.2,0.3]",
+      "samples": 3803,
+      "tp": 3607,
+      "fn": 196,
+      "recall": 0.9484617407310019,
+      "false_negative_rate": 0.05153825926899816
+    },
+    {
+      "group": "(0.3,0.4]",
+      "samples": 4905,
+      "tp": 4669,
+      "fn": 236,
+      "recall": 0.9518858307849134,
+      "false_negative_rate": 0.04811416921508665
+    },
+    {
+      "group": "(0.4,0.5]",
+      "samples": 5907,
+      "tp": 5648,
+      "fn": 259,
+      "recall": 0.9561537159302522,
+      "false_negative_rate": 0.043846284069747755
+    }
+  ],
+  "binary_baselines": [
+    {
+      "trial": 1,
+      "family": "lstm",
+      "width": 64,
+      "kernel": 3,
+      "dropout": 0.3,
+      "learning_rate": 0.001,
+      "threshold": 0.5,
+      "samples": 23540,
+      "tn": 1386,
+      "fp": 3240,
+      "fn": 316,
+      "tp": 18598,
+      "accuracy": 0.8489379779099405,
+      "balanced_accuracy": 0.6414518469632566,
+      "precision": 0.8516347650883781,
+      "attack_recall": 0.983292798984879,
+      "normal_recall": 0.29961089494163423,
+      "false_positive_rate": 0.7003891050583657,
+      "f1": 0.912740478994896,
+      "average_precision": 0.8949097337988354,
+      "roc_auc": 0.7164650441132482,
+      "parameters": 29057,
+      "epochs_completed": 40,
+      "training_seconds": 802.046,
+      "inference_ms_per_window": 1.954,
+      "budget_exhausted": false
+    },
+    {
+      "trial": 2,
+      "family": "cnn_lstm",
+      "width": 64,
+      "kernel": 3,
+      "dropout": 0.3,
+      "learning_rate": 0.001,
+      "threshold": 0.5,
+      "samples": 23540,
+      "tn": 3606,
+      "fp": 1020,
+      "fn": 1378,
+      "tp": 17536,
+      "accuracy": 0.8981308411214953,
+      "balanced_accuracy": 0.8533255240766898,
+      "precision": 0.9450312567363656,
+      "attack_recall": 0.9271439145606429,
+      "normal_recall": 0.7795071335927367,
+      "false_positive_rate": 0.2204928664072633,
+      "f1": 0.9360021350413664,
+      "average_precision": 0.9831752023985426,
+      "roc_auc": 0.9416172690725046,
+      "parameters": 56321,
+      "epochs_completed": 40,
+      "training_seconds": 1385.234,
+      "inference_ms_per_window": 2.599,
+      "budget_exhausted": false
+    },
+    {
+      "trial": 3,
+      "family": "cnn_bigru",
+      "width": 64,
+      "kernel": 3,
+      "dropout": 0.3,
+      "learning_rate": 0.001,
+      "threshold": 0.5,
+      "samples": 23540,
+      "tn": 3647,
+      "fp": 979,
+      "fn": 1610,
+      "tp": 17304,
+      "accuracy": 0.890016992353441,
+      "balanced_accuracy": 0.8516239751950725,
+      "precision": 0.9464529891155719,
+      "attack_recall": 0.9148778682457439,
+      "normal_recall": 0.7883700821444012,
+      "false_positive_rate": 0.2116299178555988,
+      "f1": 0.9303976127107024,
+      "average_precision": 0.9831867797462401,
+      "roc_auc": 0.9382661678745139,
+      "parameters": 77313,
+      "epochs_completed": 31,
+      "training_seconds": 1700.104,
+      "inference_ms_per_window": 3.335,
+      "budget_exhausted": false
+    }
+  ],
+  "always_attack": {
+    "threshold": 0.5,
+    "samples": 23540,
+    "tn": 0,
+    "fp": 4626,
+    "fn": 0,
+    "tp": 18914,
+    "accuracy": 0.8034834324553951,
+    "balanced_accuracy": 0.5,
+    "precision": 0.8034834324553951,
+    "attack_recall": 1.0,
+    "normal_recall": 0.0,
+    "false_positive_rate": 1.0,
+    "f1": 0.8910350025910397,
+    "average_precision": 0.8034834324553951,
+    "roc_auc": 0.5
+  },
+  "source_sha256": {
+    "all_task_metrics.json": {
+      "path": "architecture_results/balanced_multitask_20261115/01_balanced_finetune/all_task_metrics.json",
+      "sha256": "80b1b4e6a63ade38b8f39bbecbc52dd9740fbe41fcab4f451dee21af393ce310"
+    },
+    "selected_checkpoint.json": {
+      "path": "architecture_results/balanced_multitask_20261115/01_balanced_finetune/selected_checkpoint.json",
+      "sha256": "85e8398ca1f9a6803a2bddbd480d406f4fc13f3816411ff1d5189a562b5fa421"
+    },
+    "validation_predictions.npz": {
+      "path": "architecture_results/balanced_multitask_20261115/01_balanced_finetune/validation_predictions.npz",
+      "sha256": "78aec64e3b7d06edefb2b8f636624c8cfc6473d077fb48beb97bf3f1ca9f33e0"
+    },
+    "best_composite.keras": {
+      "path": "architecture_results/balanced_multitask_20261115/01_balanced_finetune/best_composite.keras",
+      "sha256": "16caf83067d75fb12f7d45ab85049e2f110c4ba39e9e582f6664e11743112b16"
+    },
+    "training_statistics.json": {
+      "path": "architecture_results/balanced_multitask_20261115/training_statistics.json",
+      "sha256": "a7192baa337f8693e390230544af2521033c35c8cf2294db40d559c6c9b823d5"
+    },
+    "training_run.json": {
+      "path": "architecture_results/balanced_multitask_20261115/run.json",
+      "sha256": "72d9bf2ce77853184be3c642ffa09d733b4bfbf99092b4d93613aabd260301d5"
+    }
+  },
+  "scope": "Single author-selected rebalanced proposed model. Matched attack-only baselines retained; other multitask retraining variants excluded."
+}

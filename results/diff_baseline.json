@@ -1,0 +1,12 @@
+{
+  "repository": "anajar2198/APEC2027-Cyber-Attack-Detection",
+  "branch": "main",
+  "baseline_commit": "dee54c454ed133d6fa18fb9492d361dbbb7ec3ce",
+  "baseline_path": "Digest_v1.tex",
+  "baseline_git_blob": "dbf8af6346e82ac01f02363b41bf8585c1689d02",
+  "baseline_sha256": "c1a8425ea0ddb86ac2ff3887ca67d09d6e1b108e4350cf516c7d0b5d1de64ffa",
+  "baseline_local_snapshot": "history/github_Digest_v1_dee54c454ed1.tex",
+  "local_digest_sha256": "c486c9245edc387adc01d6814437b5245b17b0a49bea2c54a51565a78a92d759",
+  "both_digest_files_preserved": true,
+  "canonical_source": "main.tex"
+}

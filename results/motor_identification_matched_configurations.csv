@@ -1,0 +1,4 @@
+attacked_motor,shared_configurations,attack_windows,detected_attacks,missed_attacks,attack_recall,conditional_motor_accuracy,joint_detection_motor_recall
+ACIM,596,4475,4263,212,0.9526256983240223,1.0,0.9526256983240223
+PMSM,596,4366,4161,205,0.9530462666055887,1.0,0.9530462666055887
+Both classes,596,8841,8424,417,0.9528333898880217,1.0,0.9528333898880217
