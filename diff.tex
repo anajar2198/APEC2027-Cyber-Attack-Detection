@@ -1,13 +1,14 @@
 % Marked comparison: unchanged Digest_v1.tex -> main.tex.
 % One-column REVIEW layout accommodates original wide digest tables.
 % Compile main.tex for the clean six-page conference manuscript.
-% Additions are blue; deletions red. The schema has word-level changes.
+% Additions are blue; deletions have a red strikethrough for printing.
+% The schema has word-level changes; deleted table cells are struck individually.
 % Replaced comparison/new analysis tables are marked as whole blocks.
 % Review graphics are bounded in size; the clean main.tex is unchanged.
 %DIF 1-45c1-7
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL /tmp/apec-diff-pe9k37v6/old.tex   Mon Nov 16 13:35:42 2026
-%DIF ADD /tmp/apec-diff-pe9k37v6/new.tex   Mon Nov 16 13:35:42 2026
+%DIF DEL /tmp/apec-diff-os3z44mq/old.tex   Mon Nov 16 13:44:13 2026
+%DIF ADD /tmp/apec-diff-os3z44mq/new.tex   Mon Nov 16 13:44:13 2026
 %DIF < \documentclass[conference,onecolumn,letterpaper,romanappendices,12pt,english,nofonttune]{IEEEtran}
 %DIF <     \IEEEoverridecommandlockouts
 %DIF < \usepackage[margin=1in]{geometry}
@@ -121,26 +122,27 @@
 
 \usepackage{float}
 \providecommand{\bstctlcite}[1]{}
+\usepackage[normalem]{ulem}
 \emergencystretch=3em
 \renewcommand{\DIFadd}[1]{{\protect\color{blue}#1}}
-\renewcommand{\DIFdel}[1]{{\protect\color{red}#1}}
+\renewcommand{\DIFdel}[1]{{\protect\color{red}\protect\sout{#1}}}
 \newcommand{\APECReviewOldTableA}{%
 \begin{table}[H]
-    \centering
-    \caption{Performance Comparison with Existing Cyber Anomaly Detection Schemes}
-    \label{tab:comparison}
+    \centering\color{red}
+    \caption{\DIFdel{Performance Comparison with Existing Cyber Anomaly Detection Schemes}}
+    \label{tab:comparison_digest}
     \renewcommand{\arraystretch}{1.3} % Adds a little padding to the rows
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
+\DIFdel{\textbf{Methodology}} & \DIFdel{\textbf{Sensor Data}} & \DIFdel{\textbf{Accuracy}} & \DIFdel{\textbf{Real-Time}} & \DIFdel{\textbf{Edge Scalability}} \\
         \hline
-        Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
+\DIFdel{Aljohani \textit{et al.} \mbox{\cite{aljohani2024}} (LSTM)} & \DIFdel{IED / Substation} & \DIFdel{$\sim$95\%} & \DIFdel{Yes} & \DIFdel{Low (High Cost)} \\
         \hline
-        Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
+\DIFdel{Guha \textit{et al.} \mbox{\cite{guha}} (VAE)} & \DIFdel{PMU} & \DIFdel{$\sim$89\%} & \DIFdel{No} & \DIFdel{Low (High Cost)} \\
         \hline
-        Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
+\DIFdel{Initial Baseline (Standard LSTM)} & \DIFdel{EMU} & \DIFdel{$\sim$81\%} & \DIFdel{Yes} & \DIFdel{High (Low Cost)} \\
         \hline
-        \textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
+\DIFdel{\textbf{Proposed (Bi-GRU)}} & \DIFdel{\textbf{EMU}} & \DIFdel{\textbf{$\sim$92\%}} & \DIFdel{\textbf{Yes}} & \DIFdel{\textbf{High (Low Cost)}} \\
         \hline
     \end{tabular}
 \end{table}
@@ -199,6 +201,8 @@ Combined & 8,841 & 100.00 & 95.28 \\
 Athens, Georgia, USA\\
 \{Najar, Thomas.Prybylski, HeYang95, Jin.Ye, wsong\}@uga.edu}}
 \DIFaddend \maketitle
+\pagestyle{plain}\thispagestyle{plain}
+\begin{center}\footnotesize Review copy: \textcolor{blue}{added text}; \textcolor{red}{\sout{removed text}}.\end{center}
 \DIFaddbegin \raggedbottom
 \DIFaddend 
 
@@ -215,9 +219,9 @@ To address this critical visibility gap, this work proposes the utilization of l
 
 This \DIFdelbegin \DIFdel{digest }\DIFdelend \DIFaddbegin \DIFadd{paper }\DIFaddend presents a demonstration and rigorous benchmark of a supervised deep learning framework utilizing a \DIFdelbegin \DIFdel{Bidirectional Gated Recurrent Unit (GRU) }\DIFdelend \DIFaddbegin \DIFadd{multihead CNN--Bi-GRU }\DIFaddend network to detect cyber attacks from real-time EMU data streams. To handle the severe operational class imbalances inherent to authentic grid data, the framework integrates \DIFdelbegin \DIFdel{dynamic class weighting alongside custom precision-recall threshold tuning}\DIFdelend \DIFaddbegin \DIFadd{training-derived class weights and fixed equal outer task-loss coefficients, with decision threshold 0.5}\DIFaddend . By combining these training optimizations with a dual-stream feature engineering pipeline that preserves both raw signal magnitudes and temporal velocities, the proposed \DIFdelbegin \DIFdel{Bidirectional GRU framework successfully mitigates majority-class underfitting, achieving a robust testing accuracy of approximately 92\% }\DIFdelend \DIFaddbegin \DIFadd{CNN--Bi-GRU framework achieves 93.46\% validation accuracy, with motor and phase outputs evaluated alongside attack detection}\DIFaddend .
 
-The growing vulnerability of cyber-physical power systems to malicious intrusions has driven extensive research into advanced, real-time anomaly detection frameworks. Recent advancements have explored deep learning techniques for intrusion detection and mitigation at the device level. For example, Aljohani et al. \cite{aljohani2024} proposed an Intrusion Detection and Mitigation System (IDMS) utilizing Deep Learning Neural Networks (DLNNs) and Long Short-Term Memory (LSTM) networks to detect False Data Injection Attacks (FDIAs) targeting Intelligent Electronic Devices (IEDs). \DIFdelbegin \DIFdel{However, a primary limitation of this framework is its design focus on digitalized substations, which prevents it from providing ubiquitous, low-cost visibility at the consumer edge}\DIFdelend \DIFaddbegin \DIFadd{Its digitalized-substation sensing setup differs from the motor-drive PCC setting studied here, so its reported performance provides context rather than a direct benchmark}\DIFaddend .
+The growing vulnerability of cyber-physical power systems to malicious intrusions has driven extensive research into advanced, real-time anomaly detection frameworks. Recent advancements have explored deep learning techniques for intrusion detection and mitigation at the device level. For example, Aljohani et al. \mbox{\cite{aljohani2024}} proposed an Intrusion Detection and Mitigation System (IDMS) utilizing Deep Learning Neural Networks (DLNNs) and Long Short-Term Memory (LSTM) networks to detect False Data Injection Attacks (FDIAs) targeting Intelligent Electronic Devices (IEDs). \DIFdelbegin \DIFdel{However, a primary limitation of this framework is its design focus on digitalized substations, which prevents it from providing ubiquitous, low-cost visibility at the consumer edge}\DIFdelend \DIFaddbegin \DIFadd{Its digitalized-substation sensing setup differs from the motor-drive PCC setting studied here, so its reported performance provides context rather than a direct benchmark}\DIFaddend .
 
-Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \cite{guha} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data\DIFdelbegin \DIFdel{; yet, such approaches often assume relatively balanced operational states or require massive amounts of uncorrupted data, struggling with the severe class imbalances found in authentic grid environments}\DIFdelend . Similarly, recent evaluations of \DIFdelbegin \DIFdel{hybrid architectures, such as CNN-LSTMs \cite{pmu_lstm_2025} , have demonstrated high efficacy in detecting multi-class anomalies }\DIFdelend \DIFaddbegin \DIFadd{machine learning models \cite{pmu_lstm_2025} have investigated anomaly detection }\DIFaddend using PMU data streams. \DIFdelbegin \DIFdel{While highly effective, these existing methodologies are fundamentally limited by their reliance on the high sampling frequencies and precise GPS synchronization inherent to costly PMU monitoring equipment}\DIFdelend \DIFaddbegin \DIFadd{These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments}\DIFaddend . 
+Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \mbox{\cite{guha}} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data\DIFdelbegin \DIFdel{; yet, such approaches often assume relatively balanced operational states or require massive amounts of uncorrupted data, struggling with the severe class imbalances found in authentic grid environments}\DIFdelend . Similarly, recent evaluations of \DIFdelbegin \DIFdel{hybrid architectures, such as CNN-LSTMs \mbox{\cite{pmu_lstm_2025}} , have demonstrated high efficacy in detecting multi-class anomalies }\DIFdelend \DIFaddbegin \DIFadd{machine learning models \mbox{\cite{pmu_lstm_2025}} have investigated anomaly detection }\DIFaddend using PMU data streams. \DIFdelbegin \DIFdel{While highly effective, these existing methodologies are fundamentally limited by their reliance on the high sampling frequencies and precise GPS synchronization inherent to costly PMU monitoring equipment}\DIFdelend \DIFaddbegin \DIFadd{These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments}\DIFaddend . 
 
 Motivated by the \DIFdelbegin \DIFdel{cost/scalability limits }\DIFdelend \DIFaddbegin \DIFadd{instrumentation requirements }\DIFaddend of PMU/IED-centric methods, we present an EMU-based PCC solution; the key contributions are:
 \begin{itemize}
@@ -227,13 +231,13 @@ Motivated by the \DIFdelbegin \DIFdel{cost/scalability limits }\DIFdelend \DIFad
     }\item \DIFadd{\textbf{Motor identification and operating-condition coverage:} Source identification while both motors operate, including 596 shared configurations and 12 recorded motor--speed--load combinations.
 }\DIFaddend \end{itemize}
 
-\DIFaddbegin \DIFadd{Prototype EMU hardware costs approximately US\$100; a commercial xPMU hardware listing gives US\$5,000~\cite{greenens_xpmu_cost}. These devices provide different sensing functions.
+\DIFaddbegin \DIFadd{Prototype EMU hardware costs approximately US\$100; a commercial xPMU hardware listing gives US\$5,000~\mbox{\cite{greenens_xpmu_cost}}. These devices provide different sensing functions.
 }
 
 \DIFaddend \section{Testbed Design and Dataset Structure}
 
 \subsection{Testbed Design and Cyber-Attack Generation}
-As illustrated in Fig.~\ref{fig:power_flow}, experiments are conducted on a cyber-physical motor-drive testbed consisting of an AC induction motor (ACIM)  and a permanent magnet synchronous motor (PMSM). To emulate consumer-edge monitoring, measurements are collected at the point of common coupling (PCC), where current and voltage sensors capture the aggregated electrical interaction of the drives. \DIFaddbegin \DIFadd{Both motors operate while one motor is attacked at a time; only PCC features are provided to the classifier. 
+As illustrated in Fig.~\mbox{\ref{fig:power_flow}}, experiments are conducted on a cyber-physical motor-drive testbed consisting of an AC induction motor (ACIM)  and a permanent magnet synchronous motor (PMSM). To emulate consumer-edge monitoring, measurements are collected at the point of common coupling (PCC), where current and voltage sensors capture the aggregated electrical interaction of the drives. \DIFaddbegin \DIFadd{Both motors operate while one motor is attacked at a time; only PCC features are provided to the classifier. 
 }\DIFaddend While PCC sensing is the focus of this study, stator current and voltage data at the motor-level are also available in the dataset for auxiliary monitoring and validation, and can be shared upon request for interested researchers.
 
 \DIFdelbegin %DIFDELCMD < \begin{figure}[H]
@@ -267,7 +271,7 @@ where $\mathbf{i}_{abc}(t)$ is the true three-phase current vector and $\boldsym
 
 For binary detection, each window is assigned a label $y \in \{0,1\}$ derived from an \texttt{is\_attack} indicator. In addition, the dataset includes structured metadata for richer analyses, including attack onset index within the window, motor type (ACIM/PMSM), phase targeting, severity level(s), and operating-point context (speed/load). This structure supports \DIFdelbegin \DIFdel{both }\DIFdelend real-time binary detection and \DIFdelbegin \DIFdel{future multi-class or condition-aware studies}\DIFdelend \DIFaddbegin \DIFadd{the evaluated motor/phase outputs; severity and onset remain auxiliary tasks}\DIFaddend . 
 
-Table.~\ref{tab:dataset_schema} summarizes the input feature groups used to construct X and the associated output labels and contextual metadata used in the dataset.
+Table.~\mbox{\ref{tab:dataset_schema}} summarizes the input feature groups used to construct X and the associated output labels and contextual metadata used in the dataset.
 The learning task is to estimate $\hat{y}=f_{\theta}(X)$ from these labeled windows, providing a benchmark for detecting stealthy cyber-physical anomalies.
 
 \DIFdelbegin %DIFDELCMD < \begin{figure}[htpb]
@@ -325,7 +329,7 @@ $\text{sev}_A, \text{sev}_B, \text{sev}_C$ & \DIFdelbeginFL \DIFdelFL{Intensity 
 
 Recurrent models are well-suited for EMU time-series classification because cyber anomalies often manifest as subtle temporal deviations rather than isolated point events. We initially evaluated an LSTM baseline, but adopted a Bidirectional GRU (Bi-GRU) to reduce gating complexity while capturing contextual dependencies across each observation window.
 
-Prior to training, each EMU sample is a fixed-length sequence. We augment each window by concatenating first-order temporal differences along the feature axis (from $128\times16$ to $128\times32$), followed by feature-wise standardization using statistics from the training split. The overall data acquisition, preprocessing, and model inference pipeline is illustrated in Fig.~\ref{architecture}.
+Prior to training, each EMU sample is a fixed-length sequence. We augment each window by concatenating first-order temporal differences along the feature axis (from $128\times16$ to $128\times32$), followed by feature-wise standardization using statistics from the training split. The overall data acquisition, preprocessing, and model inference pipeline is illustrated in Fig.~\mbox{\ref{architecture}}.
 The classifier comprises two Conv1D blocks (64 filters, kernel size 3) with Batch Normalization, followed by a Bidirectional GRU for sequence modeling. \DIFaddbegin \DIFadd{Conv1D filters learn local temporal patterns across input channels. GRU update/reset gates control retained state; bidirectional recurrence processes each completed window forward and backward to combine context. }\DIFaddend Outputs are aggregated with GlobalAveragePooling1D, passed through a 64-unit dense layer with 30\% dropout, and mapped to \DIFdelbegin \DIFdel{a sigmoidnode for binary classification. }%DIFDELCMD < \begin{figure}[H]
 %DIFDELCMD <     %%%
 \DIFdelendFL \DIFaddbeginFL \DIFaddFL{six parallel heads: attack (one sigmoid), motor (two-class softmax), phases (three sigmoids), severity (three sigmoids), start presence (one sigmoid), and start position (one sigmoid). The shared Bi-GRU has 64 units per direction; the model has 77,963 parameters.
@@ -366,9 +370,9 @@ Early iterations used only first-order differences to emphasize signal velocity;
 The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\DIFdelend \DIFaddbegin \DIFadd{the six task losses described above}\DIFaddend . Because cyber-attack detection prioritizes missed-attack reduction, performance is tracked using \DIFdelbegin \DIFdel{Precision, Recall, and PR-AUC rather than accuracyalone}\DIFdelend \DIFaddbegin \DIFadd{precision, recall, F1, balanced accuracy, and accuracy}\DIFaddend .
 
 %Training uses a cosine learning-rate schedule (decaying to 10\% of the base rate) and early stopping on validation PR-AUC with best-weight restoration. 
-\DIFdelbegin \DIFdel{To improve the operating point beyond the default sigmoid threshold, we apply an epoch-wise threshold tuning routine that scans decision thresholds in $[0.1,0.9]$ and selects the value maximizing validation F1. With class-weighted }\DIFdelend \DIFaddbegin \DIFadd{Attack and phase outputs use the fixed threshold 0.5. With rebalanced }\DIFaddend training, dual-stream (raw+differential) inputs, and the \DIFdelbegin \DIFdel{Bi-GRU }\DIFdelend \DIFaddbegin \DIFadd{CNN--Bi-GRU }\DIFaddend architecture, the proposed pipeline \DIFdelbegin \DIFdel{substantially outperforms the LSTM baseline and achieves $\sim$92\% test accuracy. It remains effective for low-severity attacks, achieving $\sim$96\% detection accuracyfor $(0<\alpha \le 0.001)$ (Fig. ~\ref{fig:Severityeffect})}\DIFdelend \DIFaddbegin \DIFadd{achieves 93.46\% validation accuracy, 90.59\% balanced accuracy, 96.50\% precision, and 95.32\% attack recall. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve). Figure~\ref{fig:Severityeffect} evaluates detection across stored severity groups; it does not measure severity-estimation accuracy}\DIFaddend .
+\DIFdelbegin \DIFdel{To improve the operating point beyond the default sigmoid threshold, we apply an epoch-wise threshold tuning routine that scans decision thresholds in $[0.1,0.9]$ and selects the value maximizing validation F1. With class-weighted }\DIFdelend \DIFaddbegin \DIFadd{Attack and phase outputs use the fixed threshold 0.5. With rebalanced }\DIFaddend training, dual-stream (raw+differential) inputs, and the \DIFdelbegin \DIFdel{Bi-GRU }\DIFdelend \DIFaddbegin \DIFadd{CNN--Bi-GRU }\DIFaddend architecture, the proposed pipeline \DIFdelbegin \DIFdel{substantially outperforms the LSTM baseline and achieves $\sim$92\% test accuracy. It remains effective for low-severity attacks, achieving $\sim$96\% detection accuracyfor $(0<\alpha \le 0.001)$ (Fig. ~\mbox{\ref{fig:Severityeffect}})}\DIFdelend \DIFaddbegin \DIFadd{achieves 93.46\% validation accuracy, 90.59\% balanced accuracy, 96.50\% precision, and 95.32\% attack recall. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve). Figure~\mbox{\ref{fig:Severityeffect}} evaluates detection across stored severity groups; it does not measure severity-estimation accuracy}\DIFaddend .
 
-\DIFdelbegin \DIFdel{To contextualize these results, we compare against an unoptimized LSTMbaseline and prior }\DIFdelend \DIFaddbegin \DIFadd{Table~\ref{tab:comparison} compares the completed attack-only baselines with an always-attack predictor and the proposed model. LSTM, CNN--LSTM, and CNN--Bi-GRU share the same inputs, split, width 64, Adam learning rate $10^{-3}$, batch size 128, attack-loss weights 1.0/1.5, and at most 40 epochs; checkpoints maximize validation balanced accuracy at threshold 0.5. The proposed model receives additional multihead training and fine-tuning, so the comparison evaluates complete pipelines rather than architecture alone. Prior }\DIFaddend PMU-based\DIFaddbegin \DIFadd{~}\DIFaddend \cite{guha} and IED-based\DIFdelbegin \DIFdel{\cite{aljohani2024} approaches, as summarized in Table. ~\ref{tab:comparison} While these infrastructures can reach comparable accuracies, they require higher-cost instrumentation and are less suitable for consumer-edge deployment. In contrast, our EMU-based Bi-GRU framework provides competitive performanceusing low-cost sensing at the PCC. }\DIFdelend \DIFaddbegin \DIFadd{~\cite{aljohani2024} studies provide context because their datasets and sensing setups differ.
+\DIFdelbegin \DIFdel{To contextualize these results, we compare against an unoptimized LSTMbaseline and prior }\DIFdelend \DIFaddbegin \DIFadd{Table~\mbox{\ref{tab:comparison}} compares the completed attack-only baselines with an always-attack predictor and the proposed model. LSTM, CNN--LSTM, and CNN--Bi-GRU share the same inputs, split, width 64, Adam learning rate $10^{-3}$, batch size 128, attack-loss weights 1.0/1.5, and at most 40 epochs; checkpoints maximize validation balanced accuracy at threshold 0.5. The proposed model receives additional multihead training and fine-tuning, so the comparison evaluates complete pipelines rather than architecture alone. Prior }\DIFaddend PMU-based\DIFaddbegin \DIFadd{~}\DIFaddend \mbox{\cite{guha}} and IED-based\DIFdelbegin \DIFdel{\mbox{\cite{aljohani2024}} approaches, as summarized in Table. ~\mbox{\ref{tab:comparison}} While these infrastructures can reach comparable accuracies, they require higher-cost instrumentation and are less suitable for consumer-edge deployment. In contrast, our EMU-based Bi-GRU framework provides competitive performanceusing low-cost sensing at the PCC. }\DIFdelend \DIFaddbegin \DIFadd{~\mbox{\cite{aljohani2024}} studies provide context because their datasets and sensing setups differ.
 }
 
 
@@ -404,7 +408,7 @@ The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\
 
 
 \subsection{\DIFadd{Motor and Phase Identification}}
-\DIFadd{The motor head correctly identifies all 10,246 ACIM and 8,668 PMSM attack windows when evaluated conditional on true attacks. Including detector misses, correct detection plus identity is 95.32\%, and the complete normal/ACIM/PMSM decision has 93.46\% accuracy (Fig.~\ref{fig:joint_outputs}). This conditional 100\% identity result is distinct from complete-pipeline performance.
+\DIFadd{The motor head correctly identifies all 10,246 ACIM and 8,668 PMSM attack windows when evaluated conditional on true attacks. Including detector misses, correct detection plus identity is 95.32\%, and the complete normal/ACIM/PMSM decision has 93.46\% accuracy (Fig.~\mbox{\ref{fig:joint_outputs}}). This conditional 100\% identity result is distinct from complete-pipeline performance.
 }
 
 \DIFadd{Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1 is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
@@ -420,8 +424,7 @@ The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\
 \end{figure*}
 \DIFaddend 
 
-\DIFdelbegin \DIFdel{\APECReviewOldTableA{}
-}\DIFdelend \DIFaddbegin \subsection{\DIFadd{Motor Identification under Common Configurations}}
+\DIFdelbegin \APECReviewOldTableA{}\DIFdelend \DIFaddbegin \subsection{\DIFadd{Motor Identification under Common Configurations}}
 \DIFadd{A retrospective subset retains speed, load, phase-flag, and stored phase-severity tuples represented for both attacked motors: 596 tuples and 8,841 attack windows (4,475 ACIM; 4,366 PMSM). Each tuple occurs for both classes, so these metadata do not uniquely identify the attacked motor.
 }\DIFaddend 
 
@@ -453,14 +456,14 @@ The network is trained with Adam and \DIFdelbegin \DIFdel{binary cross-entropy}\
 %DIFDELCMD < \label{fig:placeholder}
 %DIFDELCMD < \end{figure}
 %DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \DIFadd{Table~\ref{tab:matched_motor_settings} shows 100\% conditional identity and 95.28\% detection plus identity. PCC features distinguish the attacked drive while both loads operate, including matching configurations. Detector misses limit the joint result. This subset reuses validation windows; it is not a recording or condition holdout.
+\DIFdelend \DIFaddbegin \DIFadd{Table~\mbox{\ref{tab:matched_motor_settings}} shows 100\% conditional identity and 95.28\% detection plus identity. PCC features distinguish the attacked drive while both loads operate, including matching configurations. Detector misses limit the joint result. This subset reuses validation windows; it is not a recording or condition holdout.
 }\DIFaddend 
 
 \DIFdelbegin %DIFDELCMD < \begin{figure} [%%%
 \DIFdelFL{H}%DIFDELCMD < ]
 %DIFDELCMD <     %%%
 \DIFdelendFL \DIFaddbeginFL \subsection{\DIFaddFL{Coverage of Recorded Operating Conditions}}
-\DIFaddFL{Across all 12 recorded motor--speed--load combinations, recall ranges from 94.09\% (ACIM, 700 RPM, load setting 2) to 96.17\% (PMSM, 1300 RPM, load setting 3), at the same threshold 0.5 (Fig.~\ref{fig:operating_conditions}). This supports consistent attack sensitivity across represented settings. Normal speed/load labels are zero, so condition-specific false-positive rates cannot be estimated; performance on verified benign speed/load transitions remains unmeasured.
+\DIFaddFL{Across all 12 recorded motor--speed--load combinations, recall ranges from 94.09\% (ACIM, 700 RPM, load setting 2) to 96.17\% (PMSM, 1300 RPM, load setting 3), at the same threshold 0.5 (Fig.~\mbox{\ref{fig:operating_conditions}}). This supports consistent attack sensitivity across represented settings. Normal speed/load labels are zero, so condition-specific false-positive rates cannot be estimated; performance on verified benign speed/load transitions remains unmeasured.
 }
 
 \begin{figure}[!t]\DIFaddendFL \centering

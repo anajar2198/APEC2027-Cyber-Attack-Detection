@@ -50,5 +50,12 @@
   "new_runtime_benchmark": true,
   "ranking_metrics_reported": true,
   "float_text_spacing_pt": 12,
-  "removal_audit": "revision_audit.txt"
+  "removal_audit": "revision_audit.txt",
+  "review_deleted_text": "red strikethrough",
+  "review_print_legend": true,
+  "review_page_numbers": true,
+  "review_table_cells_struck_individually": true,
+  "review_fonts_embedded": true,
+  "review_overfull_boxes": false,
+  "clean_paper_unchanged_during_print_formatting": true
 }

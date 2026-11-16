@@ -12,6 +12,8 @@
   "replacement_and_new_tables_marked_as_whole_blocks": true,
   "equivalent_dash_spellings_normalized_for_comparison": true,
   "review_graphics_size_bounded": true,
+  "deleted_text_style": "red strikethrough using ulem; deleted table cells marked individually",
+  "print_legend_and_page_numbers": true,
   "legacy_architecture_label_retained_in_review": true,
   "review_layout": "IEEEtran conference onecolumn; main.tex stays twocolumn",
   "generator_stderr": "Can't exec \"kpsewhich\": No such file or directory at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nUse of uninitialized value in string ne at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nWARNING: listings package not detected. Disabling mark-up in verbatim environments \n"
