@@ -1,6 +1,6 @@
 \begin{table}[!t]
 \centering
-\caption{Attack detection on 23,540 validation windows. Rates are percentages; FPR denotes false-positive rate. Panel A uses matched attack-only training; panel B includes multihead pretraining and rebalanced fine-tuning.}
+\caption{Attack detection performance. Rates are percentages; FPR denotes false-positive rate. }
 \label{tab:comparison}
 \setlength{\tabcolsep}{3pt}
 \small
@@ -8,8 +8,7 @@
 \toprule
 Model & Accuracy & Bal. acc. & Recall & FPR \\
 \midrule
-\multicolumn{5}{l}{\textit{A. Matched attack-only baselines}} \\
-Always attack & 80.35 & 50.00 & 100.00 & 100.00 \\
+\multicolumn{5}{l}{\textit{A. Matched baselines}} \\
 LSTM & 84.89 & 64.15 & 98.33 & 70.04 \\
 CNN--LSTM & 89.81 & 85.33 & 92.71 & 22.05 \\
 CNN--Bi-GRU & 89.00 & 85.16 & 91.49 & 21.16 \\

@@ -1,0 +1,92 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[margin=.8in]{geometry}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\emergencystretch=4em
+\sloppy
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\newcommand{\added}[1]{{\color{blue}\uline{#1}}}
+\newcommand{\removed}[1]{{\color{red}\sout{#1}}}
+\begin{document}
+{\large\bfseries Only the requested edits after your restoration}\par
+Baseline: your author-edited \texttt{diff.tex}, GitHub commit \texttt{5250d02}. This review contains changed excerpts only, not the full paper.\par
+\added{Blue underlined text is added.} \removed{Red struck text is removed.} Black text provides context. Each item identifies the original agent comment(s).\par
+\textbf{1. Comment 4,7,15: Name FDIA and use passive wording in this sentence only.}\
+\removed{This project developed a} \added{A} deep learning framework \added{was developed} to detect \removed{anomalies} \added{false data injection attacks (FDIAs)} in a multi-motor electrical motor\par
+\textbf{2. Comment 5,15: Remove development history only from the abstract.}\
+\removed{While initial baselines utilized standard Long Short-Term Memory (LSTM) networks, we ultimately developed a robust} \added{A} framework based on a multihead \ldots{} gated recurrent unit (Bi-GRU) architecture \added{was developed}\par
+\textbf{3. Comment 4,7: Add one testbed-scenario sentence without replacing the abstract.}\
+features up to 60 Hz. \added{Different speed and load scenarios are generated for an AC induction motor and a permanent-magnet synchronous motor, with both motors operating while one is attacked.}\par
+\textbf{4. Comment 6: Use accuracy/recall without mislabelling model-selection data as an independent test.}\
+95.32\% attack \removed{recall on validation data.} \added{recall.}\par
+\textbf{5. Comment 9: Cite the FDIA threat at its existing introduction.}\
+False Data Injection Attacks \removed{(FDIAs)---implemented} \added{(FDIAs) [1]---implemented}\par
+\textbf{6. Comment 9: Cite the existing micro-PMU discussion.}\
+increase hardware and deployment \removed{costs.} \added{costs [2].}\par
+\textbf{7. Comment 9,10,15: Retain the hardware description; add required own-work citations and qualitative cost wording here.}\
+\removed{The EMUs capture alternating-current} \added{Alternating-current} (AC) power measurements \added{are captured} using \added{the} embedded ADE \removed{chip,} \added{chip and} ESP32 microprocessor and \removed{sent it} \added{transmitted} through built-in IoT connectivity, enabling real-time edge window-based \removed{analysis.} \added{analysis [3]. Related smart-plug PCC measurements have been used for battery state-of-charge estimation [4]. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment.}\par
+\textbf{8. Comment 15: Remove first-person phrase only.}\
+In \removed{our} \added{this} setup,\par
+\textbf{9. Comment 8: Change only the annotated accuracy wording.}\
+93.46\% \removed{validation} accuracy\par
+\textbf{10. Comment 10: Remove the expressly unwanted price paragraph.}\
+\removed{Prototype EMU hardware costs approximately US\$100; a commercial xPMU hardware listing gives US\$5,000 [greenens\_xpmu\_cost]. These devices provide different sensing functions.}\par
+\textbf{11. Comment 15: Passive clause only.}\
+\removed{we present} an EMU-based PCC solution \added{is presented}\par
+\textbf{12. Comment 18: Remove the repeated headline number from this contribution bullet only.}\
+rebalanced multihead \removed{training, achieving 93.46\% validation accuracy.} \added{training.}\par
+\textbf{13. Comment 1: Keep the existing discussion and add the requested comparison table.}\
+compared with the PCC experiments. \added{Their sensing and task scopes are summarized in Table I.}\par
+\textbf{14. Comment 11: Repair the annotated testbed clause only.}\
+\added{an} EMU is connected at the \ldots{} of common coupling (PCC), where \removed{it capture} the aggregated electrical interaction of the \removed{drives.} \added{drives is captured.}\par
+\textbf{15. Comment 14: Reference the photo as well as the schematic.}\
+As illustrated in \removed{Fig. 1,} \added{Figs. 1 and 2,}\par
+\textbf{17. Comment 13: Move the existing definitions without rewriting them.}\
+\removed{The normal phase labels are \$(A,B,C)=(0,0,0)\$. ROCOF denotes rate of change of frequency. Stored severity labels are not converted to physical per-unit injection values in the evaluation.}\par
+\textbf{18. Comment 12,13: Correct the pooling scope and place the unchanged definitions beside the metadata.}\
+\removed{This comprehensive labeling logic relies on max-pooling the metadata} \added{Attack and phase flags are max-pooled} over the \removed{duration} \added{window; the onset label records the first attack index. The normal phase labels are \$(A,B,C)=(0,0,0)\$. ROCOF denotes rate} of \added{change of frequency. Stored severity labels are not converted to physical per-unit injection values in} the \removed{window.} \added{evaluation.}\par
+\textbf{21. Comment 14: Add one sentence explaining the two previously unreferenced figures.}\
+for detecting stealthy cyber-physical anomalies. \added{Normal and attack feature windows are compared in Fig. 3; phase, frequency, and THD traces are illustrated in Fig. 4.}\par
+\textbf{22. Comment 15: Passive clause only; preserve the rest of the architecture paragraph.}\
+\removed{We} \added{An LSTM baseline was} initially \removed{evaluated an LSTM baseline,} \added{evaluated,} but \removed{adopted} a Bidirectional GRU (Bi-GRU) \added{was adopted}\par
+\textbf{23. Comment 15: Passive clause only.}\
+\removed{We augment each} \added{Each} window \added{is augmented} by concatenating\par
+\textbf{24. Comment 9: Attach original-method citations to the existing explanations.}\
+GRU update/reset gates control retained \removed{state;} \added{state [8];} bidirectional recurrence processes each completed \ldots{} forward and backward to combine \removed{context.} \added{context [9].}\par
+\textbf{25. Comment 16: Define the standard loss and its mask without rewriting the surrounding paragraph.}\
+Motor \added{identity is trained with standard two-class categorical} cross-entropy \removed{balances the two classes on} \added{and inverse-frequency class weights, using only} attack windows.\par
+\textbf{26. Comment 17: Append the requested fixed-weight equation; retain the existing training-history paragraph.}\
+presence uses inverse-frequency binary weights. \added{The final fine-tuning objective is L\_fine = sum(k=1,...,6) lambda\_k L\_k; lambda\_k = 1. where the six tasks follow the order listed above. The outer coefficients are fixed; class weights and masks remain inside each loss.}\par
+\textbf{27. Comment 2,18: Remove the unwanted predictor/attack-only wording in this sentence only.}\
+\removed{the completed attack-only baselines with an always-attack predictor} \added{LSTM, CNN--LSTM, CNN--Bi-GRU,} and the proposed model\par
+\textbf{28. Comment 19: Add the missing binary-matrix reference; retain the severity explanation.}\
+\added{Figure 8 shows detection errors.} Figure 6 evaluates detection across\par
+\textbf{29. Comment 20: Remove cohort wording only from the caption.}\
+Confusion matrix for the rebalanced \removed{model: all 23,540 validation windows,} \added{model at} threshold 0.5.\par
+\textbf{30. Comment 20: Use the requested existing five-panel figure; no plot redrawing.}\
+\removed{compact four-panel} \added{existing five-panel} confusion figure\par
+\textbf{31. Comment 20: Match the five-panel figure and remove caption cohort wording only.}\
+\removed{Complete} \added{Conditional motor identity, complete} detection-plus-motor \removed{decisions} \added{decisions,} and three raw phase confusion \removed{matrices on all 23,540 validation windows,} \added{matrices,} including normal zero-phase labels.\par
+\textbf{32. Comment 3,21: Add the full-cohort number and one exclusion explanation; retain the matching discussion.}\
+A retrospective subset \added{of the 18,914 attack windows} retains speed, load, phase-flag, and \ldots{} windows (4,475 ACIM; 4,366 PMSM). \added{The remaining attack windows are retained in the overall results but excluded from this matching control.}\par
+\textbf{33. Comment 7: Keep all runtime measurements and clarify the rate distinction in this phrase only.}\
+At \removed{7 Hz,} \added{the approximately 7-Hz recording rate (distinct from the device's up-to-60-Hz capability),}\par
+\textbf{34. Comment 15: Passive future-work clause only; retain the rest of the conclusion verbatim.}\
+\removed{We will also extend the} \added{The} PCC-based measurement strategy \added{will also be extended} to function as a comprehensive\par
+\textbf{Requested table and figure edits}\par
+Comparison table: remove the Always attack row; retain every learned-model metric and the two training groups. Restore the literature-context table. The motor table retains its three matched-subset rows and adds the full-cohort rows below.\par
+\begin{center}\begin{tabular}{lrrr}
+Motor & Windows & Conditional identity (\%) & Detection + identity (\%)\\\hline
+ACIM & 10,246 & 100.00 & 95.15\\
+PMSM & 8,668 & 100.00 & 95.51\\
+Combined & 18,914 & 100.00 & 95.32\\
+\end{tabular}\end{center}
+The existing five-panel motor/phase confusion figure is used as requested. No image is redrawn; numerical results are unchanged.\par
+\textbf{References}\par
+The battery/PCC paper and submitted EMU manuscript are cited. The latter is described as submitted for publication, not accepted. Relevant original FDIA, micro-PMU, GRU and bidirectional recurrence references are added at existing claims. Guha's publication venue and the PMU paper's omitted authors are corrected. There are two self-cited works among nine references (22.22\%). No optional protection-paper citation is added.\par
+\textbf{Layout only}\par
+To fit six pages, existing figures are resized, float gaps are reduced, and the unchanged schema is set in one column. No figure artwork is redrawn. Body font size, page margins, title, author list, and experimental numbers are preserved.\par
+\end{document}

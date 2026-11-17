@@ -1,3 +1,13 @@
+CURRENT AUTHOR-DIRECTED LOCAL EDITS (after restored commit 5250d02)
+Read changes_only.pdf first: TWO pages of changed excerpts only.
+main.pdf is SIX pages. diff.pdf retains the original Digest_v1 comparison.
+review_baseline_5250d02.tex preserves the accepted author text from restored diff.tex.
+Only comment-specific local substitutions were applied; no general rewriting.
+Figures were resized/repositioned and float spacing reduced for six pages;
+no figure artwork, body font size, margins, or experiment numbers were changed.
+results/limited_changes_5250d02.json records the precise edits. Earlier audit
+files below describe historical revisions, not this author-comment pass.
+
 APEC 2027: FOCUSED REVISION OF THE ORIGINAL DIGEST
 
 main.tex / main.pdf: clean IEEE two-column paper, SIX pages including references.
