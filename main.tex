@@ -197,14 +197,14 @@ Epoch selection averages attack balanced accuracy, conditional motor balanced ac
 \end{figure*}
 
 \begin{figure*}[!t]\centering
-    \includegraphics[width=\textwidth]{figures/all_task_diagnostics_rebalanced.pdf}
-    \caption{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) phase-label F1, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows. Matrices show counts and true-row percentages; regression panels show sample density and a diagonal reference.}
+    \includegraphics[width=\textwidth]{figures/all_task_diagnostics_phase_sets_rebalanced.pdf}
+    \caption{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) number of incorrect phase flags per window, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows. Matrices show counts and true-row percentages; regression panels show sample density and a diagonal reference.}
     \label{fig:joint_outputs}
 \end{figure*}
 
 \section{Experimental Results}
 
-Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using precision, recall, F1, balanced accuracy, and accuracy.
+Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using precision, recall, F1, balanced accuracy, and accuracy. Table~\ref{tab:all_heads} summarizes validation metrics for all six heads.
 
 %Training uses a cosine learning-rate schedule (decaying to 10\% of the base rate) and early stopping on validation PR-AUC with best-weight restoration. 
 Attack and phase outputs use the fixed threshold 0.5. With rebalanced training, concatenated raw and temporal-difference inputs, and the CNN--Bi-GRU architecture, the proposed pipeline achieves 93.46\% validation accuracy, 90.59\% balanced accuracy, 96.50\% precision, 95.32\% attack recall, and 95.90\% F1. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve). Figure~\ref{fig:joint_outputs}(a) shows detection errors. Figure~\ref{fig:Severityeffect} evaluates detection across stored severity groups; it does not measure severity-estimation accuracy.
@@ -234,6 +234,31 @@ CNN--Bi-GRU (proposed) & 93.46 & 90.59 & 95.32 & 14.14 \\
 \end{tabular}
 \end{table}
 
+\begin{table}[!t]
+\centering
+\caption{Validation metrics for all six heads. Classification scores are percentages.}
+\label{tab:all_heads}
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Output / evaluation & Acc. & Bal. acc. & Prec. & Rec. & F1 \\
+\midrule
+Attack & 93.46 & 90.59 & 96.50 & 95.32 & 95.90 \\
+Motor $\mid$ attack & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 \\
+Normal/motor & 93.46 & 92.17 & 91.58 & 92.17 & 91.86 \\
+Phases$^{\dagger}$ & 75.27 & 85.88 & 92.85 & 86.67 & 89.65 \\
+Start presence & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
+\midrule
+\multicolumn{2}{@{}l}{Regression output} & MAE & RMSE & $R^2$ & Ref. MAE \\
+\multicolumn{2}{@{}l}{Severity} & 0.1243 & 0.1483 & -0.0739 & 0.1226 \\
+\multicolumn{2}{@{}l}{Start position} & 19.23 & 25.36 & 0.5412 & 32.58 \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize Motor $\mid$ attack: 18,914 attacks; others: 23,540 windows. Normal/motor Prec./Rec./F1: class means. $^{\dagger}$Phase accuracy: exact ABC; other phase metrics: label means. Severity: 48,782 affected-phase values (stored units); position: 4,351 known starts (samples). MAE/RMSE: mean absolute/root mean squared error; $R^2$: coefficient of determination. Ref. MAE: training-median error.\end{minipage}
+\end{table}
+
 
 
 
@@ -256,11 +281,11 @@ The motor head correctly identifies all 10,246 ACIM and 8,668 PMSM attack window
 
 A subset restricted to 596 speed/load/phase/severity configurations shared by separate ACIM-attack and PMSM-attack recordings contains 8,841 windows and achieves 95.28\% detection plus motor identification.
 
-Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1, averaged over the three phase-label F1 scores, is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. Figure~\ref{fig:phase_patterns} shows the complete ABC decisions, including normal 000. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
+Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1, averaged over the three phase-label F1 scores, is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. Figure~\ref{fig:phase_patterns} shows joint three-phase decisions, separating missed from extra phase flags. Exact phase-set recall is 91.11\% for A+B+C, and 10.97--43.72\% for single- and two-phase patterns. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
 
 \begin{figure}[!t]\centering
-    \includegraphics[width=\linewidth]{figures/phase_patterns_rebalanced.pdf}
-    \caption{Joint ABC phase decisions, including normal 000. Each bit indicates whether its phase is attacked. Cells show counts and percentages within each true pattern.}
+    \includegraphics[width=\linewidth]{figures/phase_set_errors_rebalanced.pdf}
+    \caption{Joint three-phase identification. Filled markers indicate targeted A/B/C phases; open markers indicate unaffected phases. Bars separate exact decisions, missed phases, extra phases, and both errors. Each row is normalized by its true phase-set count $n$; normal windows are included. Outputs are the three raw phase sigmoids at threshold 0.5.}
     \label{fig:phase_patterns}
 \end{figure}
 

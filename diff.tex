@@ -191,6 +191,32 @@
 \end{tabular}
 \end{table}
 }
+\newcommand{\APECAllHeadMetrics}{%
+\begin{table}[!t]
+\centering\color{blue}
+\caption{\DIFadd{Validation metrics for all six heads. Classification scores are percentages.}}
+\label{tab:all_heads}
+\small
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+\DIFadd{Output / evaluation} & \DIFadd{Acc.} & \DIFadd{Bal. acc.} & \DIFadd{Prec.} & \DIFadd{Rec.} & \DIFadd{F1} \\
+\midrule
+\DIFadd{Attack} & \DIFadd{93.46} & \DIFadd{90.59} & \DIFadd{96.50} & \DIFadd{95.32} & \DIFadd{95.90} \\
+\DIFadd{Motor $\mid$ attack} & \DIFadd{100.00} & \DIFadd{100.00} & \DIFadd{100.00} & \DIFadd{100.00} & \DIFadd{100.00} \\
+\DIFadd{Normal/motor} & \DIFadd{93.46} & \DIFadd{92.17} & \DIFadd{91.58} & \DIFadd{92.17} & \DIFadd{91.86} \\
+\DIFadd{Phases$^{\dagger}$} & \DIFadd{75.27} & \DIFadd{85.88} & \DIFadd{92.85} & \DIFadd{86.67} & \DIFadd{89.65} \\
+\DIFadd{Start presence} & \DIFadd{65.54} & \DIFadd{66.79} & \DIFadd{30.70} & \DIFadd{68.77} & \DIFadd{42.45} \\
+\midrule
+\multicolumn{2}{@{}l}{\DIFadd{Regression output}} & \DIFadd{MAE} & \DIFadd{RMSE} & \DIFadd{$R^2$} & \DIFadd{Ref. MAE} \\
+\multicolumn{2}{@{}l}{\DIFadd{Severity}} & \DIFadd{0.1243} & \DIFadd{0.1483} & \DIFadd{-0.0739} & \DIFadd{0.1226} \\
+\multicolumn{2}{@{}l}{\DIFadd{Start position}} & \DIFadd{19.23} & \DIFadd{25.36} & \DIFadd{0.5412} & \DIFadd{32.58} \\
+\bottomrule
+\end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize \DIFadd{Motor $\mid$ attack: 18,914 attacks; others: 23,540 windows. Normal/motor Prec./Rec./F1: class means. $^{\dagger}$Phase accuracy: exact ABC; other phase metrics: label means. Severity: 48,782 affected-phase values (stored units); position: 4,351 known starts (samples). MAE/RMSE: mean absolute/root mean squared error; $R^2$: coefficient of determination. Ref. MAE: training-median error.}\end{minipage}
+\end{table}
+}
 \begin{document}
 \DIFdelbegin %DIFDELCMD < \bstctlcite{bstctl:etal, bstctl:nodash, bstctl:simpurl}
 %DIFDELCMD < %%%
@@ -390,7 +416,7 @@ The final pipeline computes first-order differences, preserves sequence length b
 
 \DIFaddend \section{Experimental Results\DIFdelbegin \DIFdel{and Threshold Tuning}\DIFdelend }
 
-Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using \DIFdelbegin \DIFdel{Precision, Recall, and PR-AUC rather than accuracyalone}\DIFdelend \DIFaddbegin \DIFadd{precision, recall, F1, balanced accuracy, and accuracy}\DIFaddend .
+Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using \DIFdelbegin \DIFdel{Precision, Recall, and PR-AUC rather than accuracyalone}\DIFdelend \DIFaddbegin \DIFadd{precision, recall, F1, balanced accuracy, and accuracy}\DIFaddend . \DIFaddbegin \DIFadd{Table~\ref{tab:all_heads} summarizes validation metrics for all six heads.}\DIFaddend 
 
 %Training uses a cosine learning-rate schedule (decaying to 10\% of the base rate) and early stopping on validation PR-AUC with best-weight restoration. 
 \DIFdelbegin \DIFdel{To improve the operating point beyond the default sigmoid threshold, we apply an epoch-wise threshold tuning routine that scans decision thresholds in $[0.1,0.9]$ and selects the value maximizing validation F1. With class-weighted }\DIFdelend \DIFaddbegin \DIFadd{Attack and phase outputs use the fixed threshold 0.5. With rebalanced }\DIFaddend training, \DIFdelbegin \DIFdel{dual-stream (raw+differential) inputs}\DIFdelend \DIFaddbegin \DIFadd{concatenated raw and temporal-difference inputs }\DIFaddend , and the \DIFdelbegin \DIFdel{Bi-GRU }\DIFdelend \DIFaddbegin \DIFadd{CNN--Bi-GRU }\DIFaddend architecture, the proposed pipeline \DIFdelbegin \DIFdel{substantially outperforms the LSTM baseline and achieves $\sim$92\% test accuracy. It remains effective for low-severity attacks, achieving $\sim$96\% detection accuracyfor $(0<\alpha \le 0.001)$ (Fig. ~\mbox{\ref{fig:Severityeffect}})}\DIFdelend \DIFaddbegin \DIFadd{achieves 93.46\% validation accuracy, 90.59\% balanced accuracy, 96.50\% precision, 95.32\% attack recall, and 95.90\% F1. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve). Figure~\mbox{\ref{fig:joint_outputs}}(a) shows detection errors. Figure~\mbox{\ref{fig:Severityeffect}} evaluates detection across stored severity groups; it does not measure severity-estimation accuracy}\DIFaddend .
@@ -401,6 +427,8 @@ Since cyber-attack detection prioritizes missed-attack reduction, performance is
 
 
 \APECReviewNewTableA{}
+
+\APECAllHeadMetrics{}
 
 
 
@@ -427,13 +455,13 @@ Since cyber-attack detection prioritizes missed-attack reduction, performance is
 A subset restricted to 596 speed/load/phase/severity configurations shared by separate ACIM-attack and PMSM-attack recordings contains 8,841 windows and achieves 95.28\% detection plus motor identification.
 }
 
-\DIFadd{Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1, averaged over the three phase-label F1 scores, is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. Figure~\mbox{\ref{fig:phase_patterns}} shows the complete ABC decisions, including normal 000. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
+\DIFadd{Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1, averaged over the three phase-label F1 scores, is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. Figure~\mbox{\ref{fig:phase_patterns}} shows joint three-phase decisions, separating missed from extra phase flags. Exact phase-set recall is 91.11\% for A+B+C, and 10.97--43.72\% for single- and two-phase patterns. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
 }
 
 
 \begin{figure*}[!t]\centering
-    \includegraphics[width=.9\linewidth,height=.4\textheight,keepaspectratio]{figures/all_task_diagnostics_rebalanced.pdf}
-    \DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Training and Validation Accuracy over Epochs}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) phase-label F1, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows. Matrices show counts and true-row percentages; regression panels show sample density and a diagonal reference.}\DIFaddendFL }
+    \includegraphics[width=.9\linewidth,height=.4\textheight,keepaspectratio]{figures/all_task_diagnostics_phase_sets_rebalanced.pdf}
+    \DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Training and Validation Accuracy over Epochs}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) number of incorrect phase flags per window, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows. Matrices show counts and true-row percentages; regression panels show sample density and a diagonal reference.}\DIFaddendFL }
     \DIFdelbeginFL %DIFDELCMD < \label{fig:placeholder}
 %DIFDELCMD < \end{figure}
 %DIFDELCMD < %%%
@@ -441,8 +469,8 @@ A subset restricted to 596 speed/load/phase/severity configurations shared by se
 \end{figure*}
 
 \begin{figure}[!t]\centering
-    \includegraphics[width=\linewidth]{figures/phase_patterns_rebalanced.pdf}
-    \caption{\DIFaddFL{Joint ABC phase decisions, including normal 000. Each bit indicates whether its phase is attacked. Cells show counts and percentages within each true pattern.}}
+    \includegraphics[width=\linewidth]{figures/phase_set_errors_rebalanced.pdf}
+    \caption{\DIFaddFL{Joint three-phase identification. Filled markers indicate targeted A/B/C phases; open markers indicate unaffected phases. Bars separate exact decisions, missed phases, extra phases, and both errors. Each row is normalized by its true phase-set count $n$; normal windows are included. Outputs are the three raw phase sigmoids at threshold 0.5.}}
     \label{fig:phase_patterns}
 \end{figure}
 \DIFaddend 
