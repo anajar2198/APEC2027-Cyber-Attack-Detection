@@ -21,29 +21,53 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{liu2009}
+Y.~Liu, P.~Ning, and M.~K. Reiter, ``False data injection attacks against state
+  estimation in electric power grids,'' in \emph{Proc. 16th ACM Conf. Comput.
+  Commun. Secur.}, 2009, pp. 21--32.
+
+\bibitem{vonmeier2017}
+A.~{von Meier}, E.~Stewart, A.~McEachern, M.~Andersen, and L.~Mehrmanesh,
+  ``Precision micro-synchrophasors for distribution systems: A summary of
+  applications,'' \emph{IEEE Trans. Smart Grid}, vol.~8, no.~6, pp. 2926--2936,
+  2017.
+
+\bibitem{najarEMU2026}
+A.~Najar, J.~Ye, H.~Yang, and W.~Song, ``{EMU}: An {IoT}-enabled electrical
+  monitoring unit for grid-edge power-quality observability,'' 2026, submitted
+  for publication to IEEE Transactions on Smart Grid.
+
+\bibitem{najarSOC2026}
+A.~Najar, H.~Yang, J.~Ye, and W.~Song, ``A data-driven algorithm for estimating
+  battery state of charge via smart plug-based {PCC} measurements,'' in
+  \emph{Proc. IEEE Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp.
+  2359--2364.
+
 \bibitem{aljohani2024}
 A.~Aljohani, M.~AlMuhaini, H.~V. Poor, and H.~M. Binqadhi, ``A deep
   learning-based cyber intrusion detection and mitigation system for smart
-  grids,'' \emph{IEEE Transactions on Artificial Intelligence}, vol.~5, no.~8,
-  pp. 3902--3914, 2024.
+  grids,'' \emph{IEEE Trans. Artif. Intell.}, vol.~5, no.~8, pp. 3902--3914,
+  2024.
 
 \bibitem{guha}
-D.~Guha, R.~Chatterjee, and B.~Sikdar, ``Anomaly detection using lstm-based
+D.~Guha, R.~Chatterjee, and B.~Sikdar, ``Anomaly detection using {LSTM}-based
   variational autoencoder in unsupervised data in power grid,'' \emph{IEEE
-  Transactions on Smart Grid}, 2023.
+  Syst. J.}, vol.~17, no.~3, pp. 4313--4323, 2023.
 
 \bibitem{pmu_lstm_2025}
-B.~K. Dasari, R.~Shrestha, Y.~B. Tadese, L.~Souto, M.~Chamana, and
-  M.~Mohammadpour, ``Analysis of machine learning models for anomaly detection
-  using {PMU} data,'' in \emph{2025 IEEE Texas Power and Energy Conference
-  (TPEC)}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2025, pp. 1--6.
+B.~K. Dasari, R.~Shrestha, Y.~B. Tadese, L.~Souto, M.~Chamana, M.~Mohammadpour,
+  O.~Adeyanju, and S.~Bayne, ``Analysis of machine learning models for anomaly
+  detection using {PMU} data,'' in \emph{Proc. IEEE Texas Power Energy Conf.
+  (TPEC)}, 2025, pp. 1--6.
 
-\bibitem{greenens_xpmu_cost}
-\BIBentryALTinterwordspacing
-{Green ENS Co., Ltd.}, ``Micro {PMU}: {xPMU} product listing,'' Manufacturer
-  product listing on buyKOREA, listed price: US\$5,000 per unit, minimum order
-  10 units. Accessed: Nov. 13, 2026. [Online]. Available:
-  \url{https://fo.buykorea.org/ec/prd/selectGoodsDetail.do?goodsSn=3649393}
-\BIBentrySTDinterwordspacing
+\bibitem{cho2014}
+K.~Cho, B.~{van Merri{\"e}nboer}, C.~Gulcehre, D.~Bahdanau, F.~Bougares,
+  H.~Schwenk, and Y.~Bengio, ``Learning phrase representations using {RNN}
+  encoder--decoder for statistical machine translation,'' in \emph{Proc. Conf.
+  Empirical Methods Natural Lang. Process. (EMNLP)}, 2014, pp. 1724--1734.
+
+\bibitem{schuster1997}
+M.~Schuster and K.~K. Paliwal, ``Bidirectional recurrent neural networks,''
+  \emph{IEEE Trans. Signal Process.}, vol.~45, no.~11, pp. 2673--2681, 1997.
 
 \end{thebibliography}

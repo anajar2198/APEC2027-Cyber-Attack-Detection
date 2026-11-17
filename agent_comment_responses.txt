@@ -1,0 +1,85 @@
+AUTHOR COMMENT RESPONSES
+
+Author source: GitHub commit a0f8964a28e2f9498bb71369ce8006ad96a4c5aa
+Clean manuscript: main.tex / main.pdf (6 pages)
+Comparison baseline: unchanged Digest_v1.tex at dee54c454ed133d6fa18fb9492d361dbbb7ec3ce
+
+1. Literature comparison table
+   Restored Table I covering IED, grid-phasor, PMU, battery/PCC, and present EMU settings. Tasks and sensing scope are compared; different-dataset accuracies are not presented as a direct benchmark.
+
+2. Performance-table title and always-attack row
+   Renamed the table to Binary FDIA detection performance and removed the always-attack row. The learned baselines and their actual training protocol remain.
+
+3. 8K versus total attack windows
+   Expanded the motor table to show all 18,914 attack windows as well as the 8,841-window matched-settings subset.
+
+4. Abstract problem, method, and significance
+   Revised the abstract around FDIA at motor feedback, aggregate PCC sensing, the final CNN-Bi-GRU, measured results, and deployment motivation.
+
+5. Only the final architecture in the abstract
+   Removed LSTM development history from the abstract; retained learned model comparisons in the results.
+
+6. Train/test terminology
+   Used accuracy in the abstract/results and evaluation partition in the methods. The same partition was used for checkpoint selection, so it is not described as an independent test set.
+
+7. FDIA and two-motor scenario coverage in abstract
+   Included two motor types, different speeds and loads, injected feedback biases, and simultaneous operation while one motor is attacked.
+
+8. Accuracy terminology
+   Used accuracy and removed repeated introductory headline metrics.
+
+9. References, own work, and self-citation policy
+   Added the required battery PCC paper and the EMU manuscript with the supplied authors and submitted-for-publication status, plus relevant primary FDIA/GRU/bidirectional/micro-PMU references. The acceptance letter specifies excessive >25% self-/cross-citation. The optional protection citation is removed: 2 self-cited works among 9 references = 22.22%. No unrelated references were added to enlarge the denominator.
+
+10. Cost wording without prices
+   Removed explicit dollar prices and retained qualitative hardware/deployment motivation in the introduction.
+
+11. Testbed description
+   Clarified that both motors operate, the EMU measures their aggregate at the common PCC, and one motor is attacked at a time.
+
+12. Dataset and label information
+   Retained window length 128, stride 16, 16 features, the binary any-attacked-sample rule, metadata schema, normal 000 phases, and severity/onset definitions. The absent-onset sentinel -1 is included in the schema scope.
+
+13. Placement of label explanations
+   Placed normal phase labels, ROCOF, and stored-severity definitions alongside the metadata description before the schema.
+
+14. Figure and table references
+   Added labels and references for the two signal examples and testbed photo. All nine figures and four tables are referenced in the body.
+
+15. Passive writing
+   Recast research actions in passive wording and removed first-person we/our wording.
+
+16. Motor cross-entropy explanation
+   Defined standard two-class categorical cross-entropy and explained its probability-based penalty, attack-only mask, and fixed class weighting.
+
+17. Loss formula and fixed versus adaptive weights
+   Added the final six-term loss equation with lambda_k identically 1. Explained fixed outer coefficients separately from internal class weights/masks, and documented severity and position objectives. GradNorm was not used in this selected run.
+
+18. Redundancy and baseline wording
+   Condensed repeated background, label listings, headline results, and conclusions; removed attack-only-baseline terminology while retaining the accurate training comparison.
+
+19. Binary confusion-matrix reference
+   Explicitly referenced the binary confusion matrix in the detection-results paragraph.
+
+20. Confusion-matrix figure and captions
+   Restored the five-panel motor/complete-decision/phase figure. Removed cohort-size validation wording from captions and the binary plot heading; numerical counts are unchanged.
+
+21. Why only 8,841 windows?
+   Explained the 596 shared speed/load/phase/severity configurations. All 18,914 attack windows remain in the overall result; 10,073 do not satisfy the additional matching control. Both full and subset results are reported.
+
+PRESERVED AUTHOR EDITS
+The up-to-60-Hz device capability, ADE/ESP32 hardware description, plug-and-play deployment intent, two revised testbed captions, and condition-aware task sentence are retained. The deleted hypothesis and early-iteration discussion remain deleted. The approximately 7-Hz experimental rate is distinguished from maximum device capability. Cosmetic edits inside removed historical text do not modify the frozen original Digest baseline. The author-edited diff remains available in the source commit above.
+
+RENDERING AND PROVENANCE
+All 59 files in the original repository baseline are byte-identical. The main paper is six US-letter pages with standard IEEE margins/font size, nine figures, and four tables. All PDF fonts are embedded. Added review text uses blue underlining; removed text uses red strikethrough, including table cells. The newly added loss equation is also blue and underlined. The review is longer because it contains both versions. No model was retrained in this manuscript edit; metric values remain from the selected rebalanced epoch-45 run.
+
+PUBLIC REFERENCE SOURCES
+FDIA: https://doi.org/10.1145/1653662.1653666
+Micro-PMU: https://doi.org/10.1109/TSG.2017.2720543
+Battery/PCC: https://doi.org/10.1109/APEC51134.2026.11516586
+GRU: https://aclanthology.org/D14-1179/
+Bidirectional recurrence: https://doi.org/10.1109/78.650093
+Guha anomaly detection: https://doi.org/10.1109/JSYST.2023.3266554
+PMU comparison: https://doi.org/10.1109/TPEC63981.2025.10907236
+IEEE ethical requirements: https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/ethical-requirements/
+The EMU title/authors/submission status and the conference-specific >25% threshold were supplied by the author.

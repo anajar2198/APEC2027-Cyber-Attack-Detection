@@ -84,7 +84,8 @@ def main():
         new = Path(directory)/'new.tex'
         # Equivalent Unicode/TeX dash spellings are formatting, not prose edits.
         def normalize_dashes(text):
-            return text.replace('—','---').replace('–','--')
+            text = text.replace('—','---').replace('–','--')
+            return re.sub(r'(\\begin\{figure\*?\})[ \t]+(?=\[)', r'\1', text)
         old.write_text(atomic_tables(normalize_dashes(expand_inputs(args.baseline)),'Old'))
         new.write_text(atomic_tables(normalize_dashes(expand_inputs(args.new)),'New'))
         command = [args.latexdiff, '--type=CFONT', '--subtype=SAFE', '--floattype=FLOATSAFE',
@@ -105,6 +106,20 @@ def main():
     # Table content already has cell-level marks; avoid wrapping its float.
     content = re.sub(r'\\DIF(?:add|del)\{\s*(\\APECReview(?:Old|New)Table[A-Z]\{\})\s*\}',
         lambda m:m.group(1),content)
+    # math-markup=0 keeps display equations compilable. Mark newly labelled
+    # equations explicitly so they are also distinguishable in a printed review.
+    baseline_labels = set(re.findall(r'\\label\{([^}]+)\}', expand_inputs(args.baseline)))
+    def mark_new_equation(match):
+        body = match.group(1)
+        labels = re.findall(r'\\label\{([^}]+)\}', body)
+        if not labels or any(label in baseline_labels for label in labels):
+            return match.group(0)
+        label_commands = ''.join(r'\label{'+label+'}' for label in labels)
+        body = re.sub(r'\\label\{[^}]+\}', '', body).strip()
+        return (r'{\color{blue}\begin{equation}\underline{\displaystyle '+body+'}'
+                +label_commands+r'\end{equation}}')
+    content = re.sub(r'\\begin\{equation\}(.*?)\\end\{equation\}',
+        mark_new_equation, content, flags=re.S)
     # Keep citations/references together inside underline/strikethrough arguments.
     content = re.sub(r'\\(?:cite|ref|eqref)\{[^}]+\}',
         lambda m:r'\mbox{'+m.group(0)+'}',content)
@@ -126,6 +141,7 @@ def main():
         '% The schema has word-level changes; changed table cells are marked individually.\n'
         '% Replaced comparison/new analysis tables are marked as whole blocks.\n'
         '% Review graphics are bounded in size; the clean main.tex is unchanged.\n')
+    content = "\n".join(line.rstrip() for line in content.splitlines())+"\n"
     args.output.write_text(comment+content)
     assert hashlib.sha256(args.baseline.read_bytes()).hexdigest() == baseline_hash
     results = args.output.parent/'results'
@@ -141,7 +157,7 @@ def main():
         review_graphics_size_bounded=True,
         deleted_text_style='red strikethrough using ulem; deleted table cells marked individually',
         added_text_style='blue solid underline using ulem; new table cells marked individually',
-        print_legend_and_page_numbers=True,
+        print_legend_and_page_numbers=True, new_display_equations_blue_underlined=True,
         legacy_architecture_label_retained_in_review=True,
         review_layout='IEEEtran conference onecolumn; main.tex stays twocolumn',
         generator_stderr=result.stderr),indent=2)+'\n')

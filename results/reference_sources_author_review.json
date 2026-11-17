@@ -1,0 +1,734 @@
+{
+  "verification": "Publisher-deposited Crossref DOI metadata and primary publication pages",
+  "references": {
+    "10.1109/APEC51134.2026.11516586": {
+      "title": [
+        "A Data-Driven Algorithm for Estimating Battery State of Charge via Smart Plug-Based PCC Measurements"
+      ],
+      "author": [
+        {
+          "given": "Abolfazl",
+          "family": "Najar",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "University of Georgia,College of Engineering,Athens,Georgia,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "He",
+          "family": "Yang",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Georgia,College of Engineering,Athens,Georgia,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Jin",
+          "family": "Ye",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Georgia,College of Engineering,Athens,Georgia,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "WenZhan",
+          "family": "Song",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of Georgia,College of Engineering,Athens,Georgia,USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2026 IEEE Applied Power Electronics Conference and Exposition (APEC)"
+      ],
+      "page": "2359-2364",
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            3,
+            22
+          ]
+        ]
+      },
+      "publisher": "IEEE",
+      "DOI": "10.1109/apec51134.2026.11516586",
+      "URL": "https://doi.org/10.1109/apec51134.2026.11516586"
+    },
+    "10.1109/TPEC63981.2025.10907236": {
+      "title": [
+        "Analysis of Machine Learning Models for Anomaly Detection Using PMU data"
+      ],
+      "author": [
+        {
+          "given": "Bharath Kumar",
+          "family": "Dasari",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Wind Science and Engineering Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Rajendra",
+          "family": "Shrestha",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Electrical and Computer Engineering Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Yared Brhane",
+          "family": "Tadese",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Wind Science and Engineering Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Larissa",
+          "family": "Souto",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Electrical and Computer Engineering Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Manohar",
+          "family": "Chamana",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "National Wind Institute Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Mostafa",
+          "family": "Mohammadpour",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "National Wind Institute Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Olatunji",
+          "family": "Adeyanju",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "National Wind Institute Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        },
+        {
+          "given": "Stephen",
+          "family": "Bayne",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Electrical and Computer Engineering Texas Tech University,Lubbock,TX,USA"
+            }
+          ],
+          "role": [
+            {
+              "role": "author",
+              "vocabulary": "crossref"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "2025 IEEE Texas Power and Energy Conference (TPEC)"
+      ],
+      "page": "01-06",
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            10
+          ]
+        ]
+      },
+      "publisher": "IEEE",
+      "DOI": "10.1109/tpec63981.2025.10907236",
+      "URL": "https://doi.org/10.1109/tpec63981.2025.10907236"
+    },
+    "10.1109/TAI.2024.3354688": {
+      "title": [
+        "A Deep Learning-Based Cyber Intrusion Detection and Mitigation System for Smart Grids"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0009-0002-9805-5087",
+          "authenticated-orcid": false,
+          "given": "Abdulaziz",
+          "family": "Aljohani",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Saudi Arabian Oil Company, Dhahran, Saudi Arabia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-1163-0756",
+          "authenticated-orcid": false,
+          "given": "Mohammad",
+          "family": "AlMuhaini",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "King Fahd University of Petroleum and Minerals, Dhahran, Saudi Arabia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-2062-131X",
+          "authenticated-orcid": false,
+          "given": "H. Vincent",
+          "family": "Poor",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Princeton University, Princeton, NJ, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0009-0006-1244-5025",
+          "authenticated-orcid": false,
+          "given": "Hamed M.",
+          "family": "Binqadhi",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "King Fahd University of Petroleum and Minerals, Dhahran, Saudi Arabia"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Artificial Intelligence"
+      ],
+      "volume": "5",
+      "issue": "8",
+      "page": "3902-3914",
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            8
+          ]
+        ]
+      },
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "DOI": "10.1109/tai.2024.3354688",
+      "URL": "https://doi.org/10.1109/tai.2024.3354688"
+    },
+    "10.1109/jsyst.2023.3266554": {
+      "title": [
+        "Anomaly Detection Using LSTM-Based Variational Autoencoder in Unsupervised Data in Power Grid"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0003-0735-3047",
+          "authenticated-orcid": false,
+          "given": "Dibyajyoti",
+          "family": "Guha",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "Department of Computer Science and Engineering, GITAM School of Technology, Gandhi Institute of Technology and Management (GITAM), Deemed to be University, Hyderabad, India"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0003-0125-4830",
+          "authenticated-orcid": false,
+          "given": "Rajdeep",
+          "family": "Chatterjee",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "School of Computer Engineering, Kalinga Institute of Industrial Technology (KIIT) Deemed to be University, Bhubaneswar, India"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "ORCID": "https://orcid.org/0000-0002-0084-4647",
+          "authenticated-orcid": false,
+          "given": "Biplab",
+          "family": "Sikdar",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "Department of Electrical and Computer Engineering, National University of Singapore, Singapore"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Systems Journal"
+      ],
+      "volume": "17",
+      "issue": "3",
+      "page": "4313-4323",
+      "published": {
+        "date-parts": [
+          [
+            2023,
+            9
+          ]
+        ]
+      },
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "DOI": "10.1109/jsyst.2023.3266554",
+      "URL": "https://doi.org/10.1109/jsyst.2023.3266554"
+    },
+    "10.1109/tsg.2017.2720543": {
+      "title": [
+        "Precision Micro-Synchrophasors for Distribution Systems: A Summary of Applications"
+      ],
+      "author": [
+        {
+          "ORCID": "https://orcid.org/0000-0003-4675-752X",
+          "authenticated-orcid": false,
+          "given": "Alexandra",
+          "family": "von Meier",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Emma",
+          "family": "Stewart",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Alex",
+          "family": "McEachern",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michael",
+          "family": "Andersen",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Laura",
+          "family": "Mehrmanesh",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Smart Grid"
+      ],
+      "volume": "8",
+      "issue": "6",
+      "page": "2926-2936",
+      "published": {
+        "date-parts": [
+          [
+            2017,
+            11
+          ]
+        ]
+      },
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "DOI": "10.1109/tsg.2017.2720543",
+      "URL": "https://doi.org/10.1109/tsg.2017.2720543"
+    },
+    "10.1145/1653662.1653666": {
+      "title": [
+        "False data injection attacks against state estimation in electric power grids"
+      ],
+      "author": [
+        {
+          "given": "Yao",
+          "family": "Liu",
+          "sequence": "first",
+          "affiliation": [
+            {
+              "name": "North Carolina State University, Raleigh, NC, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Peng",
+          "family": "Ning",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "North Carolina State University, Raleigh, NC, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Michael K.",
+          "family": "Reiter",
+          "sequence": "additional",
+          "affiliation": [
+            {
+              "name": "University of North Carolina, Chapel Hill, Chapel Hill, NC, USA"
+            }
+          ],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 16th ACM conference on Computer and communications security"
+      ],
+      "page": "21-32",
+      "published": {
+        "date-parts": [
+          [
+            2009,
+            11,
+            9
+          ]
+        ]
+      },
+      "publisher": "ACM",
+      "DOI": "10.1145/1653662.1653666",
+      "URL": "https://doi.org/10.1145/1653662.1653666"
+    },
+    "10.1109/78.650093": {
+      "title": [
+        "Bidirectional recurrent neural networks"
+      ],
+      "author": [
+        {
+          "given": "M.",
+          "family": "Schuster",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "K.K.",
+          "family": "Paliwal",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "IEEE Transactions on Signal Processing"
+      ],
+      "volume": "45",
+      "issue": "11",
+      "page": "2673-2681",
+      "published": {
+        "date-parts": [
+          [
+            1997
+          ]
+        ]
+      },
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "DOI": "10.1109/78.650093",
+      "URL": "https://doi.org/10.1109/78.650093"
+    },
+    "10.3115/v1/d14-1179": {
+      "title": [
+        "Learning Phrase Representations using RNN Encoder\u2013Decoder for Statistical Machine Translation"
+      ],
+      "author": [
+        {
+          "given": "Kyunghyun",
+          "family": "Cho",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Bart",
+          "family": "van Merrienboer",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Caglar",
+          "family": "Gulcehre",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Dzmitry",
+          "family": "Bahdanau",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Fethi",
+          "family": "Bougares",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Holger",
+          "family": "Schwenk",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        },
+        {
+          "given": "Yoshua",
+          "family": "Bengio",
+          "sequence": "additional",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "container-title": [
+        "Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)"
+      ],
+      "page": "1724-1734",
+      "published": {
+        "date-parts": [
+          [
+            2014
+          ]
+        ]
+      },
+      "publisher": "Association for Computational Linguistics",
+      "DOI": "10.3115/v1/d14-1179",
+      "URL": "https://doi.org/10.3115/v1/d14-1179"
+    }
+  },
+  "unpublished_EMU_status": "Supplied by the author: submitted for publication to IEEE Transactions on Smart Grid; no accepted/published claim",
+  "self_citation_policy": {
+    "source": "User-provided APEC 2027 acceptance letter, paper 9007",
+    "excessive_above_percent": 25,
+    "self_cited_works": 2,
+    "total_cited_works": 9,
+    "percent": 22.22222222222222
+  }
+}

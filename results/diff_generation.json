@@ -3,7 +3,7 @@
   "baseline": "Digest_v1.tex",
   "baseline_sha256": "c1a8425ea0ddb86ac2ff3887ca67d09d6e1b108e4350cf516c7d0b5d1de64ffa",
   "new_source": "main.tex",
-  "new_sha256": "9b8ba63d5f9b927e57beaf8db7216d175f19f9f7399565e7c1aa4c9e90f41df2",
+  "new_sha256": "b93c71eb5c8bf72e11e954760337ed9a0b0511ee77d615e93a2c5b9bf36249f3",
   "baseline_modified": false,
   "clean_source_modified": false,
   "input_tables_expanded": true,
@@ -15,6 +15,7 @@
   "deleted_text_style": "red strikethrough using ulem; deleted table cells marked individually",
   "added_text_style": "blue solid underline using ulem; new table cells marked individually",
   "print_legend_and_page_numbers": true,
+  "new_display_equations_blue_underlined": true,
   "legacy_architecture_label_retained_in_review": true,
   "review_layout": "IEEEtran conference onecolumn; main.tex stays twocolumn",
   "generator_stderr": "Can't exec \"kpsewhich\": No such file or directory at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nUse of uninitialized value in string ne at /tmp/shushan_revision_final/texroot/usr/bin/latexdiff line 1534.\nWARNING: listings package not detected. Disabling mark-up in verbatim environments \n"
