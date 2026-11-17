@@ -174,7 +174,7 @@
 \newcommand{\APECReviewNewTableB}{%
 \begin{table}[!t]
 \centering\color{blue}
-\caption{\DIFadd{Motor identification for 596 configurations represented for both attacked motors. The 8,841 attack windows form a matched subset of all 18,914 attack windows.}}
+\caption{\DIFadd{Motor identification across separate ACIM-attack and PMSM-attack recordings sharing 596 configurations. Only one motor is attacked at a time. The 8,841 windows are a matched subset of all 18,914 attack windows.}}
 \label{tab:matched_motor_settings}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -184,7 +184,7 @@
 \midrule
 \DIFadd{ACIM} & \DIFadd{4,475} & \DIFadd{100.00} & \DIFadd{95.26} \\
 \DIFadd{PMSM} & \DIFadd{4,366} & \DIFadd{100.00} & \DIFadd{95.30} \\
-\DIFadd{Combined} & \DIFadd{8,841} & \DIFadd{100.00} & \DIFadd{95.28} \\
+\DIFadd{Overall} & \DIFadd{8,841} & \DIFadd{100.00} & \DIFadd{95.28} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -229,7 +229,7 @@ Athens, Georgia, USA\\
 
 \begin{abstract}
 As components of the electrical grid become increasingly connected through the internet, they face a growing threat from cyber attacks. \DIFdelbegin \DIFdel{This project developed a deep learning framework}\DIFdelend \DIFaddbegin \DIFadd{A deep learning framework was developed }\DIFaddend  \DIFdelbegin \DIFdel{to detect anomalies}\DIFdelend \DIFaddbegin \DIFadd{to detect false data injection attacks (FDIAs) }\DIFaddend in a multi-motor electrical motor testbed using features gathered by an \DIFdelbegin \DIFdel{EMU}\DIFdelend \DIFaddbegin \DIFadd{electric measurement unit (EMU)}\DIFaddend . EMUs are plug-and-play sensor devices placed at the Point of Common Coupling (PCC) that feed electrical motors in the testbed. EMUs are scalable devices which can be installed in large number and \DIFdelbegin \DIFdel{produce data similar to micro-PMUs but are much cheaper, modular, and enable real-time data analysis through IoT compatibility }\DIFdelend \DIFaddbegin \DIFadd{provide voltage and current features up to 60~Hz. Different speed and load scenarios are generated for the two motor types, with both motors operating while one is attacked}\DIFaddend . 
-\DIFdelbegin \DIFdel{While initial baselines utilized standard Long Short-Term Memory (LSTM) networks, we ultimately developed a robust framework based on a}\DIFdelend \DIFaddbegin \DIFadd{A framework was developed based on a }\DIFaddend \DIFdelbegin \DIFdel{Bidirectional Gated Recurrent Unit (GRU}\DIFdelend \DIFaddbegin \DIFadd{multihead convolutional neural network (CNN) and bidirectional gated recurrent unit (Bi-GRU}\DIFaddend ) architecture to better capture complex irregularities in time-series data. By addressing severe class imbalance and preserving raw signal context alongside temporal velocities, the \DIFdelbegin \DIFdel{proposed Bidirectional GRU model successfully transitioned from underfitting to strong generalization, achieving a testing accuracy of approximately 92\% }\DIFdelend \DIFaddbegin \DIFadd{rebalanced CNN--Bi-GRU model achieves 93.46\% accuracy and 95.32\% attack recall. Correct detection plus motor identification reaches 95.28\% in 596 configurations represented for both attacked motors while both motors operate.}\DIFaddend .
+\DIFdelbegin \DIFdel{While initial baselines utilized standard Long Short-Term Memory (LSTM) networks, we ultimately developed a robust framework based on a}\DIFdelend \DIFaddbegin \DIFadd{A framework was developed based on a }\DIFaddend \DIFdelbegin \DIFdel{Bidirectional Gated Recurrent Unit (GRU}\DIFdelend \DIFaddbegin \DIFadd{multihead convolutional neural network (CNN) and bidirectional gated recurrent unit (Bi-GRU}\DIFaddend ) architecture to better capture complex irregularities in time-series data. By addressing severe class imbalance and preserving raw signal context alongside temporal velocities, the \DIFdelbegin \DIFdel{proposed Bidirectional GRU model successfully transitioned from underfitting to strong generalization, achieving a testing accuracy of approximately 92\% }\DIFdelend \DIFaddbegin \DIFadd{rebalanced CNN--Bi-GRU model achieves 93.46\% accuracy and 95.32\% attack recall. Correct detection plus motor identification reaches 95.28\% across 596 configurations shared by separate ACIM-attack and PMSM-attack recordings}\DIFaddend .
 \end{abstract}
 
 \section{Introduction}
@@ -466,7 +466,7 @@ Since cyber-attack detection prioritizes missed-attack reduction, performance is
 \DIFaddend 
 
 \DIFdelbegin \APECReviewOldTableA{}\DIFdelend \DIFaddbegin \subsection{\DIFadd{Motor Identification under Common Configurations}}
-\DIFadd{A retrospective subset of all 18,914 attack windows retains speed, load, phase-flag, and stored phase-severity tuples represented for both attacked motors: 596 tuples and 8,841 attack windows (4,475 ACIM; 4,366 PMSM). The remaining attack windows are retained in the overall results. Each tuple occurs for both classes, so these metadata do not uniquely identify the attacked motor.
+\DIFadd{A retrospective subset of all 18,914 attack windows retains speed, load, phase-flag, and stored phase-severity tuples shared by separate ACIM-attack and PMSM-attack recordings: 596 tuples and 8,841 attack windows (4,475 ACIM; 4,366 PMSM). The remaining attack windows are retained in the overall results. Each tuple occurs for both classes, so these metadata do not uniquely identify the attacked motor.
 }\DIFaddend 
 
 \DIFdelbegin %DIFDELCMD < \begin{figure}
