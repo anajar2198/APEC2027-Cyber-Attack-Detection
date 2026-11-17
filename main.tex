@@ -46,7 +46,23 @@ The growing vulnerability of cyber-physical power systems to malicious intrusion
 
 Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \cite{guha} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data. Similarly, recent evaluations of machine learning models \cite{pmu_lstm_2025} have investigated anomaly detection using PMU data streams. These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments. Sensing and task scopes are summarized in Table~\ref{tab:prior_work}. 
 
-\input{results/prior_work_comparison_table.tex}
+\begin{table}[!t]
+\centering
+\caption{Performance Comparison with Existing Cyber Anomaly Detection Schemes. Different datasets are used; sensing and task scope are compared.}
+\label{tab:prior_work}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{.27\linewidth}p{.24\linewidth}p{.42\linewidth}@{}}
+\toprule
+Method & Sensor/setting & Task \\
+\midrule
+Aljohani et al.~\cite{aljohani2024} & IED/substation & FDIA detection and mitigation \\
+Guha et al.~\cite{guha} & Grid phasors & Unsupervised anomaly detection \\
+Dasari et al.~\cite{pmu_lstm_2025} & PMU/39-bus & Multiclass anomaly detection \\
+Proposed & EMU/motor PCC & FDIA detection and motor/phase identification \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Motivated by the instrumentation requirements of PMU/IED-centric methods, an EMU-based PCC solution is presented; the key contributions are:
 \begin{itemize}
@@ -197,7 +213,26 @@ Attack and phase outputs use the fixed threshold 0.5. With rebalanced training, 
 Table~\ref{tab:comparison} compares LSTM, CNN--LSTM, CNN--Bi-GRU, and the proposed model. LSTM, CNN--LSTM, and CNN--Bi-GRU share the same inputs, split, width 64, Adam learning rate $10^{-3}$, batch size 128, attack-loss weights 1.0/1.5, and at most 40 epochs; checkpoints maximize validation balanced accuracy at threshold 0.5. The proposed model receives additional multihead training and fine-tuning, so the comparison evaluates complete pipelines rather than architecture alone. Prior PMU-based~\cite{guha} and IED-based~\cite{aljohani2024} studies provide context because their datasets and sensing setups differ.
 
 
-\input{results/focused_comparison_table.tex}
+\begin{table}[!t]
+\centering
+\caption{Attack detection performance. Rates are percentages; FPR denotes false-positive rate. }
+\label{tab:comparison}
+\setlength{\tabcolsep}{3pt}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Model & Accuracy & Bal. acc. & Recall & FPR \\
+\midrule
+\multicolumn{5}{l}{\textit{A. Matched baselines}} \\
+LSTM & 84.89 & 64.15 & 98.33 & 70.04 \\
+CNN--LSTM & 89.81 & 85.33 & 92.71 & 22.05 \\
+CNN--Bi-GRU & 89.00 & 85.16 & 91.49 & 21.16 \\
+\midrule
+\multicolumn{5}{l}{\textit{B. Rebalanced multihead model}} \\
+CNN--Bi-GRU (proposed) & 93.46 & 90.59 & 95.32 & 14.14 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 
@@ -237,7 +272,22 @@ Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels.
 \subsection{Motor Identification under Common Configurations}
 A retrospective subset of all 18,914 attack windows retains speed, load, phase-flag, and stored phase-severity tuples represented for both attacked motors: 596 tuples and 8,841 attack windows (4,475 ACIM; 4,366 PMSM). The remaining attack windows are retained in the overall results. Each tuple occurs for both classes, so these metadata do not uniquely identify the attacked motor.
 
-\input{results/matched_motor_settings_table.tex}
+\begin{table}[!t]
+\centering
+\caption{Motor identification for 596 configurations represented for both attacked motors. The 8,841 attack windows form a matched subset of all 18,914 attack windows.}
+\label{tab:matched_motor_settings}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+\shortstack{Attacked\\motor} & \shortstack{Attack\\windows} & \shortstack{Conditional\\identity (\%)} & \shortstack{Detection +\\identity (\%)} \\
+\midrule
+ACIM & 4,475 & 100.00 & 95.26 \\
+PMSM & 4,366 & 100.00 & 95.30 \\
+Combined & 8,841 & 100.00 & 95.28 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 
