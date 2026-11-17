@@ -1,19 +1,13 @@
 \begin{table}[!t]
 \centering
-\caption{Motor identification for the full attack cohort and the matched-settings subset. Identity is conditional on true attacks; joint detection includes detector misses.}
+\caption{Motor identification for 596 configurations represented for both attacked motors. All 8,841 windows are attack-labeled.}
 \label{tab:matched_motor_settings}
 \small
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
-Motor & Windows & Identity (\%) & Detection + ID (\%) \\
+\shortstack{Attacked\\motor} & \shortstack{Attack\\windows} & \shortstack{Conditional\\identity (\%)} & \shortstack{Detection +\\identity (\%)} \\
 \midrule
-\multicolumn{4}{l}{\textit{All attack windows}} \\
-ACIM & 10,246 & 100.00 & 95.15 \\
-PMSM & 8,668 & 100.00 & 95.51 \\
-Combined & 18,914 & 100.00 & 95.32 \\
-\midrule
-\multicolumn{4}{l}{\textit{596 shared configurations}} \\
 ACIM & 4,475 & 100.00 & 95.26 \\
 PMSM & 4,366 & 100.00 & 95.30 \\
 Combined & 8,841 & 100.00 & 95.28 \\

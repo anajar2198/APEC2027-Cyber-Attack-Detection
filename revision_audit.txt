@@ -1,7 +1,3 @@
-HISTORICAL AUDIT: revision before author commit a0f8964a28e2.
-For current author-directed changes, see agent_comment_responses.txt and
-results/author_review_edits.json. Original files remain unchanged.
-
 AUDIT OF REMOVALS AND CLAIM CHANGES
 Baseline: unchanged GitHub Digest_v1.tex at dee54c454ed1.
 Audited prior revision: 118ed7f, before the new runtime benchmark.
