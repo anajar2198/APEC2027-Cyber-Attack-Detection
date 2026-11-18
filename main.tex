@@ -165,6 +165,15 @@ $\text{sev}_A, \text{sev}_B, \text{sev}_C$ & Stored severity per phase (0.025, 0
 
 Recurrent models are well-suited for EMU time-series classification because cyber anomalies often manifest as subtle temporal deviations rather than isolated point events. An LSTM baseline was initially evaluated, but a Bidirectional GRU (Bi-GRU) was adopted  to reduce gating complexity while capturing contextual dependencies across each observation window.
 
+The EMU-to-dashboard information flow is shown in Fig.~\ref{fig:information_flow}.
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/schematic diagram.png}
+    \caption{EMU data acquisition, preprocessing, inference, and dashboard information flow. The original schematic shows the binary decision path.}
+    \label{fig:information_flow}
+\end{figure*}
+
 Prior to training, each EMU sample is a fixed-length sequence. Each window is augmented by concatenating first-order temporal differences along the feature axis (from $128\times16$ to $128\times32$), followed by feature-wise standardization using statistics from the training split. The evaluated multihead model is illustrated in Fig.~\ref{architecture}.
 The classifier comprises two Conv1D blocks (64 filters, kernel size 3) with Batch Normalization, followed by a Bidirectional GRU for sequence modeling. Conv1D filters learn local temporal patterns across input channels. GRU update/reset gates control retained state~\cite{cho2014}; bidirectional recurrence processes each completed window forward and backward to combine context~\cite{schuster1997}. Outputs are aggregated with GlobalAveragePooling1D, passed through a 64-unit dense layer with 30\% dropout, and mapped to six parallel heads: attack (one sigmoid), motor (two-class softmax), phases (three sigmoids), severity (three sigmoids), start presence (one sigmoid), and start position (one sigmoid). The shared Bi-GRU has 64 units per direction; the model has 77,963 parameters.
 \begin{figure*}[t]

@@ -360,21 +360,24 @@ $\text{sev}_A, \text{sev}_B, \text{sev}_C$ & \DIFdelbeginFL \DIFdelFL{Intensity 
 
 Recurrent models are well-suited for EMU time-series classification because cyber anomalies often manifest as subtle temporal deviations rather than isolated point events. \DIFdelbegin \DIFdel{We initially evaluated an LSTM baseline}\DIFdelend \DIFaddbegin \DIFadd{An LSTM baseline was initially evaluated}\DIFaddend , but \DIFdelbegin \DIFdel{adopted a Bidirectional GRU (Bi-GRU)}\DIFdelend \DIFaddbegin \DIFadd{a Bidirectional GRU (Bi-GRU) was adopted }\DIFaddend  to reduce gating complexity while capturing contextual dependencies across each observation window.
 
+\DIFaddbegin \DIFadd{The EMU-to-dashboard information flow is shown in Fig.~\mbox{\ref{fig:information_flow}}.}\DIFaddend
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=.9\textwidth]{figures/schematic diagram.png}
+    \caption{\DIFdelbeginFL \DIFdelFL{Information flow architecture detailing the dual-stream feature engineering and preprocessing pipeline.}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{EMU data acquisition, preprocessing, inference, and dashboard information flow. The original schematic shows the binary decision path.}\DIFaddendFL }
+    \label{fig:information_flow}
+\end{figure*}
+
 Prior to training, each EMU sample is a fixed-length sequence. \DIFdelbegin \DIFdel{We augment each window}\DIFdelend \DIFaddbegin \DIFadd{Each window is augmented }\DIFaddend by concatenating first-order temporal differences along the feature axis (from $128\times16$ to $128\times32$), followed by feature-wise standardization using statistics from the training split. \DIFdelbegin \DIFdel{The overall data acquisition, preprocessing, and model inference pipeline}\DIFdelend \DIFaddbegin \DIFadd{The evaluated multihead model }\DIFaddend is illustrated in Fig.~\mbox{\ref{architecture}}.
-The classifier comprises two Conv1D blocks (64 filters, kernel size 3) with Batch Normalization, followed by a Bidirectional GRU for sequence modeling. \DIFaddbegin \DIFadd{Conv1D filters learn local temporal patterns across input channels. GRU update/reset gates control retained state~\mbox{\cite{cho2014}}; bidirectional recurrence processes each completed window forward and backward to combine context~\mbox{\cite{schuster1997}}. }\DIFaddend Outputs are aggregated with GlobalAveragePooling1D, passed through a 64-unit dense layer with 30\% dropout, and mapped to \DIFdelbegin \DIFdel{a sigmoidnode for binary classification. }%DIFDELCMD < \begin{figure}[H]
-%DIFDELCMD <     %%%
-\DIFdelendFL \DIFaddbeginFL \DIFaddFL{six parallel heads: attack (one sigmoid), motor (two-class softmax), phases (three sigmoids), severity (three sigmoids), start presence (one sigmoid), and start position (one sigmoid). The shared Bi-GRU has 64 units per direction; the model has 77,963 parameters.
-}\begin{figure*}[t]
-    \DIFaddendFL \centering
-    \DIFdelbeginFL %DIFDELCMD < \includegraphics[width=.9\linewidth,height=.4\textheight,keepaspectratio]{figures/schematic diagram.png}
-%DIFDELCMD <     %%%
-\DIFdelendFL \DIFaddbeginFL \includegraphics[width=.9\linewidth,height=.4\textheight,keepaspectratio]{figures/architecture_rebalanced_apec2027.pdf}
-    \DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{Information flow architecture detailing }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{The evaluated multihead CNN--Bi-GRU. Six parallel output heads share }\DIFaddendFL the \DIFdelbeginFL \DIFdelFL{dual-stream feature engineering }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{convolutional }\DIFaddendFL and \DIFdelbeginFL \DIFdelFL{preprocessing pipeline}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{recurrent representation. Blue heads provide attack, motor, and phase classifications; gray heads are auxiliary severity/timing outputs}\DIFaddendFL .}
+The classifier comprises two Conv1D blocks (64 filters, kernel size 3) with Batch Normalization, followed by a Bidirectional GRU for sequence modeling. \DIFaddbegin \DIFadd{Conv1D filters learn local temporal patterns across input channels. GRU update/reset gates control retained state~\mbox{\cite{cho2014}}; bidirectional recurrence processes each completed window forward and backward to combine context~\mbox{\cite{schuster1997}}. }\DIFaddend Outputs are aggregated with GlobalAveragePooling1D, passed through a 64-unit dense layer with 30\% dropout, and mapped to \DIFdelbegin \DIFdel{a sigmoid node for binary classification. }\DIFdelend \DIFaddbegin \DIFadd{six parallel heads: attack (one sigmoid), motor (two-class softmax), phases (three sigmoids), severity (three sigmoids), start presence (one sigmoid), and start position (one sigmoid). The shared Bi-GRU has 64 units per direction; the model has 77,963 parameters.}\DIFaddend
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=.85\textwidth]{figures/architecture_rebalanced_apec2027.pdf}
+    \caption{\DIFaddFL{The evaluated multihead CNN--Bi-GRU. Six parallel output heads share the convolutional and recurrent representation. Blue heads provide attack, motor, and phase classifications; gray heads are auxiliary severity/timing outputs.}}
     \label{architecture}
-\DIFdelbeginFL %DIFDELCMD < \end{figure}
-%DIFDELCMD < %%%
-\DIFdelend \DIFaddbegin \end{figure*}
-\DIFaddend 
+\end{figure*}
+
 
 
 Regularization is provided by Batch Normalization, dropout, \DIFdelbegin \DIFdel{early stopping based on validation PR-AUC, and a cosine learning-rate schedule}\DIFdelend \DIFaddbegin \DIFadd{and early stopping. The reported fine-tuning run uses Adam at $3\times10^{-4}$, batch size 128, gradient-norm clipping at 1, and patience 12. The learning rate is halved after five unimproved epochs, with a minimum of $10^{-5}$}\DIFaddend .
