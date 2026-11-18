@@ -281,6 +281,12 @@ Start presence & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
     \label{fig:operating_conditions}
 \end{figure}
 
+\begin{figure*}[!t]\centering
+    \includegraphics[width=\textwidth]{figures/phase_confusion_named_errors_rebalanced.pdf}
+    \caption{Joint A/B/C phase confusion, including normal cases. Cells show counts, percentages within each true phase set, and named phase errors: $-\{A,B\}$ means A and B missed, while $+\{C\}$ means C added. Exact denotes a correct phase set. Raw phase outputs use threshold 0.5.}
+    \label{fig:phase_patterns}
+\end{figure*}
+
 \subsection{Motor and Phase Identification}
 The motor head correctly identifies all 10,246 ACIM and 8,668 PMSM attack windows when evaluated conditional on true attacks. Including detector misses, correct detection plus identity is 95.32\%, and the complete normal/ACIM/PMSM decision has 93.46\% accuracy (Fig.~\ref{fig:joint_outputs}). This conditional 100\% identity result is distinct from complete-pipeline performance.
 
@@ -288,11 +294,7 @@ A subset restricted to 596 speed/load/phase/severity configurations shared by se
 
 Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels. Exact ABC accuracy is 75.27\%, mean phase balanced accuracy is 85.88\%, and macro-F1, averaged over the three phase-label F1 scores, is 0.8965. Predicting 111 for every window gives 57.85\% exact accuracy. On normal windows, 86.10\% have all flags correctly zero. Figure~\ref{fig:phase_patterns} shows joint three-phase decisions, separating missed from extra phase flags. Exact phase-set recall is 91.11\% for A+B+C, and 10.97--43.72\% for single- and two-phase patterns. The auxiliary severity MAE is 0.1243 on affected phases, versus 0.1226 for the training-median baseline; start-presence F1 is 0.425 and known-start position MAE is 19.23 samples. These auxiliary results do not support reliable severity/timing claims.
 
-\begin{figure}[!t]\centering
-    \includegraphics[width=\linewidth]{figures/phase_set_errors_rebalanced.pdf}
-    \caption{Joint three-phase identification. Filled markers indicate targeted A/B/C phases; open markers indicate unaffected phases. Bars separate exact decisions, missed phases, extra phases, and both errors. Each row is normalized by its true phase-set count $n$; normal windows are included. Outputs are the three raw phase sigmoids at threshold 0.5.}
-    \label{fig:phase_patterns}
-\end{figure}
+
 
 
 

@@ -452,11 +452,11 @@ A subset restricted to 596 speed/load/phase/severity configurations shared by se
 \DIFdelendFL \DIFaddbeginFL \label{fig:joint_outputs}
 \end{figure*}
 
-\begin{figure}[!t]\centering
-    \includegraphics[width=\linewidth]{figures/phase_set_errors_rebalanced.pdf}
-    \caption{\DIFaddFL{Joint three-phase identification. Filled markers indicate targeted A/B/C phases; open markers indicate unaffected phases. Bars separate exact decisions, missed phases, extra phases, and both errors. Each row is normalized by its true phase-set count $n$; normal windows are included. Outputs are the three raw phase sigmoids at threshold 0.5.}}
+\begin{figure*}[!t]\centering
+    \includegraphics[width=.95\linewidth,height=.72\textheight,keepaspectratio]{figures/phase_confusion_named_errors_rebalanced.pdf}
+    \caption{\DIFaddFL{Joint A/B/C phase confusion, including normal cases. Cells show counts, percentages within each true phase set, and named phase errors: $-\{A,B\}$ means A and B missed, while $+\{C\}$ means C added. Exact denotes a correct phase set. Raw phase outputs use threshold 0.5.}}
     \label{fig:phase_patterns}
-\end{figure}
+\end{figure*}
 \DIFaddend 
 
 
