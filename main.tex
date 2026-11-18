@@ -44,24 +44,29 @@ This paper presents a demonstration and evaluation of a supervised deep learning
 
 The growing vulnerability of cyber-physical power systems to malicious intrusions has driven extensive research into advanced, real-time anomaly detection frameworks. Recent advancements have explored deep learning techniques for intrusion detection and mitigation at the device level. For example, Aljohani et al. \cite{aljohani2024} proposed an Intrusion Detection and Mitigation System (IDMS) utilizing Deep Learning Neural Networks (DLNNs) and Long Short-Term Memory (LSTM) networks to detect False Data Injection Attacks (FDIAs) targeting Intelligent Electronic Devices (IEDs). Its digitalized-substation sensing setup differs from the motor-drive PCC setting studied here, so its reported performance provides context rather than a direct benchmark.
 
-Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \cite{guha} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data. Similarly, recent evaluations of machine learning models \cite{pmu_lstm_2025} have investigated anomaly detection using PMU data streams. These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments. Sensing and task scopes are summarized in Table~\ref{tab:prior_work}. 
+Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \cite{guha} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data. Similarly, recent evaluations of machine learning models \cite{pmu_lstm_2025} have investigated anomaly detection using PMU data streams. These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments. The original digest comparison is retained in Table~\ref{tab:prior_work}.
 
 \begin{table}[!t]
 \centering
-\caption{Sensing and task comparison with existing cyber-anomaly detection schemes. The studies use different datasets.}
+\caption{Performance Comparison with Existing Cyber Anomaly Detection Schemes}
 \label{tab:prior_work}
 \small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{.27\linewidth}p{.24\linewidth}p{.42\linewidth}@{}}
-\toprule
-Method & Sensor/setting & Task \\
-\midrule
-Aljohani et al.~\cite{aljohani2024} & IED/substation & FDIA detection and mitigation \\
-Guha et al.~\cite{guha} & Grid phasors & Unsupervised anomaly detection \\
-Dasari et al.~\cite{pmu_lstm_2025} & PMU/39-bus & Multiclass anomaly detection \\
-Proposed & EMU/motor PCC & FDIA detection and motor/phase identification \\
-\bottomrule
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|p{.245\linewidth}|>{\centering\arraybackslash}p{.17\linewidth}|>{\centering\arraybackslash}p{.15\linewidth}|>{\centering\arraybackslash}p{.115\linewidth}|>{\centering\arraybackslash}p{.20\linewidth}|}
+\hline
+\textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
+\hline
+Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
+\hline
+Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
+\hline
+Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
+\hline
+\textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
+\hline
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize Original digest values are retained. Studies use different datasets; current matched-baseline and rebalanced results are reported in Tables~\ref{tab:comparison} and~\ref{tab:all_heads}.\end{minipage}
 \end{table}
 
 Motivated by the instrumentation requirements of PMU/IED-centric methods, an EMU-based PCC solution is presented; the key contributions are:

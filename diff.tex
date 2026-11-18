@@ -126,27 +126,6 @@
 \emergencystretch=3em
 \renewcommand{\DIFadd}[1]{{\protect\color{blue}\protect\uline{#1}}}
 \renewcommand{\DIFdel}[1]{{\protect\color{red}\protect\sout{#1}}}
-\newcommand{\APECReviewOldTableA}{%
-\begin{table}[H]
-    \centering\color{red}
-    \caption{\DIFdel{Performance Comparison with Existing Cyber Anomaly Detection Schemes}}
-    \label{tab:comparison_digest}
-    \renewcommand{\arraystretch}{1.3} % Adds a little padding to the rows
-    \begin{tabular}{|l|c|c|c|c|}
-        \hline
-\DIFdel{\textbf{Methodology}} & \DIFdel{\textbf{Sensor Data}} & \DIFdel{\textbf{Accuracy}} & \DIFdel{\textbf{Real-Time}} & \DIFdel{\textbf{Edge Scalability}} \\
-        \hline
-\DIFdel{Aljohani \textit{et al.} \mbox{\cite{aljohani2024}} (LSTM)} & \DIFdel{IED / Substation} & \DIFdel{$\sim$95\%} & \DIFdel{Yes} & \DIFdel{Low (High Cost)} \\
-        \hline
-\DIFdel{Guha \textit{et al.} \mbox{\cite{guha}} (VAE)} & \DIFdel{PMU} & \DIFdel{$\sim$89\%} & \DIFdel{No} & \DIFdel{Low (High Cost)} \\
-        \hline
-\DIFdel{Initial Baseline (Standard LSTM)} & \DIFdel{EMU} & \DIFdel{$\sim$81\%} & \DIFdel{Yes} & \DIFdel{High (Low Cost)} \\
-        \hline
-\DIFdel{\textbf{Proposed (Bi-GRU)}} & \DIFdel{\textbf{EMU}} & \DIFdel{\textbf{$\sim$92\%}} & \DIFdel{\textbf{Yes}} & \DIFdel{\textbf{High (Low Cost)}} \\
-        \hline
-    \end{tabular}
-\end{table}
-}
 \newcommand{\APECReviewNewTableA}{%
 
 \begin{table}[!t]
@@ -174,21 +153,26 @@
 
 \newcommand{\APECRequestedLiteratureTable}{%
 \begin{table}[!t]
-\centering\color{blue}
-\caption{\DIFadd{Sensing and task comparison with existing cyber-anomaly detection schemes. The studies use different datasets.}}
+\centering
+\caption{Performance Comparison with Existing Cyber Anomaly Detection Schemes}
 \label{tab:prior_work}
 \small
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{@{}p{.27\linewidth}p{.24\linewidth}p{.42\linewidth}@{}}
-\toprule
-\DIFadd{Method} & \DIFadd{Sensor/setting} & \DIFadd{Task} \\
-\midrule
-\DIFadd{Aljohani et al.~\mbox{\cite{aljohani2024}}} & \DIFadd{IED/substation} & \DIFadd{FDIA detection and mitigation} \\
-\DIFadd{Guha et al.~\mbox{\cite{guha}}} & \DIFadd{Grid phasors} & \DIFadd{Unsupervised anomaly detection} \\
-\DIFadd{Dasari et al.~\mbox{\cite{pmu_lstm_2025}}} & \DIFadd{PMU/39-bus} & \DIFadd{Multiclass anomaly detection} \\
-\DIFadd{Proposed} & \DIFadd{EMU/motor PCC} & \DIFadd{FDIA detection and motor/phase identification} \\
-\bottomrule
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{|p{.245\linewidth}|>{\centering\arraybackslash}p{.17\linewidth}|>{\centering\arraybackslash}p{.15\linewidth}|>{\centering\arraybackslash}p{.115\linewidth}|>{\centering\arraybackslash}p{.20\linewidth}|}
+\hline
+\textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
+\hline
+Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
+\hline
+Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
+\hline
+Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
+\hline
+\textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
+\hline
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize \DIFadd{Original digest values are retained. Studies use different datasets; current matched-baseline and rebalanced results are reported in Tables~\mbox{\ref{tab:comparison}} and~\mbox{\ref{tab:all_heads}}.}\end{minipage}
 \end{table}
 }
 \newcommand{\APECAllHeadMetrics}{%
@@ -253,7 +237,7 @@ This \DIFdelbegin \DIFdel{digest }\DIFdelend \DIFaddbegin \DIFadd{paper }\DIFadd
 
 The growing vulnerability of cyber-physical power systems to malicious intrusions has driven extensive research into advanced, real-time anomaly detection frameworks. Recent advancements have explored deep learning techniques for intrusion detection and mitigation at the device level. For example, Aljohani et al. \mbox{\cite{aljohani2024}} proposed an Intrusion Detection and Mitigation System (IDMS) utilizing Deep Learning Neural Networks (DLNNs) and Long Short-Term Memory (LSTM) networks to detect False Data Injection Attacks (FDIAs) targeting Intelligent Electronic Devices (IEDs). \DIFdelbegin \DIFdel{However, a primary limitation of this framework is its design focus on digitalized substations, which prevents it from providing ubiquitous, low-cost visibility at the consumer edge}\DIFdelend \DIFaddbegin \DIFadd{Its digitalized-substation sensing setup differs from the motor-drive PCC setting studied here, so its reported performance provides context rather than a direct benchmark}\DIFaddend .
 
-Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \mbox{\cite{guha}} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data\DIFdelbegin \DIFdel{; yet, such approaches often assume relatively balanced operational states or require massive amounts of uncorrupted data, struggling with the severe class imbalances found in authentic grid environments}\DIFdelend . Similarly, recent evaluations of \DIFdelbegin \DIFdel{hybrid architectures, such as CNN-LSTMs \mbox{\cite{pmu_lstm_2025}} , have demonstrated high efficacy in detecting multi-class anomalies }\DIFdelend \DIFaddbegin \DIFadd{machine learning models \mbox{\cite{pmu_lstm_2025}} have investigated anomaly detection }\DIFaddend using PMU data streams. \DIFdelbegin \DIFdel{While highly effective, these existing methodologies are fundamentally limited by their reliance on the high sampling frequencies and precise GPS synchronization inherent to costly PMU monitoring equipment}\DIFdelend \DIFaddbegin \DIFadd{These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments. Sensing and task scopes are summarized in Table~\mbox{\ref{tab:prior_work}}}\DIFaddend . 
+Furthermore, contemporary research has heavily focused on leveraging deep learning alongside Phasor Measurement Units (PMUs) for high-fidelity anomaly detection. Guha et al. \mbox{\cite{guha}} developed an LSTM-based Variational Autoencoder (VAE) to detect anomalies in unsupervised power grid data\DIFdelbegin \DIFdel{; yet, such approaches often assume relatively balanced operational states or require massive amounts of uncorrupted data, struggling with the severe class imbalances found in authentic grid environments}\DIFdelend . Similarly, recent evaluations of \DIFdelbegin \DIFdel{hybrid architectures, such as CNN-LSTMs \mbox{\cite{pmu_lstm_2025}} , have demonstrated high efficacy in detecting multi-class anomalies }\DIFdelend \DIFaddbegin \DIFadd{machine learning models \mbox{\cite{pmu_lstm_2025}} have investigated anomaly detection }\DIFaddend using PMU data streams. \DIFdelbegin \DIFdel{While highly effective, these existing methodologies are fundamentally limited by their reliance on the high sampling frequencies and precise GPS synchronization inherent to costly PMU monitoring equipment}\DIFdelend \DIFaddbegin \DIFadd{These studies use different datasets and sensing arrangements; their accuracies are not directly compared with the PCC experiments. The original digest comparison is retained in Table~\mbox{\ref{tab:prior_work}}}\DIFaddend .
 
 \APECRequestedLiteratureTable{}
 
@@ -475,7 +459,7 @@ A subset restricted to 596 speed/load/phase/severity configurations shared by se
 \end{figure}
 \DIFaddend 
 
-\DIFdelbegin \APECReviewOldTableA{}\DIFdelend  
+
 
 \DIFdelbegin %DIFDELCMD < \begin{figure}
 %DIFDELCMD <     \centering
