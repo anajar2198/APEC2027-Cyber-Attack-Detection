@@ -251,7 +251,7 @@ Figure~\ref{fig:Severityeffect} evaluates detection across stored severity group
 
 
 \subsection{Comparison with Other Methods}
-To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based detection with prior PMU-based~\cite{guha} and IED-based~\cite{aljohani2024} approaches in terms of accuracy, real-time capability, and edge scalability. The EMU entries report the earlier standard LSTM and binary Bi-GRU results; the current rebalanced model is evaluated below.
+To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based detection with prior PMU-based~\cite{guha} and IED-based~\cite{aljohani2024} approaches in terms of accuracy, real-time capability, and edge scalability. The EMU entries report the current LSTM baseline and rebalanced multihead CNN--Bi-GRU results.
 
 \begin{table}[!t]
 \centering
@@ -267,13 +267,13 @@ Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$9
 
 Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
 
-Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
+Standard LSTM & EMU & 84.89\% & Yes & High (Low Cost) \\
 
-\textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
+\textbf{Rebalanced multihead CNN--Bi-GRU (proposed)} & \textbf{EMU} & \textbf{93.46\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
 \bottomrule
 \end{tabular}
 \par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. EMU rows summarize the earlier binary detectors.\end{minipage}
+\begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. EMU accuracies use the same 23,540 validation windows.\end{minipage}
 \end{table}
 
 Table~\ref{tab:comparison} compares LSTM, CNN--LSTM, CNN--Bi-GRU, and the proposed model. LSTM, CNN--LSTM, and CNN--Bi-GRU share the same inputs, split, width 64, Adam learning rate $10^{-3}$, batch size 128, the initial attack weights in Eq.~\ref{eq:attack_weights}, and at most 40 epochs; checkpoints maximize validation balanced accuracy at threshold 0.5. The proposed model receives additional multihead training and fine-tuning, so the comparison evaluates complete pipelines rather than architecture alone.
