@@ -43,6 +43,25 @@ A.~Najar, H.~Yang, J.~Ye, and W.~Song, ``A data-driven algorithm for estimating
   \emph{Proc. IEEE Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp.
   2359--2364.
 
+\bibitem{Habibi2026DataCenters}
+A.~Habibi and M.~Ferdowsi, ``Review of the {800-VDC} power delivery
+  architecture and isolated {800-V} to {48-V} converter solutions for future
+  {AI} data centers,'' \emph{IEEE Access}, vol.~14, pp. 171\,985--172\,010,
+  2026.
+
+\bibitem{Lotfi2026FCML}
+A.~Lotfi, S.~Krishnakumar, A.~Gohari~Nazari, M.~B. Shadmand, and
+  I.~Partin-Vaisband, ``Interleaved resonant {FCML} converter architecture for
+  scalable vertical power delivery in high-performance computing systems,'' in
+  \emph{Proc. IEEE Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp.
+  2495--2500.
+
+\bibitem{Omidi2026HybridSensor}
+A.~Omidi, H.~H. Chaudhry, A.~Ajiboye, A.~Khaligh, and B.~Parkhideh,
+  ``Digitization of a hybrid current sensor for enhanced measurement accuracy
+  and noise reduction in power electronics applications,'' in \emph{Proc. IEEE
+  Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp. 2219--2225.
+
 \bibitem{aljohani2024}
 A.~Aljohani, M.~AlMuhaini, H.~V. Poor, and H.~M. Binqadhi, ``A deep
   learning-based cyber intrusion detection and mitigation system for smart
@@ -69,24 +88,5 @@ K.~Cho, B.~{van Merri{\"e}nboer}, C.~Gulcehre, D.~Bahdanau, F.~Bougares,
 \bibitem{schuster1997}
 M.~Schuster and K.~K. Paliwal, ``Bidirectional recurrent neural networks,''
   \emph{IEEE Trans. Signal Process.}, vol.~45, no.~11, pp. 2673--2681, 1997.
-
-\bibitem{Habibi2026DataCenters}
-A.~Habibi and M.~Ferdowsi, ``Review of the {800-VDC} power delivery
-  architecture and isolated {800-V} to {48-V} converter solutions for future
-  {AI} data centers,'' \emph{IEEE Access}, vol.~14, pp. 171\,985--172\,010,
-  2026.
-
-\bibitem{Lotfi2026FCML}
-A.~Lotfi, S.~Krishnakumar, A.~Gohari~Nazari, M.~B. Shadmand, and
-  I.~Partin-Vaisband, ``Interleaved resonant {FCML} converter architecture for
-  scalable vertical power delivery in high-performance computing systems,'' in
-  \emph{Proc. IEEE Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp.
-  2495--2500.
-
-\bibitem{Omidi2026HybridSensor}
-A.~Omidi, H.~H. Chaudhry, A.~Ajiboye, A.~Khaligh, and B.~Parkhideh,
-  ``Digitization of a hybrid current sensor for enhanced measurement accuracy
-  and noise reduction in power electronics applications,'' in \emph{Proc. IEEE
-  Appl. Power Electron. Conf. Expo. (APEC)}, 2026, pp. 2219--2225.
 
 \end{thebibliography}
