@@ -1,8 +1,8 @@
-% Approved cuts only. Baseline: main.tex at 9f7a905c8e26e8cf9641e4f8e4548a819761e227.
+% Approved cuts and prior-work table styling. Baseline: main.tex at 9f7a905.
 \RequirePackage[T1]{fontenc}
 %DIF LATEXDIFF DIFFERENCE FILE
-%DIF DEL private_before_cuts.tex   Wed Nov 18 17:20:16 2026
-%DIF ADD main.tex                  Wed Nov 18 17:20:16 2026
+%DIF DEL private_before_cuts.tex   Wed Nov 18 17:42:43 2026
+%DIF ADD main.tex                  Wed Nov 18 17:42:43 2026
 \documentclass[conference,letterpaper]{IEEEtran}
 \usepackage{cite}
 \usepackage{amsmath,amssymb}
@@ -64,7 +64,7 @@ A framework was developed based on a multihead convolutional neural network (CNN
 
 Traditional grid monitoring systems heavily rely on Phasor Measurement Units (PMUs) and micro-PMUs for high-fidelity anomaly detection. While these devices offer exceptional synchronization and monitoring capabilities, their high reporting rates and precise Global Positioning System (GPS) synchronization increase hardware and deployment costs~\cite{vonmeier2017}. This cost barrier results in limited deployment at the consumer edge, creating a significant visibility gap in the power distribution network where edge devices remain highly vulnerable to undetected intrusions.
 
-To address this critical visibility gap, this work proposes the utilization of low-cost Electric Measurement Units (EMUs) as a sensing platform. In this setup, EMUs (smart-plug form factor) are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. Related smart-plug PCC measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment. 
+To address this critical visibility gap, this work proposes the utilization of low-cost Electric Measurement Units (EMUs) as a sensing platform. In this setup, EMUs (smart-plug form factor) are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. Related smart-plug PCC measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment.
 
 Beyond the motor-drive setting evaluated here, the EMU-based monitoring framework could also be extended to other power-electronic applications, including AI data centers and high-performance computing systems \cite{Habibi2026DataCenters,Lotfi2026FCML}.
 Reliable electrical measurements in these converter-rich environments require consideration of switching-induced interference \cite{Omidi2026HybridSensor}.
@@ -139,7 +139,7 @@ For binary detection, \texttt{is\_attack} is 1 if any sample in the window is at
 \textbf{Input (X)} & \textbf{Features} & \textbf{Count} \\ \hline
 Current Features & Amp, Amp$_2^*$, Freq, Freq$_2^*$, Phase, RMS, ROCOF, THD & 8 \\
 Voltage Features & Amp, Amp$_2$, Freq, Freq$_2$, Phase, RMS, ROCOF, THD & 8 \\ \hline
-\textbf{Output (y)} & \textbf{Description} & \textbf{Scope} \\ 
+\textbf{Output (y)} & \textbf{Description} & \textbf{Scope} \\
 \hline
 \texttt{is\_attack} & Binary (0=Normal, 1=Attack) & 2 \\
 \texttt{is\_onset} & First attack index (0--127); $-1$ if absent & 128 \\
@@ -197,11 +197,11 @@ The merged dataset is class-imbalanced (roughly 80\% attack and 20\% normal). Du
 %DIFAUXCMD
 \addtocounter{subsection}{-1}%DIFAUXCMD
 \DIFdel{The final pipeline computes first-order differences, preserves sequence length by prepending the first time step, and concatenates the differences with the raw features. The resulting representation is feature-wise standardized, providing both absolute-state context and rate-of-change dynamics.
-}%DIFDELCMD < 
+}%DIFDELCMD <
 
 %DIFDELCMD < %%%
 \DIFdelend \subsection{Multihead Training and Validation}
-The split is stratified 80/20 at seed 42: 94,157 training and 23,540 validation windows (4,626 normal; 18,914 attack). Adjacent windows share 112 of 128 samples; recordings can occur in both partitions. 
+The split is stratified 80/20 at seed 42: 94,157 training and 23,540 validation windows (4,626 normal; 18,914 attack). Adjacent windows share 112 of 128 samples; recordings can occur in both partitions.
 
 Initial multihead training uses Adam at $10^{-3}$ for up to 40 epochs, followed by 45 epochs of rebalanced fine-tuning. The stage-specific loss is
 \begin{equation}
@@ -291,19 +291,35 @@ To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based de
 \label{tab:prior_work}
 \small
 \setlength{\tabcolsep}{2pt}
-\begin{tabular}{|p{.245\linewidth}|>{\centering\arraybackslash}p{.17\linewidth}|>{\centering\arraybackslash}p{.15\linewidth}|>{\centering\arraybackslash}p{.115\linewidth}|>{\centering\arraybackslash}p{.20\linewidth}|}
-\hline
-\textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
-\hline
-Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
-\hline
-Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
-\hline
-Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
-\hline
-\textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
-\hline
-\end{tabular}
+\DIFdelbeginFL %DIFDELCMD < \begin{tabular}{|p{.245\linewidth}|>{\centering\arraybackslash}p{.17\linewidth}|>{\centering\arraybackslash}p{.15\linewidth}|>{\centering\arraybackslash}p{.115\linewidth}|>{\centering\arraybackslash}p{.20\linewidth}|}
+%DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{tabular}{@{}>{\raggedright\arraybackslash}p{.245\linewidth}>{\centering\arraybackslash}p{.17\linewidth}>{\centering\arraybackslash}p{.15\linewidth}>{\centering\arraybackslash}p{.115\linewidth}>{\centering\arraybackslash}p{.20\linewidth}@{}}
+\toprule
+\DIFaddendFL \textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
+\DIFdelbeginFL %DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \midrule
+\DIFaddendFL Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
+\DIFdelbeginFL %DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL
+
+\DIFaddendFL Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
+\DIFdelbeginFL %DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL
+
+\DIFaddendFL Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
+\DIFdelbeginFL %DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL
+
+\DIFaddendFL \textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
+\DIFdelbeginFL %DIFDELCMD < \hline
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \bottomrule
+\DIFaddendFL \end{tabular}
 \par\vspace{2pt}
 \begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. EMU rows summarize the earlier binary detectors.\end{minipage}
 \end{table}
@@ -314,7 +330,7 @@ Table~\ref{tab:comparison} compares LSTM, CNN--LSTM, CNN--Bi-GRU, and the propos
 and IED-based~\mbox{%DIFAUXCMD
 \cite{aljohani2024} }\hskip0pt%DIFAUXCMD
 studies provide context because their datasets and sensing setups differ.
-}\DIFdelend 
+}\DIFdelend
 
 
 \begin{table}[!t]

@@ -259,18 +259,18 @@ To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based de
 \label{tab:prior_work}
 \small
 \setlength{\tabcolsep}{2pt}
-\begin{tabular}{|p{.245\linewidth}|>{\centering\arraybackslash}p{.17\linewidth}|>{\centering\arraybackslash}p{.15\linewidth}|>{\centering\arraybackslash}p{.115\linewidth}|>{\centering\arraybackslash}p{.20\linewidth}|}
-\hline
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{.245\linewidth}>{\centering\arraybackslash}p{.17\linewidth}>{\centering\arraybackslash}p{.15\linewidth}>{\centering\arraybackslash}p{.115\linewidth}>{\centering\arraybackslash}p{.20\linewidth}@{}}
+\toprule
 \textbf{Methodology} & \textbf{Sensor Data} & \textbf{Accuracy} & \textbf{Real-Time} & \textbf{Edge Scalability} \\
-\hline
+\midrule
 Aljohani \textit{et al.} \cite{aljohani2024} (LSTM) & IED / Substation & $\sim$95\% & Yes & Low (High Cost) \\
-\hline
+
 Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost) \\
-\hline
+
 Initial Baseline (Standard LSTM) & EMU & $\sim$81\% & Yes & High (Low Cost) \\
-\hline
+
 \textbf{Proposed (Bi-GRU)} & \textbf{EMU} & \textbf{$\sim$92\%} & \textbf{Yes} & \textbf{High (Low Cost)} \\
-\hline
+\bottomrule
 \end{tabular}
 \par\vspace{2pt}
 \begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. EMU rows summarize the earlier binary detectors.\end{minipage}
