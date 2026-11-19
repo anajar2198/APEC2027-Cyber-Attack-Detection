@@ -211,30 +211,28 @@ Epoch selection averages attack balanced accuracy, conditional motor balanced ac
 
 Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using precision, recall, F1, balanced accuracy, and accuracy. Table~\ref{tab:all_heads} summarizes validation metrics for all six heads. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve).
 
-\agent{for this table it is not clear each task. attack detection is ok. motor detection is not. totally we have 6 Heads. this table should have metrics for each head. nothing more. Do we need the caption for table ? It is adding the unclear to table. I think we need to delete caption or make it short as possible. just what is really need. }
 \begin{table}[t]
 \centering
-\caption{Validation metrics for all six heads. Classification scores are percentages.}
+\caption{Six-head validation metrics.}
 \label{tab:all_heads}
 \small
 \setlength{\tabcolsep}{2.5pt}
 \begin{tabular}{@{}lrrrrr@{}}
 \toprule
-Output / evaluation & Acc. & Bal. acc. & Prec. & Rec. & F1 \\
+Classification (\%) & Acc. & Bal. acc. & Prec. & Rec. & F1 \\
 \midrule
-Attack & 93.46 & 90.59 & 96.50 & 95.32 & 95.90 \\
-Motor $\mid$ attack & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 \\
-Normal/motor & 93.46 & 92.17 & 91.58 & 92.17 & 91.86 \\
-Phases$^{a}$ & 75.27 & 85.88 & 92.85 & 86.67 & 89.65 \\
-Start presence & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
+Attack detection & 93.46 & 90.59 & 96.50 & 95.32 & 95.90 \\
+Motor identity$^{a}$ & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 \\
+Phase identification$^{b}$ & 75.27 & 85.88 & 92.85 & 86.67 & 89.65 \\
+Attack-start detection & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
 \midrule
-\multicolumn{2}{@{}l}{Regression output} & MAE & RMSE & $R^2$ & Ref. MAE \\
-\multicolumn{2}{@{}l}{Severity} & 0.1243 & 0.1483 & -0.0739 & 0.1226 \\
-\multicolumn{2}{@{}l}{Start position} & 19.23 & 25.36 & 0.5412 & 32.58 \\
+\multicolumn{2}{@{}l}{Regression} & MAE & RMSE & $R^2$ & Ref. MAE \\
+\multicolumn{2}{@{}l}{Severity estimation} & 0.1243 & 0.1483 & -0.0739 & 0.1226 \\
+\multicolumn{2}{@{}l}{Attack-start position} & 19.23 & 25.36 & 0.5412 & 32.58 \\
 \bottomrule
 \end{tabular}
 \par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize Motor $\mid$ attack: 18,914 attacks; others: 23,540 windows. Normal/motor Prec./Rec./F1: class means. $^{a}$Phase accuracy: exact ABC; other phase metrics: label means. Severity: 48,782 affected-phase values (stored units); position: 4,351 known starts (samples). MAE/RMSE: mean absolute/root mean squared error; $R^2$: coefficient of determination. Ref. MAE: training-median error.\end{minipage}
+\begin{minipage}{\linewidth}\footnotesize $^{a}$Motor identity: 18,914 true-attack windows; other classification heads: all 23,540 windows. $^{b}$Phase accuracy: exact ABC; other phase metrics: means over A, B, and C. Severity: 48,782 affected-phase values (stored units); position: 4,351 known starts (samples). MAE/RMSE: mean absolute/root mean squared error; $R^2$: coefficient of determination. Ref. MAE: training-median error.\end{minipage}
 \end{table}
 
 
