@@ -162,7 +162,7 @@ The classifier comprises two Conv1D blocks (64 filters, kernel size 3) with Batc
 \begin{figure*}[t]
     \centering
     \includegraphics[width=.85\textwidth]{figures/architecture_rebalanced_apec2027.pdf}
-    \caption{The evaluated multihead CNN--Bi-GRU. Six parallel output heads share the convolutional and recurrent representation. Blue heads provide attack, motor, and phase classifications; gray heads are auxiliary severity/timing outputs.}
+    \caption{The evaluated multihead CNN--Bi-GRU. Six parallel output heads share the convolutional and recurrent representation. }
     \label{architecture}
 \end{figure*}
 
@@ -247,7 +247,7 @@ Fig.~\ref{fig:Severityeffect} evaluates detection recall and false negative rate
 
 \begin{figure*}[!t]\centering
     \includegraphics[width=\textwidth]{figures/all_task_diagnostics_phase_sets_rebalanced.pdf}
-    \caption{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) number of incorrect phase flags per window, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows. Matrices show counts and true-row percentages; regression panels show sample density and a diagonal reference.}
+    \caption{Six-head evaluation: (a) attack detection, (b) complete detection-plus-motor decisions, (c) number of incorrect phase flags per window, (d) severity on affected phases, (e) start presence, and (f) position on known-start windows.}
     \label{fig:joint_outputs}
 \end{figure*}
 
@@ -276,7 +276,7 @@ proposed CNN--Bi-GRU & EMU & 93.46\% & Yes & High (Low Cost) \\
 \bottomrule
 \end{tabular}
 \par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. EMU accuracies use the same 23,540 validation windows.\end{minipage}
+\begin{minipage}{\linewidth}\footnotesize Reported accuracies concern different datasets and sensing setups. \end{minipage}
 \end{table}
 
 Table~\ref{tab:comparison} compares LSTM, CNN--LSTM, CNN--Bi-GRU, and the proposed model. LSTM, CNN--LSTM, and CNN--Bi-GRU share the same inputs, split, width 64, Adam learning rate $10^{-3}$, batch size 128, the initial attack weights in \eqref{eq:attack_weights}, and at most 40 epochs; checkpoints maximize validation balanced accuracy at threshold 0.5. The proposed model receives additional multihead training and fine-tuning, so the comparison evaluates complete pipelines rather than architecture alone.
@@ -284,7 +284,7 @@ Table~\ref{tab:comparison} compares LSTM, CNN--LSTM, CNN--Bi-GRU, and the propos
 
 \begin{table}[!t]
 \centering
-\caption{Attack detection performance. Rates are percentages; FPR denotes false-positive rate. }
+\caption{Attack detection performance. }
 \label{tab:comparison}
 \setlength{\tabcolsep}{3pt}
 \small
@@ -301,6 +301,9 @@ CNN--Bi-GRU & 89.00 & 85.16 & 91.49 & 21.16 \\
 CNN--Bi-GRU (proposed) & 93.46 & 90.59 & 95.32 & 14.14 \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize Rates are percentages; FPR denotes false-positive rate. 
+\end{minipage}
 \end{table}
 
 
@@ -329,7 +332,7 @@ Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels.
 
 \begin{figure}[!t]\centering
     \includegraphics[width=\linewidth]{figures/phase_confusion_named_errors_rebalanced.pdf}
-    \caption{Joint A/B/C phase confusion, including normal cases. Cells show counts, percentages within each true phase set, and named phase errors: $-\{A,B\}$ means A and B missed, while $+\{C\}$ means C added. Exact denotes a correct phase set. Raw phase outputs use threshold 0.5.}
+    \caption{Joint A/B/C phase confusion, including normal cases. Cells show counts, percentages within each true phase set, and named phase errors: $-\{A,B\}$ means A and B missed, while $+\{C\}$ means C added.}
     \label{fig:phase_patterns}
 \end{figure}
 
@@ -342,11 +345,11 @@ Raw phase outputs include all 23,540 windows, including normal $(0,0,0)$ labels.
 \subsection{Coverage of Recorded Operating Conditions}
 
 
-Fig.~\ref{fig:operating_conditions} shows attack recall and sample counts across all 12 recorded motor--speed--load combinations. Recall ranges from 94.09\% (ACIM, 700 RPM, load setting 2) to 96.17\% (PMSM, 1300 RPM, load setting 3), at the same threshold 0.5. This supports consistent attack sensitivity across represented settings.
+Fig.~\ref{fig:operating_conditions} shows attack recall and sample counts across all 12 recorded motor--speed--load combinations. Recall ranges from 94.09\% (ACIM, 700 RPM, load setting 2) to 96.17\% (PMSM, 1300 RPM, load setting 3). This supports consistent attack sensitivity across represented settings.
 
 \begin{figure}[!t]\centering
     \includegraphics[width=.9\linewidth]{figures/operating_conditions_rebalanced.pdf}
-    \caption{Attack recall and attack-window counts for all 12 recorded operating conditions. Both motors operate; labels identify the attacked motor's settings. Threshold 0.5 is fixed throughout.}
+    \caption{Attack recall and attack-window counts for all 12 recorded operating conditions. Both motors operate; labels identify the attacked motor's settings.}
     \label{fig:operating_conditions}
 \end{figure}
 
