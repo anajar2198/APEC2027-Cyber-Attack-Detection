@@ -26,6 +26,11 @@ Y.~Liu, P.~Ning, and M.~K. Reiter, ``False data injection attacks against state
   estimation in electric power grids,'' in \emph{Proc. 16th ACM Conf. Comput.
   Commun. Secur.}, 2009, pp. 21--32.
 
+\bibitem{Taheritajar2025Acoustic}
+A.~Taheritajar and R.~Rahaeimehr, ``Acoustic side channel attack on keyboards
+  based on typing patterns,'' in \emph{Lecture Notes in Computer Science}, vol.
+  16351, 2025, pp. 562--578.
+
 \bibitem{vonmeier2017}
 A.~{von Meier}, E.~Stewart, A.~McEachern, M.~Andersen, and L.~Mehrmanesh,
   ``Precision micro-synchrophasors for distribution systems: A summary of
