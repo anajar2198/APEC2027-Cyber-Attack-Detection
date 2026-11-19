@@ -213,7 +213,7 @@ Since cyber-attack detection prioritizes missed-attack reduction, performance is
 
 \begin{table}[t]
 \centering
-\caption{Six-head validation metrics.}
+\caption{Validation performance.}
 \label{tab:all_heads}
 \small
 \setlength{\tabcolsep}{2.5pt}
@@ -232,7 +232,7 @@ Attack-start detection & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
 \bottomrule
 \end{tabular}
 \par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize $^{a}$Motor identity: 18,914 true-attack windows; other classification heads: all 23,540 windows. $^{b}$Phase accuracy: exact ABC; other phase metrics: means over A, B, and C. Severity: 48,782 affected-phase values (stored units); position: 4,351 known starts (samples). MAE/RMSE: mean absolute/root mean squared error; $R^2$: coefficient of determination. Ref. MAE: training-median error.\end{minipage}
+\begin{minipage}{\linewidth}\footnotesize $^{a}$Motor: true attacks only. $^{b}$Phase accuracy: exact ABC; other scores: phase averages. Severity: affected phases, stored units. Position: known starts, samples. Ref. MAE: training-median baseline.\end{minipage}
 \end{table}
 
 
