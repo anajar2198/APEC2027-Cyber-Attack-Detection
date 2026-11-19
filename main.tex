@@ -31,7 +31,7 @@ Athens, Georgia, USA\\
 
 
 \begin{abstract}
-As components of the electrical grid become increasingly connected through the internet, they face a growing threat from cyber attacks. In this paper, a deep learning framework is developed to detect false data injection attacks (FDIAs) in a multi-motor electrical motor testbed using features gathered by an electric measurement unit (EMU). EMUs are plug-and-play sensor devices placed at the Point of Common Coupling (PCC) that feed electrical motors in the testbed. EMUs are scalable devices which can be installed in large number and provide features voltage and current signal up to 60~Hz. In these experiments, data were recorded at 7~Hz to assess detection feasibility without requiring high-frequency measurements. Different speed and load scenarios are generated for permanent magnet synchronous motor (PMSM) and AC induction motor (ACIM), with both motors operating while one is attacked.
+As components of the electrical grid become increasingly connected through the network, they face a growing threat from cyber attacks. In this paper, a deep learning framework is developed to detect false data injection attacks (FDIAs) in a multi-motor electrical motor testbed using features gathered by an electric measurement unit (EMU). EMUs are plug-and-play sensor devices placed at the Point of Common Coupling (PCC) that feed electrical motors in the testbed. EMUs are scalable devices which can be installed in large number and provide features voltage and current signal up to 60~Hz. In these experiments, data were recorded at 7~Hz to assess detection feasibility without requiring high-frequency measurements. Different speed and load scenarios are generated for permanent magnet synchronous motor (PMSM) and AC induction motor (ACIM), with both motors operating while one is attacked.
 A framework was developed based on a multihead convolutional neural network (CNN) and bidirectional gated recurrent unit (Bi-GRU) architecture to better capture complex irregularities in time-series data. The complete rebalanced CNN--Bi-GRU model achieves 93.46\% accuracy, 90.59\% balanced accuracy, and 95.32\% attack recall, with a 14.14\% false-positive rate. Correct detection plus motor identification reaches 95.32\% across all 18,914 attack windows.
 \end{abstract}
 
@@ -40,11 +40,11 @@ Cyberattack detection, electrical monitoring units, point of common coupling, mo
 \end{IEEEkeywords}
 
 \section{Introduction}
-Increased Internet of Things (IoT) connectivity has expanded the attack surface for malicious cyber threats, such as False Data Injection Attacks (FDIAs)~\cite{liu2009}---implemented as analog-to-digital converter (ADC) offset bias on phase-current feedback---and distributed denial-of-service disruptions. Physical side-channel attacks have also exploited externally observable signals \cite{Taheritajar2025Acoustic}. Because cyber attacks on power systems rarely manifest as obvious, single-point physical failures---but rather as subtle, sequential deviations in electrical waveforms over time---standard static detection methods frequently fail to identify them, creating a critical need for advanced, time-series anomaly detection frameworks.
+Increased network connectivity has expanded the attack surface for malicious cyber threats, such as False Data Injection Attacks (FDIAs)~\cite{liu2009}---implemented as analog-to-digital converter (ADC) offset bias on phase-current feedback---and distributed denial-of-service disruptions. Physical side-channel attacks have also exploited externally observable signals \cite{Taheritajar2025Acoustic}. Because cyber attacks on power systems rarely manifest as obvious, single-point physical failures---but rather as subtle, sequential deviations in electrical waveforms over time---standard static detection methods frequently fail to identify them, creating a critical need for advanced, time-series anomaly detection frameworks.
 
 Traditional grid monitoring systems heavily rely on Phasor Measurement Units (PMUs) and micro-PMUs for high-fidelity anomaly detection. While these devices offer exceptional synchronization and monitoring capabilities, their high reporting rates and precise Global Positioning System (GPS) synchronization increase hardware and deployment costs~\cite{vonmeier2017}. This cost barrier results in limited deployment at the consumer edge, creating a significant visibility gap in the power distribution network where edge devices remain highly vulnerable to undetected intrusions.
 
-To address this critical visibility gap, this work proposes the utilization of low-cost Electrical Monitoring Units (EMUs) as a sensing platform. In this setup, EMUs (smart-plug form factor) are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. Related smart-plug PCC measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment. 
+To address this critical visibility gap, this work proposes the utilization of low-cost Electrical Monitoring Units (EMUs) as a sensing platform. In this setup, EMUs are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. EMU measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment. 
 
 Beyond the motor-drive setting evaluated here, the EMU-based monitoring framework could also be extended to other power-electronic applications, including artificial intelligence (AI) data centers and high-performance computing systems \cite{Habibi2026DataCenters,Lotfi2026FCML}.
 Reliable electrical measurements in these converter-rich environments require consideration of switching-induced interference \cite{Omidi2026HybridSensor}.
@@ -177,9 +177,7 @@ The merged dataset is class-imbalanced (roughly 80\% attack and 20\% normal). Du
 
 
 \subsection{Multihead Training and Validation}
-The split is stratified 80/20 at seed 42: 94,157 training and 23,540 validation windows (4,626 normal; 18,914 attack). Adjacent windows share 112 of 128 samples; recordings can occur in both partitions. 
-
-Initial multihead training uses Adam at $10^{-3}$ for up to 40 epochs, followed by 45 epochs of rebalanced fine-tuning. The stage-specific loss is
+The split is stratified 80/20 at seed 42: 94,157 training and 23,540 validation windows (4,626 normal; 18,914 attack). recordings can occur in both partitions.  Initial multihead training uses Adam at $10^{-3}$ for up to 40 epochs, followed by 45 epochs of rebalanced fine-tuning. The stage-specific loss is
 \begin{equation}
 \begin{aligned}
 \mathcal{L}^{(s)} &= \sum_{k=1}^{6}\lambda_k^{(s)}\mathcal{L}_k^{(s)},\\
@@ -211,8 +209,9 @@ Epoch selection averages attack balanced accuracy, conditional motor balanced ac
 
 \section{Experimental Results}
 
-Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using precision, recall, F1, balanced accuracy, and accuracy. Table~\ref{tab:all_heads} summarizes validation metrics for all six heads.
+Since cyber-attack detection prioritizes missed-attack reduction, performance is tracked using precision, recall, F1, balanced accuracy, and accuracy. Table~\ref{tab:all_heads} summarizes validation metrics for all six heads. Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve).
 
+\agent{for this table it is not clear each task. attack detection is ok. motor detection is not. totally we have 6 Heads. this table should have metrics for each head. nothing more. Do we need the caption for table ? It is adding the unclear to table. I think we need to delete caption or make it short as possible. just what is really need. }
 \begin{table}[t]
 \centering
 \caption{Validation metrics for all six heads. Classification scores are percentages.}
@@ -239,9 +238,7 @@ Start presence & 65.54 & 66.79 & 30.70 & 68.77 & 42.45 \\
 \end{table}
 
 
-Normal-window false positives are 14.14\%; average precision is 0.9937 and ROC-AUC is 0.9758 (area under the receiver operating characteristic curve).
-
-Fig.~\ref{fig:Severityeffect} evaluates detection across stored severity groups; it does not measure severity-estimation accuracy. Fig.~\ref{fig:joint_outputs}(a) shows detection errors.
+Fig.~\ref{fig:Severityeffect} evaluates detection recall and false negative rate across stored severity groups. Fig.~\ref{fig:joint_outputs} shows performance for different tasks.
 
 \begin{figure}[!t]
     \centering
@@ -259,7 +256,7 @@ Fig.~\ref{fig:Severityeffect} evaluates detection across stored severity groups;
 
 
 \subsection{Comparison with Other Methods}
-To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based detection with prior PMU-based~\cite{guha} and IED-based~\cite{aljohani2024} approaches in terms of accuracy, real-time capability, and edge scalability. The EMU entries report the current LSTM baseline and rebalanced multihead CNN--Bi-GRU results.
+To contextualize these results, Table~\ref{tab:prior_work} compares EMU-based detection with prior PMU-based~\cite{guha} and IED-based~\cite{aljohani2024} approaches in terms of accuracy, real-time capability, and edge scalability. The EMU entries report the current LSTM baseline and proposed rebalanced multihead CNN--Bi-GRU results.
 
 \begin{table}[!t]
 \centering
@@ -277,7 +274,7 @@ Guha \textit{et al.} \cite{guha} (VAE) & PMU & $\sim$89\% & No & Low (High Cost)
 
 Standard LSTM & EMU & 84.89\% & Yes & High (Low Cost) \\
 
-Rebalanced multihead CNN--Bi-GRU (proposed) & EMU & 93.46\% & Yes & High (Low Cost) \\
+proposed CNN--Bi-GRU & EMU & 93.46\% & Yes & High (Low Cost) \\
 \bottomrule
 \end{tabular}
 \par\vspace{2pt}
