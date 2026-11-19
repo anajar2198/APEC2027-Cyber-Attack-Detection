@@ -1,4 +1,4 @@
-\documentclass[conference,letterpaper]{IEEEtran}
+\documentclass[conference]{IEEEtran}
 \usepackage[T1]{fontenc}
 \usepackage{cite}
 \usepackage{amsmath,amssymb}
@@ -12,12 +12,14 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 \newcommand{\agent}[1]{\textcolor{blue}{#1}}
 
+
+\title{Real-Time Cyber Attack Detection Using IoT-Based Electric Measurement Units at the Point of Common Coupling (PCC)
+\thanks{This research was partially supported by the  U. S. National Science Foundation TI-PFI \#2414706, DMS- AMPS \#2318809, and ECCS-EPCN \#2102032.}
+}
 \begin{document}
 
 
 
-
-\title{Real-Time Cyber Attack Detection Using IoT-Based Electric Measurement Units at the Point of Common Coupling (PCC)}
 \author{\IEEEauthorblockN{Abolfazl Najar, Thomas Prybylski, He Yang, Jin Ye, and WenZhan Song}
 \IEEEauthorblockA{\textit{College of Engineering, University of Georgia}\\
 Athens, Georgia, USA\\
@@ -31,7 +33,7 @@ A framework was developed based on a multihead convolutional neural network (CNN
 \end{abstract}
 
 \begin{IEEEkeywords}
-Cyberattack detection, electric measurement units, point of common coupling, motor drives, multihead learning.
+Cyberattack detection, electrical monitoring units, point of common coupling, motor drives, multihead learning.
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -39,7 +41,7 @@ Increased Internet of Things (IoT) connectivity has expanded the attack surface 
 
 Traditional grid monitoring systems heavily rely on Phasor Measurement Units (PMUs) and micro-PMUs for high-fidelity anomaly detection. While these devices offer exceptional synchronization and monitoring capabilities, their high reporting rates and precise Global Positioning System (GPS) synchronization increase hardware and deployment costs~\cite{vonmeier2017}. This cost barrier results in limited deployment at the consumer edge, creating a significant visibility gap in the power distribution network where edge devices remain highly vulnerable to undetected intrusions.
 
-To address this critical visibility gap, this work proposes the utilization of low-cost Electric Measurement Units (EMUs) as a sensing platform. In this setup, EMUs (smart-plug form factor) are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. Related smart-plug PCC measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment. 
+To address this critical visibility gap, this work proposes the utilization of low-cost Electrical Monitoring Units (EMUs) as a sensing platform. In this setup, EMUs (smart-plug form factor) are deployed at the point of common coupling (PCC) of a cyber-physical motor-drive testbed to emulate edge deployment conditions. The EMUs capture alternating-current (AC) power measurements using an embedded ADE chip and ESP32 microprocessor and transmit them through built-in IoT connectivity, enabling real-time edge window-based analysis~\cite{najarEMU2026}. Related smart-plug PCC measurements have been used for battery state-of-charge estimation~\cite{najarSOC2026}. EMU hardware and deployment cost a small share of PMU/micro-PMU instrumentation, supporting wider deployment. 
 
 Beyond the motor-drive setting evaluated here, the EMU-based monitoring framework could also be extended to other power-electronic applications, including artificial intelligence (AI) data centers and high-performance computing systems \cite{Habibi2026DataCenters,Lotfi2026FCML}.
 Reliable electrical measurements in these converter-rich environments require consideration of switching-induced interference \cite{Omidi2026HybridSensor}.
@@ -361,7 +363,7 @@ At 7~Hz, 128 samples and stride 16 give an 18.29-s nominal window and 2.29-s upd
 This work successfully demonstrates that low-cost, IoT-enabled EMUs can serve as highly effective, localized sensors for cyber attack detection in the tested AC motor-drive system. In the reported evaluation, the rebalanced multihead CNN--Bi-GRU framework processes 16-feature time-series data with 93.46\% validation accuracy. PCC measurements support source identification while both motors operate: 95.32\% detection plus identity across all 18,914 attack windows, limited by detector misses. Recall is 94.09--96.17\% across 12 recorded conditions. Having established this supervised benchmark, future work will expand the framework to detect a broader range of fault and disturbance scenarios beyond cyber attacks (e.g., abnormal operating conditions and component-level faults). The PCC-based measurement strategy will also be extended  to function as a comprehensive observability layer, enabling unified monitoring and event classification using EMU data at the PCC.
 
 \section*{Acknowledgment}
-OpenAI Codex assisted with manuscript revisions, evaluation code, and diagnostic figures. An OpenAI image-generation tool revised Fig.~\ref{fig:information_flow}. Reported metrics were computed from the recorded dataset.
+OpenAI Codex assisted with manuscript revisions, evaluation code, and diagnostic figures. Reported metrics were computed from the recorded dataset.
 
 \bibliographystyle{IEEEtran}
 \bibliography{Bibliography}
