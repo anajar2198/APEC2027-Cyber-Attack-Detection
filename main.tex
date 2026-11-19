@@ -95,7 +95,8 @@ where $\mathbf{i}_{abc}(t)$ is the true three-phase current vector and $\boldsym
 
 The continuous PCC time-series is segmented using an overlapping sliding window with length 128 time steps and stride 16. Each sample is represented as $X \in \mathbb{R}^{128 \times 16}$. Table~\ref{tab:dataset_schema} summarizes the 16 voltage/current features and 13 label and metadata fields. RMS, THD, and ROCOF denote root mean square, total harmonic distortion, and rate of change of frequency, respectively.
 
-For binary detection, \texttt{is\_attack} is 1 if any sample in the window is attacked; normal phase labels are $(A,B,C)=(0,0,0)$. Motor, phase, severity, onset, and operating-condition metadata support the additional tasks. Stored severity labels are not converted to physical per-unit injection values in the evaluation. Fig.~\ref{fig:signal_windows} compares normal and attacked feature windows; Fig.~\ref{fig:feature_timeseries} illustrates phase, frequency, and THD traces.
+For binary detection, \texttt{is\_attack} is 1 if any sample in the window is attacked; normal phase labels are $(A,B,C)=(0,0,0)$. Motor, phase, severity, onset, and operating-condition metadata support the additional tasks. Stored severity labels are not converted to physical per-unit injection values in the evaluation. Figure~\ref{fig:signal_windows} compares normal and attacked feature windows.
+% Fig.~\ref{fig:feature_timeseries} illustrates phase, frequency, and THD traces.
 
 \begin{figure}[!t]
     \centering
@@ -131,12 +132,12 @@ $\text{sev}_A, \text{sev}_B, \text{sev}_C$ & Stored severity per phase (0.025, 0
 
 
 
-\begin{figure}[!t]
-    \centering
-    \includegraphics[width=.95\linewidth]{featurescombined.png}
-    \caption{Comparative time-series visualization of EMU phase, frequency, and THD measurements.}
-    \label{fig:feature_timeseries}
-\end{figure}
+% \begin{figure}[!t]
+%     \centering
+%     \includegraphics[width=.95\linewidth]{featurescombined.png}
+%     \caption{Comparative time-series visualization of EMU phase, frequency, and THD measurements.}
+%     \label{fig:feature_timeseries}
+% \end{figure}
 
 \section{Multihead CNN--Bi-GRU Architecture}
 
