@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="810" viewBox="0 0 1440 810" role="img" aria-labelledby="title desc">
+<title id="title">EMU and NI DAQ measurement locations and dataset paths</title>
+<desc id="desc">A shared AC supply feeds two motor drives at the PCC. An EMU measures aggregated PCC voltage and current; its 16 features feed the classifier evaluated in this paper. A separate NI DAQ acquires motor-terminal phase-current waveforms for the auxiliary raw dataset, which also contains PCC reference channels. The datasets share experiment metadata but have different sample rates and recording coverage.</desc>
+<rect x="0" y="0" width="1440" height="810" rx="0" fill="white" stroke="#ffffff" stroke-width="2"/>
+<text x="28" y="44" font-family="DejaVu Sans,Arial,sans-serif" font-size="30" font-weight="700" fill="#172b3a" text-anchor="start">Two measurement devices, one motor-drive experiment</text>
+<text x="28" y="75" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#485b68" text-anchor="start">Measurement location determines what each dataset represents</text>
+<rect x="24" y="100" width="650" height="550" rx="12" fill="#f4f7f9" stroke="#a8b7c3" stroke-width="2"/>
+<text x="48" y="137" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="700" fill="#485b68" text-anchor="start">SHARED PHYSICAL TESTBED</text>
+<rect x="50" y="310" width="130" height="70" rx="7" fill="white" stroke="#172b3a" stroke-width="2"/>
+<text x="115" y="340" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="#172b3a" text-anchor="middle">Three-phase</text>
+<text x="115" y="365" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="700" fill="#172b3a" text-anchor="middle">AC supply</text>
+<polyline points="180,345 330,345" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="330,345 318.0,350.0 318.0,340.0" fill="#172b3a"/>
+<polyline points="330,245 330,465" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="330,245 370,245" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="370,245 358.0,250.0 358.0,240.0" fill="#172b3a"/>
+<rect x="370" y="209" width="120" height="72" rx="7" fill="white" stroke="#172b3a" stroke-width="2"/>
+<text x="430" y="252" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="700" fill="#172b3a" text-anchor="middle">Drive</text>
+<polyline points="490,245 540,245" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="540,245 528.0,250.0 528.0,240.0" fill="#172b3a"/>
+<circle cx="584" cy="245" r="43" fill="white" stroke="#172b3a" stroke-width="3"/>
+<text x="584" y="252" font-family="DejaVu Sans,Arial,sans-serif" font-size="19" font-weight="700" fill="#172b3a" text-anchor="middle">ACIM</text>
+<circle cx="520" cy="245" r="5" fill="#a74b12" stroke="#a74b12" stroke-width="2"/>
+<text x="518" y="190" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="#a74b12" text-anchor="start">Terminal tap</text>
+<polyline points="330,465 370,465" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="370,465 358.0,470.0 358.0,460.0" fill="#172b3a"/>
+<rect x="370" y="429" width="120" height="72" rx="7" fill="white" stroke="#172b3a" stroke-width="2"/>
+<text x="430" y="472" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="700" fill="#172b3a" text-anchor="middle">Drive</text>
+<polyline points="490,465 540,465" fill="none" stroke="#172b3a" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="540,465 528.0,470.0 528.0,460.0" fill="#172b3a"/>
+<circle cx="584" cy="465" r="43" fill="white" stroke="#172b3a" stroke-width="3"/>
+<text x="584" y="472" font-family="DejaVu Sans,Arial,sans-serif" font-size="19" font-weight="700" fill="#172b3a" text-anchor="middle">PMSM</text>
+<circle cx="520" cy="465" r="5" fill="#a74b12" stroke="#a74b12" stroke-width="2"/>
+<text x="518" y="410" font-family="DejaVu Sans,Arial,sans-serif" font-size="18" font-weight="400" fill="#a74b12" text-anchor="start">Terminal tap</text>
+<circle cx="255" cy="345" r="7" fill="#12649b" stroke="#12649b" stroke-width="2"/>
+<text x="255" y="391" font-family="DejaVu Sans,Arial,sans-serif" font-size="25" font-weight="700" fill="#12649b" text-anchor="middle">PCC</text>
+<text x="60" y="220" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#12649b" text-anchor="start">Aggregated</text>
+<text x="60" y="247" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="400" fill="#12649b" text-anchor="start">voltage/current</text>
+<polyline points="255,345 255,164 740,164" fill="none" stroke="#12649b" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="740,164 728.0,169.0 728.0,159.0" fill="#12649b"/>
+<polyline points="520,245 520,345 690,345 690,465 740,465" fill="none" stroke="#a74b12" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="740,465 728.0,470.0 728.0,460.0" fill="#a74b12"/>
+<polyline points="520,465 520,555 690,555 690,465" fill="none" stroke="#a74b12" stroke-width="4" stroke-linejoin="round"/>
+<text x="48" y="592" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#172b3a" text-anchor="start">Both motors operate during each trial.</text>
+<text x="48" y="623" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#172b3a" text-anchor="start">One motor is attacked at a time.</text>
+<rect x="740" y="100" width="675" height="225" rx="12" fill="#edf6fc" stroke="#12649b" stroke-width="3"/>
+<text x="768" y="139" font-family="DejaVu Sans,Arial,sans-serif" font-size="25" font-weight="700" fill="#12649b" text-anchor="start">EMU | PCC measurements</text>
+<rect x="1190" y="112" width="199" height="33" rx="5" fill="#12649b" stroke="#12649b" stroke-width="2"/>
+<text x="1289" y="135" font-family="DejaVu Sans,Arial,sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">USED IN THIS PAPER</text>
+<text x="768" y="185" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="400" fill="#172b3a" text-anchor="start">16 voltage/current features | 7 Hz</text>
+<text x="768" y="222" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" fill="#172b3a" text-anchor="start">Window: 128 x 16 | stride: 16 samples</text>
+<text x="768" y="263" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="700" fill="#12649b" text-anchor="start">features/</text>
+<polyline points="900,255 946,255" fill="none" stroke="#12649b" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="946,255 934.0,260.0 934.0,250.0" fill="#12649b"/>
+<text x="963" y="263" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="700" fill="#12649b" text-anchor="start">CNN-Bi-GRU classifier</text>
+<text x="768" y="302" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#485b68" text-anchor="start">Paper results use this EMU branch.</text>
+<rect x="740" y="365" width="675" height="285" rx="12" fill="#fff5eb" stroke="#a74b12" stroke-width="3"/>
+<text x="768" y="406" font-family="DejaVu Sans,Arial,sans-serif" font-size="25" font-weight="700" fill="#a74b12" text-anchor="start">NI DAQ | motor-terminal waveforms</text>
+<text x="768" y="450" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" fill="#172b3a" text-anchor="start">Released waveform sampling rate: 2 kHz</text>
+<text x="768" y="486" font-family="DejaVu Sans,Arial,sans-serif" font-size="22" font-weight="400" fill="#172b3a" text-anchor="start">Window: 2000 x 5 | stride: 1000 samples</text>
+<text x="768" y="524" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="700" fill="#a74b12" text-anchor="start">raw_waveform_datasets/</text>
+<text x="768" y="560" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#172b3a" text-anchor="start">phase_A/B/C: motor selected per recording</text>
+<text x="768" y="593" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#172b3a" text-anchor="start">Also archived: PCC_voltage and PCC_current</text>
+<text x="768" y="631" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#485b68" text-anchor="start">Auxiliary measurements for dataset users</text>
+<rect x="24" y="683" width="1391" height="105" rx="12" fill="#f4f7f9" stroke="#a8b7c3" stroke-width="2"/>
+<text x="48" y="718" font-family="DejaVu Sans,Arial,sans-serif" font-size="20" font-weight="700" fill="#485b68" text-anchor="start">SHARED LABELS</text>
+<text x="248" y="718" font-family="DejaVu Sans,Arial,sans-serif" font-size="23" font-weight="400" fill="#172b3a" text-anchor="start">Normal/attack | motor | phase | severity | speed | load</text>
+<text x="48" y="756" font-family="DejaVu Sans,Arial,sans-serif" font-size="21" font-weight="400" fill="#485b68" text-anchor="start">Use UTC window-end times to compare operating context; sample rates and recording coverage differ.</text>
+</svg>

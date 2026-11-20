@@ -76,7 +76,7 @@ This section describes the motor-drive testbed, FDIA generation, and the resulti
 \subsection{Testbed Design and Cyber-Attack Generation}
 
 Figs.~\ref{fig:power_flow} and~\ref{fig:testbed_photo} show the cyber-physical motor-drive testbed consisting of an AC induction motor (ACIM)  and a permanent magnet synchronous motor (PMSM). To emulate consumer-edge monitoring, an EMU is connected at the point of common coupling (PCC), where the EMU captures the aggregated electrical interaction of the drives. Both motors operate while one motor is attacked at a time; only PCC features are provided to the classifier.
-While PCC sensing is the focus of this study, stator current and voltage data at the motor-level are also available in the dataset for auxiliary monitoring and validation, and can be shared upon request for interested researchers.
+The NI DAQ acquisition branch records motor-terminal waveforms for auxiliary monitoring and validation. The archived NI DAQ stream also contains channels named \texttt{PCC\_voltage} and \texttt{PCC\_current}. Fig.~\ref{fig:dataset_measurement_paths} distinguishes these measurement locations and dataset branches; the classifier and reported results in this paper use only the EMU features measured at the PCC.
 
 \begin{figure}[!t]
     \centering
@@ -97,6 +97,14 @@ To safely emulate cyber incidents, false data injection attacks (FDIAs) are exec
 where $\mathbf{i}_{abc}(t)$ is the true three-phase current vector and $\boldsymbol{\alpha}$ is the injected per-unit bias (applied per phase). Trials vary operating conditions (speed and load) and injection configurations (single-phase, two-phase, and multi-point), with attack magnitudes swept over $\alpha \in \{0.00025,\ldots,0.00500\}$ pu. Each run includes steady-state operation, attack activation, and recovery, enabling scalable supervised labeling.
 
 \subsection{Dataset Structure}
+
+\begin{figure*}[!t]
+    \centering
+    \includegraphics[width=\textwidth]{figures/dataset_measurement_paths.pdf}
+    \caption{Measurement locations and dataset branches in the shared two-motor testbed. The EMU records aggregate voltage/current features at the PCC and supplies the classifier evaluated in this paper. NI DAQ records motor-terminal phase-current waveforms for the auxiliary dataset; its archive also includes PCC reference channels. Operating-context comparisons use UTC window-end timestamps; different sample rates and coverage do not imply sample-level clock synchronization.}
+    \label{fig:dataset_measurement_paths}
+\end{figure*}
+
 
 The continuous PCC time-series is segmented using an overlapping sliding window with length 128 time steps and stride 16. Each sample is represented as $X \in \mathbb{R}^{128 \times 16}$. Table~\ref{tab:dataset_schema} summarizes the 16 voltage/current features and 13 label and metadata fields. RMS, THD, and ROCOF denote root mean square, total harmonic distortion, and rate of change of frequency, respectively.
 
